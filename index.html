@@ -23,8 +23,15 @@ body{font-family:"Outfit",sans-serif;color:var(--color-ink);
   min-height:100dvh;-webkit-font-smoothing:antialiased;overflow-wrap:break-word}
 .app{max-width:480px;margin:0 auto;min-height:100dvh;display:flex;flex-direction:column;position:relative;
   padding-top:env(safe-area-inset-top);padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
-.view{display:none;flex:1;padding:26px 22px calc(118px + env(safe-area-inset-bottom));animation:rise .5s var(--ease) both}
+.view{display:none;padding:24px 22px calc(118px + env(safe-area-inset-bottom));animation:rise .5s var(--ease) both}
 .view.is-active{display:block}
+#view-parole.is-active{display:flex;flex-direction:column;min-height:100dvh}
+.parole-body{flex:1;display:flex;flex-direction:column;justify-content:center}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;justify-content:center}
+.chip{background:var(--color-card);border:1px solid var(--color-line);border-radius:100px;padding:9px 15px;
+  font-family:inherit;font-size:14px;color:var(--color-ink-soft);cursor:pointer;transition:.2s}
+.chip:active{transform:scale(.96)}.chip:hover{border-color:var(--color-gold);color:var(--color-sage-deep)}
+.chips-label{text-align:center;font-size:13px;color:var(--color-ink-soft);font-weight:300;margin-top:24px}
 @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 
 /* écran de démarrage plein écran */
@@ -145,7 +152,7 @@ body{font-family:"Outfit",sans-serif;color:var(--color-ink);
 .res-desc{font-size:13px;color:var(--color-ink-soft);font-weight:300}
 
 /* bottom nav */
-.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:460px;
+.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;
   background:rgba(251,249,243,.92);backdrop-filter:blur(10px);border-top:1px solid var(--color-line);
   display:flex;justify-content:space-around;padding:9px 6px calc(9px + env(safe-area-inset-bottom));z-index:40}
 .bottom-nav.hidden{display:none}
@@ -180,11 +187,15 @@ body{font-family:"Outfit",sans-serif;color:var(--color-ink);
   <section id="view-parole" class="view">
     <div class="topbar"><div class="topbar-name" id="path-name">Refuge</div>
       <div style="display:flex;gap:8px"><button class="icon-btn" data-menu="1" title="Changer de voie">⌂</button><button class="icon-btn" data-go="view-aide" title="Aide">☎</button></div></div>
-    <h1 class="headline" style="text-align:left">Comment te sens-tu ?</h1>
-    <p class="subline" style="text-align:left">Écris en quelques mots, sans filtre.</p>
-    <textarea id="mood-field" class="field" placeholder="Ex : triste à cause d'un souci familial, et en même temps très énervé…"></textarea>
-    <button class="btn" id="submit-mood">Recevoir un message</button>
-    <div id="result-host"></div>
+    <div class="parole-body">
+      <h1 class="headline" style="text-align:left">Comment te sens-tu ?</h1>
+      <p class="subline" style="text-align:left">Écris en quelques mots, sans filtre.</p>
+      <textarea id="mood-field" class="field" placeholder="Ex : triste à cause d'un souci familial, et en même temps très énervé…"></textarea>
+      <button class="btn" id="submit-mood">Recevoir un message</button>
+      <p class="chips-label">ou choisis ce que tu ressens :</p>
+      <div class="chips" id="mood-chips"></div>
+      <div id="result-host"></div>
+    </div>
   </section>
 
   <!-- ÉCHANGE -->
@@ -640,7 +651,19 @@ document.querySelectorAll("[data-menu]").forEach(b=>b.onclick=backToMenu);
 document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{lastView=document.querySelector(".view.is-active")?.id||lastView;show(b.dataset.go);});
 document.querySelectorAll("[data-back]").forEach(b=>b.onclick=()=>show(lastView));
 
+/* ---- pastilles d'humeur rapides ---- */
+const CHIPS=["Triste","J'ai peur","Anxieux","En colère","Fatigué","Seul","Coupable","Reconnaissant"];
+function buildChips(){
+  const host=document.getElementById("mood-chips");
+  host.innerHTML=CHIPS.map(c=>`<button class="chip">${c}</button>`).join("");
+  host.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{
+    document.getElementById("mood-field").value=b.textContent;
+    document.getElementById("submit-mood").click();
+  });
+}
+
 buildMoodGrid();
+buildChips();
 </script>
 </body>
 </html>

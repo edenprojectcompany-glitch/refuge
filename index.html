@@ -4,7 +4,28 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f4f0e7">
-<title>Refuge</title>
+<title>Refuge — un mot pour ce que tu ressens</title>
+<meta name="description" content="Écris ce que tu ressens, reçois une parole choisie pour cela : Écritures chrétiennes, Coran et hadiths, ou sagesse des philosophes. Journal d'humeur et exercices de respiration. Gratuit, sans compte, tout reste sur ton appareil.">
+
+<!-- Aperçu du lien (WhatsApp, SMS, réseaux).
+     ⚠️ Si tu héberges ailleurs que sur GitHub Pages, remplace les 2 URL absolues ci-dessous. -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Refuge">
+<meta property="og:title" content="Refuge — un mot pour ce que tu ressens">
+<meta property="og:description" content="Un espace de réconfort, pour les moments où les mots manquent. Gratuit, sans compte, rien ne sort de ton téléphone.">
+<meta property="og:url" content="https://edenprojectcompany-glitch.github.io/refuge/">
+<meta property="og:image" content="https://edenprojectcompany-glitch.github.io/refuge/partage.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Refuge">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
@@ -52,7 +73,9 @@ body{font-family:"Outfit",sans-serif;color:var(--color-ink);
   transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease)}
 .path-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--color-gold)}
 .path-glyph{font-family:"Cormorant Garamond",serif;font-size:26px;color:var(--color-gold);width:40px;text-align:center;flex:none}
-.path-title{font-size:17px;font-weight:500}.path-desc{font-size:13px;color:var(--color-ink-soft);font-weight:300;margin-top:2px}
+.path-card>span:last-child{display:block}
+.path-title{display:block;font-size:17px;font-weight:500}
+.path-desc{display:block;font-size:13px;color:var(--color-ink-soft);font-weight:300;margin-top:2px;line-height:1.4}
 
 .topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
 .topbar-name{font-family:"Cormorant Garamond",serif;font-size:21px;letter-spacing:.06em;text-transform:uppercase}
@@ -96,7 +119,10 @@ body{font-family:"Outfit",sans-serif;color:var(--color-ink);
 .safe-card{background:#fbf4f1;border:1px solid #e7cfc6;border-radius:var(--radius);padding:32px 28px;text-align:center}
 .safe-title{font-family:"Cormorant Garamond",serif;font-size:24px;color:var(--color-alert);margin-bottom:14px;font-weight:500}
 .safe-text{color:var(--color-ink);font-weight:300;line-height:1.6;font-size:15px;margin-bottom:20px}
-.safe-number{display:block;font-family:"Cormorant Garamond",serif;font-size:40px;color:var(--color-alert);font-weight:600;margin:6px 0}
+.safe-number{display:block;font-family:"Cormorant Garamond",serif;font-size:44px;color:var(--color-alert);font-weight:600;
+  margin:6px 0;text-decoration:none;letter-spacing:.02em}
+.safe-number:hover{text-decoration:underline;text-underline-offset:6px}
+.safe-text a{color:var(--color-alert)}
 .safe-sub{font-size:13px;color:var(--color-ink-soft);font-weight:300}
 .safe-word{margin-top:24px;padding-top:22px;border-top:1px solid #e7cfc6;font-family:"Cormorant Garamond",serif;
   font-style:italic;font-size:19px;line-height:1.45;color:var(--color-ink)}
@@ -123,22 +149,11 @@ body{font-family:"Outfit",sans-serif;color:var(--color-ink);
 #breathe-count{margin-top:16px;font-size:13px;color:var(--color-ink-soft);letter-spacing:.08em}
 .breathe-cue{margin-top:26px;font-family:"Cormorant Garamond",serif;font-size:22px;color:var(--color-sage-deep);min-height:30px}
 
-/* chat */
+/* encarts & liens discrets */
 .notice{background:#fbf4f1;border:1px solid #e7cfc6;border-radius:16px;padding:14px 16px;font-size:13px;
   color:var(--color-alert);line-height:1.5;margin-bottom:18px}
-.gate-card{background:var(--color-card);border:1px solid var(--color-line);border-radius:var(--radius);padding:28px 24px}
-.chat-box{display:flex;flex-direction:column;height:calc(100vh - 250px);height:calc(100dvh - 250px);min-height:340px}
-.chat-stream{flex:1;overflow-y:auto;padding:6px 2px;display:flex;flex-direction:column;gap:12px}
-.bubble{max-width:80%;padding:11px 15px;border-radius:18px;font-size:15px;line-height:1.45}
-.bubble.them{background:var(--color-card);border:1px solid var(--color-line);align-self:flex-start;border-bottom-left-radius:5px}
-.bubble.me{background:var(--color-sage);color:#f6f3ea;align-self:flex-end;border-bottom-right-radius:5px}
-.bubble-meta{font-size:11px;color:var(--color-ink-soft);margin:2px 4px}
-.chat-input{display:flex;gap:8px;margin-top:10px;align-items:flex-end}
-.chat-input textarea{flex:1;min-height:46px;max-height:110px;resize:none;background:var(--color-card);border:1px solid var(--color-line);
-  border-radius:18px;padding:12px 14px;font-family:inherit;font-size:16px;color:var(--color-ink)}
-.chat-input textarea:focus{outline:none;border-color:var(--color-sage)}
-.send-btn{background:var(--color-sage);color:#f6f3ea;border:none;border-radius:50%;width:46px;height:46px;flex:none;cursor:pointer;font-size:18px}
-.chat-flag{background:none;border:none;color:var(--color-ink-soft);font-size:12px;cursor:pointer;text-decoration:underline;margin-top:8px;align-self:flex-start}
+.link-btn{background:none;border:none;color:var(--color-ink-soft);font-size:12px;cursor:pointer;text-decoration:underline;margin-top:8px;align-self:flex-start;font-family:inherit}
+.link-btn:hover{color:var(--color-ink)}
 .toast{position:fixed;left:50%;bottom:130px;transform:translateX(-50%);background:var(--color-alert);color:#fff;
   padding:12px 18px;border-radius:100px;font-size:13px;max-width:90%;text-align:center;opacity:0;pointer-events:none;
   transition:opacity .3s;z-index:50}
@@ -160,6 +175,17 @@ body{font-family:"Outfit",sans-serif;color:var(--color-ink);
   display:flex;flex-direction:column;align-items:center;gap:3px;padding:5px 8px;border-radius:12px;transition:.2s}
 .nav-btn .ni{font-size:19px}
 .nav-btn.active{color:var(--color-sage-deep)}
+/* texte courant (À propos) */
+.prose{font-weight:300;line-height:1.65;font-size:14.5px;color:var(--color-ink-soft)}
+.prose h3{font-family:"Cormorant Garamond",serif;font-size:19px;color:var(--color-ink);font-weight:500;margin:24px 0 8px}
+.prose strong{color:var(--color-ink);font-weight:500}
+.prose ul{margin:8px 0 0 18px}
+.prose li{margin-bottom:7px}
+.prose a{color:var(--color-sage-deep)}
+.start-foot{text-align:center;margin-top:26px}
+.start-foot button{background:none;border:none;font-family:inherit;font-size:12.5px;color:var(--color-ink-soft);
+  cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.start-foot button:hover{color:var(--color-ink)}
 .section-title{font-family:"Cormorant Garamond",serif;font-size:24px;margin-bottom:4px}
 .section-sub{color:var(--color-ink-soft);font-weight:300;font-size:14px;margin-bottom:20px;line-height:1.5}
 </style>
@@ -171,7 +197,7 @@ body{font-family:"Outfit",sans-serif;color:var(--color-ink);
   <section id="screen-start">
     <div class="brand"><div class="brand-mark">✦</div><div class="brand-name">Refuge</div>
       <div class="brand-tag">Un mot pour ce que tu ressens</div></div>
-    <h1 class="headline">Quelle voie te parle aujourd'hui ?</h1>
+    <h1 class="headline">Quelle voie te parle aujourd'hui&nbsp;?</h1>
     <p class="subline">Choisis la source dans laquelle puiser. Tu peux en changer à tout moment.</p>
     <div class="path-list">
       <button class="path-card" data-path="chretien"><span class="path-glyph">✝</span>
@@ -181,6 +207,7 @@ body{font-family:"Outfit",sans-serif;color:var(--color-ink);
       <button class="path-card" data-path="philosophe"><span class="path-glyph">𓂀</span>
         <span><span class="path-title">Philosophe / Écrivain</span><span class="path-desc">Sagesse des penseurs</span></span></button>
     </div>
+    <div class="start-foot"><button id="about-start">À propos, tes données et les limites</button></div>
   </section>
 
   <!-- PAROLE -->
@@ -195,33 +222,6 @@ body{font-family:"Outfit",sans-serif;color:var(--color-ink);
       <p class="chips-label">ou choisis ce que tu ressens :</p>
       <div class="chips" id="mood-chips"></div>
       <div id="result-host"></div>
-    </div>
-  </section>
-
-  <!-- ÉCHANGE -->
-  <section id="view-chat" class="view">
-    <div class="topbar"><div class="topbar-name">Échange</div>
-      <div style="display:flex;gap:8px"><button class="icon-btn" data-menu="1" title="Changer de voie">⌂</button><button class="icon-btn" data-go="view-aide" title="Aide">☎</button></div></div>
-    <div id="chat-gate">
-      <div class="gate-card">
-        <h2 class="section-title">Un espace d'entraide anonyme</h2>
-        <p class="section-sub">Aucun nom, aucune photo, aucune coordonnée. Juste des mots bienveillants entre personnes. Le partage de numéro, d'adresse ou de réseau est bloqué automatiquement. Et si personne n'est en ligne, un compagnon t'accompagne en attendant.</p>
-        <p class="notice">Réservé aux personnes majeures. Cet espace n'est pas une ligne d'écoute : en cas de détresse, utilise l'onglet Aide ou appelle le 3114.</p>
-        <button class="btn" id="gate-yes">J'ai 18 ans ou plus — entrer</button>
-        <button class="btn btn-soft" data-go="view-parole" style="margin-top:10px">Retour</button>
-      </div>
-    </div>
-    <div id="chat-live" style="display:none">
-      <p class="notice" style="background:#f4efe4;border-color:var(--color-line);color:var(--color-ink-soft)">
-        Personne en ligne pour l'instant — tu échanges avec un <strong>compagnon (IA)</strong>. Ce n'est pas une vraie personne ni une ligne d'écoute. En cas de détresse : 3114. Le filtre anti-coordonnées est actif, teste-le.</p>
-      <div class="chat-box">
-        <div class="chat-stream" id="chat-stream"></div>
-        <div class="chat-input">
-          <textarea id="chat-field" rows="1" placeholder="Un mot bienveillant…"></textarea>
-          <button class="send-btn" id="chat-send">↑</button>
-        </div>
-        <button class="chat-flag" id="chat-report">⚑ Signaler cette personne</button>
-      </div>
     </div>
   </section>
 
@@ -283,6 +283,44 @@ body{font-family:"Outfit",sans-serif;color:var(--color-ink);
     <a class="res" href="tel:0972394050"><div class="res-name">SOS Amitié</div><div class="res-num">09 72 39 40 50</div><div class="res-desc">Écoute · tous les jours</div></a>
     <a class="res" href="tel:15"><div class="res-name">Urgence médicale (SAMU)</div><div class="res-num">15</div><div class="res-desc">Danger immédiat</div></a>
     <a class="res" href="tel:112"><div class="res-name">Urgences européennes</div><div class="res-num">112</div><div class="res-desc">Depuis toute l'Europe</div></a>
+    <button class="btn-ghost" data-go="view-apropos" style="margin-top:22px">À propos de Refuge</button>
+  </section>
+
+  <!-- À PROPOS -->
+  <section id="view-apropos" class="view">
+    <div class="topbar"><div class="topbar-name">À propos</div>
+      <button class="icon-btn" data-back="1" title="Retour">←</button></div>
+
+    <h2 class="section-title">Refuge</h2>
+    <p class="section-sub">Un espace de réconfort, pour les moments où les mots manquent.</p>
+
+    <div class="prose">
+      <p>Tu écris ce que tu ressens ; Refuge cherche dans un recueil de textes celui qui répond le mieux à cet état, dans la voie que tu as choisie. Tu peux aussi tenir un journal d'humeur et faire un exercice de respiration.</p>
+
+      <h3>Ce que Refuge n'est pas</h3>
+      <ul>
+        <li>Ce n'est <strong>pas un soin</strong> ni un avis médical, et cela ne remplace ni un médecin, ni un psychologue, ni un traitement.</li>
+        <li>Ce n'est <strong>pas une ligne d'écoute</strong> : personne ne lit ce que tu écris ici.</li>
+        <li>Ce n'est <strong>pas une autorité religieuse</strong>. Les textes sont proposés pour le réconfort, pas comme un enseignement ou une fatwa.</li>
+      </ul>
+      <p style="margin-top:12px">Si ça va vraiment mal, appelle le <strong>3114</strong> — c'est gratuit, 24 h/24, et de vraies personnes répondent.</p>
+
+      <h3>Tes données</h3>
+      <p>Refuge n'a <strong>aucun serveur</strong>. Ce que tu écris, tes favoris et ton journal restent dans la mémoire de ton navigateur, sur ton appareil. Rien n'est envoyé, rien n'est analysé, il n'y a ni compte, ni mouchard, ni mesure d'audience. Effacer les données du site efface tout, définitivement.</p>
+
+      <h3>Les textes</h3>
+      <ul>
+        <li><strong>Voie chrétienne</strong> — Bible, traductions Louis Segond 1910 et Darby, dans le domaine public.</li>
+        <li><strong>Voie musulmane</strong> — versets du Coran et hadiths, avec la référence de chaque passage (sourate et verset, recueil et numéro).</li>
+        <li><strong>Voie philosophe</strong> — auteurs du domaine public, cités avec leur source.</li>
+      </ul>
+      <p class="notice" style="margin-top:16px">Recueil constitué avec soin, mais <strong>pas encore relu par une autorité religieuse</strong>. Si tu relèves une erreur de référence ou de traduction, elle mérite d'être corrigée : signale-la.</p>
+
+      <h3>Partager</h3>
+      <p>Refuge est gratuit et le restera. Si l'app peut aider quelqu'un autour de toi, transmets-la.</p>
+      <button class="btn" id="share-btn" style="margin-top:12px">Partager l'application</button>
+      <button class="btn btn-soft" data-go="view-aide" style="margin-top:10px">Voir les numéros d'aide</button>
+    </div>
   </section>
 
   <!-- SÉCURITÉ -->
@@ -290,9 +328,9 @@ body{font-family:"Outfit",sans-serif;color:var(--color-ink);
     <div class="safe-card">
       <div class="safe-title">Tu comptes, et tu n'es pas seul·e.</div>
       <p class="safe-text">Ce que tu traverses semble très lourd. Le plus important, là, ce n'est pas une phrase — c'est une vraie voix qui t'écoute. Des personnes sont disponibles tout de suite, gratuitement et en toute confidentialité.</p>
-      <span class="safe-number">3114</span>
-      <p class="safe-sub">Prévention du suicide · 24h/24 · 7j/7 · France</p>
-      <p class="safe-text" style="margin-top:20px;font-size:14px">Danger immédiat : <strong>15</strong> (SAMU) ou <strong>112</strong>.</p>
+      <a class="safe-number" href="tel:3114">3114</a>
+      <p class="safe-sub">Prévention du suicide · 24h/24 · 7j/7 · France · appuie pour appeler</p>
+      <p class="safe-text" style="margin-top:20px;font-size:14px">Danger immédiat : <a href="tel:15"><strong>15</strong></a> (SAMU) ou <a href="tel:112"><strong>112</strong></a>.</p>
       <div class="safe-word" id="safe-word"></div>
       <div class="safe-word-ref" id="safe-word-ref"></div>
       <button class="btn btn-soft" data-go="view-parole" style="margin-top:22px">Retour</button>
@@ -302,7 +340,6 @@ body{font-family:"Outfit",sans-serif;color:var(--color-ink);
   <!-- NAV -->
   <nav class="bottom-nav hidden" id="bottom-nav">
     <button class="nav-btn" data-nav="view-parole"><span class="ni">✦</span>Parole</button>
-    <button class="nav-btn" data-nav="view-chat"><span class="ni">❀</span>Échange</button>
     <button class="nav-btn" data-nav="view-journal"><span class="ni">☉</span>Journal</button>
     <button class="nav-btn" data-nav="view-breathe"><span class="ni">◍</span>Respirer</button>
     <button class="nav-btn" data-nav="view-favorites"><span class="ni">♥</span>Refuge</button>
@@ -358,7 +395,63 @@ musulman:[
 {type:"hadith",tags:["decouragement","doute","fatigue"],note:"Vise l'utile, demande de l'aide, ne faiblis pas.",arabe:"احْرِصْ عَلَى مَا يَنْفَعُكَ وَاسْتَعِنْ بِاللَّهِ وَلَا تَعْجَزْ",translit:"Iḥriṣ ʿalā mā yanfaʿuka wa-staʿin bi-llāhi wa lā taʿjaz.",texte:"« Recherche avec ardeur ce qui t'est utile, cherche l'aide d'Allah, et ne faiblis pas. »",ref:"Hadith · Sahih Muslim 2664"},
 {type:"hadith",tags:["gratitude","apaisement"],note:"Un geste minuscule, déjà précieux.",arabe:"تَبَسُّمُكَ فِي وَجْهِ أَخِيكَ صَدَقَةٌ",translit:"Tabassumuka fī wajhi akhīka ṣadaqah.",texte:"« Ton sourire au visage de ton frère est une aumône. »",ref:"Hadith · Tirmidhi 1956 (hasan)"},
 {type:"coran",tags:["gratitude"],note:"Le souvenir nourrit la reconnaissance.",arabe:"فَاذْكُرُونِي أَذْكُرْكُمْ وَاشْكُرُوا لِي",translit:"Fa-dhkurūnī adhkurkum wa-shkurū lī.",texte:"Souvenez-vous de Moi, Je Me souviendrai de vous. Remerciez-Moi et ne soyez pas ingrats.",ref:"Coran 2 : 152"},
-{type:"coran",tags:["patience","decouragement"],note:"Tu n'endures pas seul.",arabe:"وَاصْبِرُوا ۚ إِنَّ اللَّهَ مَعَ الصَّابِرِينَ",translit:"Waṣbirū, inna-llāha maʿa-ṣ-ṣābirīn.",texte:"Et soyez endurants, car Allah est avec les endurants.",ref:"Coran 8 : 46"}
+{type:"coran",tags:["patience","decouragement"],note:"Tu n'endures pas seul.",arabe:"وَاصْبِرُوا ۚ إِنَّ اللَّهَ مَعَ الصَّابِرِينَ",translit:"Waṣbirū, inna-llāha maʿa-ṣ-ṣābirīn.",texte:"Et soyez endurants, car Allah est avec les endurants.",ref:"Coran 8 : 46"},
+{type:"coran",tags:["charge","decouragement","culpabilite"],note:"Ce qui t'est demandé tient dans ce que tu peux porter.",arabe:"لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا",translit:"Lā yukallifu-llāhu nafsan illā wusʿahā.",texte:"Allah n'impose à aucune âme une charge supérieure à sa capacité.",ref:"Coran 2 : 286"},
+{type:"coran",tags:["decouragement","tristesse"],note:"Le découragement n'est pas le dernier état.",arabe:"وَلَا تَهِنُوا وَلَا تَحْزَنُوا",translit:"Wa-lā tahinū wa-lā taḥzanū.",texte:"Ne vous laissez pas abattre, ne vous affligez pas.",ref:"Coran 3 : 139"},
+{type:"coran",tags:["patience","charge","fatigue"],note:"Deux appuis quand les forces manquent.",arabe:"يَا أَيُّهَا الَّذِينَ آمَنُوا اسْتَعِينُوا بِالصَّبْرِ وَالصَّلَاةِ",translit:"Yā ayyuhā-lladhīna āmanū istaʿīnū bi-ṣ-ṣabri wa-ṣ-ṣalāh.",texte:"Ô vous qui croyez, cherchez secours dans l'endurance et la prière.",ref:"Coran 2 : 153"},
+{type:"coran",tags:["culpabilite","desespoir"],note:"Aucune faute n'est au-delà du pardon.",arabe:"لَا تَقْنَطُوا مِن رَّحْمَةِ اللَّهِ ۚ إِنَّ اللَّهَ يَغْفِرُ الذُّنُوبَ جَمِيعًا",translit:"Lā taqnaṭū min raḥmati-llāh, inna-llāha yaghfiru-dh-dhunūba jamīʿan.",texte:"Ne désespérez pas de la miséricorde d'Allah. Certes, Allah pardonne tous les péchés.",ref:"Coran 39 : 53"},
+{type:"coran",tags:["anxiete","charge"],note:"Tu peux poser une partie du poids.",arabe:"وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ",translit:"Wa-man yatawakkal ʿalā-llāhi fa-huwa ḥasbuh.",texte:"Et quiconque place sa confiance en Allah, Il lui suffit.",ref:"Coran 65 : 3"},
+{type:"coran",tags:["solitude","anxiete"],note:"La distance que tu ressens n'est pas réelle.",arabe:"وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ",translit:"Wa-idhā sa'alaka ʿibādī ʿannī fa-innī qarīb.",texte:"Et quand Mes serviteurs t'interrogent sur Moi — alors Je suis tout proche.",ref:"Coran 2 : 186"},
+{type:"coran",tags:["solitude"],note:"Plus près que tu ne l'imagines.",arabe:"وَنَحْنُ أَقْرَبُ إِلَيْهِ مِنْ حَبْلِ الْوَرِيدِ",translit:"Wa-naḥnu aqrabu ilayhi min ḥabli-l-warīd.",texte:"Nous sommes plus près de lui que sa veine jugulaire.",ref:"Coran 50 : 16"},
+{type:"coran",tags:["tristesse","peur","solitude"],note:"Une parole dite dans un moment de danger.",arabe:"لَا تَحْزَنْ إِنَّ اللَّهَ مَعَنَا",translit:"Lā taḥzan inna-llāha maʿanā.",texte:"Ne t'afflige pas, car Allah est avec nous.",ref:"Coran 9 : 40"},
+{type:"coran",tags:["peur"],note:"Tu es entendu, et tu es vu.",arabe:"لَا تَخَافَا ۖ إِنَّنِي مَعَكُمَا أَسْمَعُ وَأَرَىٰ",translit:"Lā takhāfā, innanī maʿakumā asmaʿu wa-arā.",texte:"N'ayez pas peur : Je suis avec vous deux, J'entends et Je vois.",ref:"Coran 20 : 46"},
+{type:"coran",tags:["doute"],note:"Décider, puis lâcher prise.",arabe:"فَإِذَا عَزَمْتَ فَتَوَكَّلْ عَلَى اللَّهِ",translit:"Fa-idhā ʿazamta fa-tawakkal ʿalā-llāh.",texte:"Une fois que tu as décidé, place ta confiance en Allah.",ref:"Coran 3 : 159"},
+{type:"coran",tags:["desespoir","doute"],note:"Il existe une porte que tu ne vois pas encore.",arabe:"وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا",translit:"Wa-man yattaqi-llāha yajʿal lahu makhrajan.",texte:"Et quiconque craint Allah, Il lui donnera une issue.",ref:"Coran 65 : 2"},
+{type:"coran",tags:["doute","patience"],note:"Ton jugement d'aujourd'hui n'est pas définitif.",arabe:"وَعَسَىٰ أَن تَكْرَهُوا شَيْئًا وَهُوَ خَيْرٌ لَّكُمْ",translit:"Wa-ʿasā an takrahū shay'an wa-huwa khayrun lakum.",texte:"Il se peut que vous ayez de l'aversion pour une chose alors qu'elle est un bien pour vous.",ref:"Coran 2 : 216"},
+{type:"coran",tags:["desespoir","decouragement"],note:"Le désespoir n'est pas une conclusion.",arabe:"وَلَا تَيْأَسُوا مِن رَّوْحِ اللَّهِ",translit:"Wa-lā tay'asū min rawḥi-llāh.",texte:"Et ne désespérez pas du réconfort d'Allah.",ref:"Coran 12 : 87"},
+{type:"coran",tags:["patience","tristesse","desespoir"],note:"La plainte a le droit d'être dite.",arabe:"أَنِّي مَسَّنِيَ الضُّرُّ وَأَنتَ أَرْحَمُ الرَّاحِمِينَ",translit:"Annī massaniya-ḍ-ḍurru wa-anta arḥamu-r-rāḥimīn.",texte:"Le mal m'a touché. Et Toi, Tu es le plus miséricordieux des miséricordieux.",ref:"Coran 21 : 83 · invocation de Job (Ayyûb)"},
+{type:"coran",tags:["deuil","patience"],note:"Les mots qu'on prononce quand quelqu'un s'en va.",arabe:"إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ",translit:"Innā li-llāhi wa-innā ilayhi rājiʿūn.",texte:"Nous sommes à Allah, et c'est à Lui que nous retournons.",ref:"Coran 2 : 156"},
+{type:"coran",tags:["gratitude"],note:"Ce que tu reconnais grandit.",arabe:"لَئِن شَكَرْتُمْ لَأَزِيدَنَّكُمْ",translit:"La-in shakartum la-azīdannakum.",texte:"Si vous êtes reconnaissants, Je vous donnerai davantage.",ref:"Coran 14 : 7"},
+{type:"coran",tags:["solitude","desespoir","decouragement"],note:"Le silence que tu traverses n'est pas un abandon.",arabe:"مَا وَدَّعَكَ رَبُّكَ وَمَا قَلَىٰ",translit:"Mā waddaʿaka rabbuka wa-mā qalā.",texte:"Ton Seigneur ne t'a ni abandonné, ni détesté.",ref:"Coran 93 : 3"},
+{type:"coran",tags:["decouragement","patience"],note:"Ce n'est pas fini.",arabe:"وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَىٰ",translit:"Wa-la-sawfa yuʿṭīka rabbuka fa-tarḍā.",texte:"Ton Seigneur t'accordera bientôt de quoi être satisfait.",ref:"Coran 93 : 5"},
+{type:"coran",tags:["solitude","desespoir"],note:"Appeler suffit à ne plus être seul.",arabe:"ادْعُونِي أَسْتَجِبْ لَكُمْ",translit:"Udʿūnī astajib lakum.",texte:"Appelez-Moi, Je vous répondrai.",ref:"Coran 40 : 60"},
+{type:"coran",tags:["decouragement","doute"],note:"L'effort ouvre le chemin, même à tâtons.",arabe:"وَالَّذِينَ جَاهَدُوا فِينَا لَنَهْدِيَنَّهُمْ سُبُلَنَا",translit:"Wa-lladhīna jāhadū fīnā la-nahdiyannahum subulanā.",texte:"Et ceux qui luttent pour Nous, Nous les guiderons sur Nos sentiers.",ref:"Coran 29 : 69"},
+{type:"coran",tags:["colere"],note:"Se détourner est aussi une force.",arabe:"خُذِ الْعَفْوَ وَأْمُرْ بِالْعُرْفِ وَأَعْرِضْ عَنِ الْجَاهِلِينَ",translit:"Khudhi-l-ʿafwa wa-'mur bi-l-ʿurfi wa-aʿriḍ ʿani-l-jāhilīn.",texte:"Accepte ce qu'on t'offre de raisonnable, ordonne le bien et détourne-toi des ignorants.",ref:"Coran 7 : 199"},
+{type:"coran",tags:["colere"],note:"Répondre autrement change la suite.",arabe:"ادْفَعْ بِالَّتِي هِيَ أَحْسَنُ",translit:"Idfaʿ bi-llatī hiya aḥsan.",texte:"Repousse le mal par ce qui est meilleur.",ref:"Coran 41 : 34"},
+{type:"coran",tags:["colere","culpabilite"],note:"Ravaler sa colère est déjà une victoire.",arabe:"وَالْكَاظِمِينَ الْغَيْظَ وَالْعَافِينَ عَنِ النَّاسِ",translit:"Wa-l-kāẓimīna-l-ghayẓa wa-l-ʿāfīna ʿani-n-nās.",texte:"Ceux qui contiennent leur colère et pardonnent aux hommes.",ref:"Coran 3 : 134"},
+{type:"coran",tags:["colere","patience"],note:"Tenir bon relève de la volonté ferme.",arabe:"وَلَمَن صَبَرَ وَغَفَرَ إِنَّ ذَٰلِكَ لَمِنْ عَزْمِ الْأُمُورِ",translit:"Wa-la-man ṣabara wa-ghafara inna dhālika la-min ʿazmi-l-umūr.",texte:"Et celui qui endure et pardonne — voilà bien la fermeté dans les choses.",ref:"Coran 42 : 43"},
+{type:"coran",tags:["colere","apaisement"],note:"Marcher doucement, y compris en soi.",arabe:"وَعِبَادُ الرَّحْمَٰنِ الَّذِينَ يَمْشُونَ عَلَى الْأَرْضِ هَوْنًا",translit:"Wa-ʿibādu-r-raḥmāni-lladhīna yamshūna ʿalā-l-arḍi hawnan.",texte:"Les serviteurs du Tout-Miséricordieux sont ceux qui marchent humblement sur la terre.",ref:"Coran 25 : 63"},
+{type:"coran",tags:["culpabilite"],note:"Le retour est toujours possible.",arabe:"وَمَن يَعْمَلْ سُوءًا ثُمَّ يَسْتَغْفِرِ اللَّهَ يَجِدِ اللَّهَ غَفُورًا رَّحِيمًا",translit:"Wa-man yaʿmal sū'an thumma yastaghfiri-llāha yajidi-llāha ghafūran raḥīman.",texte:"Quiconque fait un mal puis demande pardon à Allah, il trouvera Allah pardonneur et miséricordieux.",ref:"Coran 4 : 110"},
+{type:"coran",tags:["culpabilite","colere"],note:"Pardonner à un autre, c'est aussi se desserrer.",arabe:"وَلْيَعْفُوا وَلْيَصْفَحُوا ۗ أَلَا تُحِبُّونَ أَن يَغْفِرَ اللَّهُ لَكُمْ",translit:"Wa-l-yaʿfū wa-l-yaṣfaḥū, a-lā tuḥibbūna an yaghfira-llāhu lakum.",texte:"Qu'ils pardonnent et absolvent. N'aimez-vous pas qu'Allah vous pardonne ?",ref:"Coran 24 : 22"},
+{type:"coran",tags:["apaisement","tristesse","anxiete"],note:"Un remède pour ce qui serre la poitrine.",arabe:"وَشِفَاءٌ لِّمَا فِي الصُّدُورِ",translit:"Wa-shifā'un li-mā fī-ṣ-ṣudūr.",texte:"Et une guérison pour ce qui est dans les poitrines.",ref:"Coran 10 : 57"},
+{type:"coran",tags:["gratitude"],note:"Rien de ce que tu as ne va de soi.",arabe:"وَمَا بِكُم مِّن نِّعْمَةٍ فَمِنَ اللَّهِ",translit:"Wa-mā bikum min niʿmatin fa-mina-llāh.",texte:"Et tout bienfait que vous avez vient d'Allah.",ref:"Coran 16 : 53"},
+{type:"coran",tags:["fatigue","apaisement"],note:"Le repos fait partie de l'ordre des choses.",arabe:"وَجَعَلْنَا نَوْمَكُمْ سُبَاتًا",translit:"Wa-jaʿalnā nawmakum subātan.",texte:"Et Nous avons fait de votre sommeil un repos.",ref:"Coran 78 : 9"},
+{type:"coran",tags:["fatigue","apaisement"],note:"La nuit est faite pour t'envelopper.",arabe:"وَهُوَ الَّذِي جَعَلَ لَكُمُ اللَّيْلَ لِبَاسًا",translit:"Wa-huwa-lladhī jaʿala lakumu-l-layla libāsan.",texte:"C'est Lui qui vous a fait de la nuit un vêtement.",ref:"Coran 25 : 47"},
+{type:"coran",tags:["solitude"],note:"Le lien est voulu, pas accidentel.",arabe:"وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً",translit:"Wa-jaʿala baynakum mawaddatan wa-raḥmah.",texte:"Et Il a mis entre vous affection et miséricorde.",ref:"Coran 30 : 21"},
+{type:"coran",tags:["peur","anxiete"],note:"Une phrase à répéter quand tout tremble.",arabe:"حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ",translit:"Ḥasbunā-llāhu wa-niʿma-l-wakīl.",texte:"Allah nous suffit ; Il est notre meilleur garant.",ref:"Coran 3 : 173"},
+{type:"coran",tags:["tristesse","deuil","doute"],note:"Ne pas se ronger pour ce qui est passé.",arabe:"لِّكَيْلَا تَأْسَوْا عَلَىٰ مَا فَاتَكُمْ",translit:"Li-kaylā ta'saw ʿalā mā fātakum.",texte:"Afin que vous ne vous affligiez pas de ce qui vous a échappé.",ref:"Coran 57 : 23"},
+{type:"coran",tags:["peur","tristesse","apaisement"],note:"Un état sans crainte et sans chagrin existe.",arabe:"فَلَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ",translit:"Fa-lā khawfun ʿalayhim wa-lā hum yaḥzanūn.",texte:"Point de crainte pour eux, et ils ne seront pas affligés.",ref:"Coran 2 : 112"},
+{type:"coran",tags:["charge","culpabilite"],note:"Ta fragilité est prévue, pas reprochée.",arabe:"يُرِيدُ اللَّهُ أَن يُخَفِّفَ عَنكُمْ وَخُلِقَ الْإِنسَانُ ضَعِيفًا",translit:"Yurīdu-llāhu an yukhaffifa ʿankum wa-khuliqa-l-insānu ḍaʿīfan.",texte:"Allah veut vous alléger, car l'homme a été créé faible.",ref:"Coran 4 : 28"},
+{type:"coran",tags:["charge"],note:"Rien ne t'oblige à l'écrasement.",arabe:"وَمَا جَعَلَ عَلَيْكُمْ فِي الدِّينِ مِنْ حَرَجٍ",translit:"Wa-mā jaʿala ʿalaykum fī-d-dīni min ḥaraj.",texte:"Et Il ne vous a imposé aucune gêne dans la religion.",ref:"Coran 22 : 78"},
+{type:"coran",tags:["culpabilite","desespoir"],note:"La miséricorde est première.",arabe:"كَتَبَ رَبُّكُمْ عَلَىٰ نَفْسِهِ الرَّحْمَةَ",translit:"Kataba rabbukum ʿalā nafsihi-r-raḥmah.",texte:"Votre Seigneur S'est prescrit à Lui-même la miséricorde.",ref:"Coran 6 : 54"},
+{type:"coran",tags:["patience","charge"],note:"Ce que tu tiens n'est pas compté à la petite mesure.",arabe:"إِنَّمَا يُوَفَّى الصَّابِرُونَ أَجْرَهُم بِغَيْرِ حِسَابٍ",translit:"Innamā yuwaffā-ṣ-ṣābirūna ajrahum bi-ghayri ḥisāb.",texte:"Les endurants recevront leur récompense sans compter.",ref:"Coran 39 : 10"},
+{type:"coran",tags:["desespoir","culpabilite"],note:"L'invocation dite depuis le fond.",arabe:"لَّا إِلَٰهَ إِلَّا أَنتَ سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِينَ",translit:"Lā ilāha illā anta subḥānaka innī kuntu mina-ẓ-ẓālimīn.",texte:"Il n'y a de dieu que Toi. Gloire à Toi. J'ai été de ceux qui se sont fait du tort.",ref:"Coran 21 : 87 · invocation de Jonas (Yûnus)"},
+{type:"hadith",tags:["colere"],note:"Ce que tu ne dis pas a de la valeur.",arabe:"مَا مِنْ جُرْعَةٍ أَعْظَمُ أَجْرًا عِنْدَ اللَّهِ مِنْ جُرْعَةِ غَيْظٍ كَظَمَهَا عَبْدٌ",translit:"Mā min jurʿatin aʿẓamu ajran ʿinda-llāhi min jurʿati ghayẓin kaẓamahā ʿabd.",texte:"« Il n'est pas de gorgée plus méritoire auprès d'Allah que celle d'une colère ravalée. »",ref:"Hadith · Ibn Mâjah 4189"},
+{type:"hadith",tags:["colere"],note:"La vraie force est intérieure.",arabe:"لَيْسَ الشَّدِيدُ بِالصُّرَعَةِ، إِنَّمَا الشَّدِيدُ الَّذِي يَمْلِكُ نَفْسَهُ عِنْدَ الْغَضَبِ",translit:"Laysa-sh-shadīdu bi-ṣ-ṣuraʿah, innamā-sh-shadīdu-lladhī yamliku nafsahu ʿinda-l-ghaḍab.",texte:"« Le fort n'est pas celui qui terrasse les autres. Le fort est celui qui se maîtrise dans la colère. »",ref:"Hadith · Bukhârî 6114 · Muslim 2609"},
+{type:"hadith",tags:["colere"],note:"Un geste très simple, tout de suite.",arabe:"إِذَا غَضِبَ أَحَدُكُمْ وَهُوَ قَائِمٌ فَلْيَجْلِسْ",translit:"Idhā ghaḍiba aḥadukum wa-huwa qā'imun fa-l-yajlis.",texte:"« Si l'un de vous se met en colère alors qu'il est debout, qu'il s'asseye. »",ref:"Hadith · Abû Dâwud 4782"},
+{type:"hadith",tags:["patience","gratitude","doute"],note:"Les deux versants ont chacun leur issue.",arabe:"عَجَبًا لِأَمْرِ الْمُؤْمِنِ إِنَّ أَمْرَهُ كُلَّهُ خَيْرٌ",translit:"ʿAjaban li-amri-l-mu'min, inna amrahu kullahu khayr.",texte:"« Étonnante est la situation du croyant : toute son affaire est un bien. S'il reçoit une joie, il remercie ; s'il est éprouvé, il endure. »",ref:"Hadith · Muslim 2999"},
+{type:"hadith",tags:["tristesse","fatigue","patience","charge"],note:"Rien de ce que tu traverses n'est perdu.",arabe:"مَا يُصِيبُ الْمُسْلِمَ مِنْ نَصَبٍ وَلَا وَصَبٍ وَلَا هَمٍّ وَلَا حُزْنٍ",translit:"Mā yuṣību-l-muslima min naṣabin wa-lā waṣabin wa-lā hammin wa-lā ḥuzn.",texte:"« Nulle fatigue, maladie, souci ou tristesse n'atteint le croyant sans qu'Allah n'efface par cela une part de ses fautes. »",ref:"Hadith · Bukhârî 5641"},
+{type:"hadith",tags:["charge","decouragement"],note:"Allège, y compris pour toi-même.",arabe:"يَسِّرُوا وَلَا تُعَسِّرُوا",translit:"Yassirū wa-lā tuʿassirū.",texte:"« Facilitez et ne rendez pas les choses difficiles. Annoncez la bonne nouvelle et ne faites pas fuir. »",ref:"Hadith · Bukhârî 69"},
+{type:"hadith",tags:["solitude"],note:"Le lien se construit dans ce sens-là.",arabe:"لَا يُؤْمِنُ أَحَدُكُمْ حَتَّىٰ يُحِبَّ لِأَخِيهِ مَا يُحِبُّ لِنَفْسِهِ",translit:"Lā yu'minu aḥadukum ḥattā yuḥibba li-akhīhi mā yuḥibbu li-nafsih.",texte:"« Aucun de vous ne croit vraiment tant qu'il n'aime pas pour son frère ce qu'il aime pour lui-même. »",ref:"Hadith · Bukhârî 13"},
+{type:"hadith",tags:["gratitude"],note:"La reconnaissance commence tout près.",arabe:"مَنْ لَا يَشْكُرُ النَّاسَ لَا يَشْكُرُ اللَّهَ",translit:"Man lā yashkuru-n-nāsa lā yashkuru-llāh.",texte:"« Qui ne remercie pas les gens ne remercie pas Allah. »",ref:"Hadith · Tirmidhî 1954"},
+{type:"hadith",tags:["gratitude","decouragement"],note:"Change l'angle de comparaison.",arabe:"انْظُرُوا إِلَىٰ مَنْ هُوَ أَسْفَلَ مِنْكُمْ وَلَا تَنْظُرُوا إِلَىٰ مَنْ هُوَ فَوْقَكُمْ",translit:"Unẓurū ilā man huwa asfala minkum wa-lā tanẓurū ilā man huwa fawqakum.",texte:"« Regardez celui qui est en dessous de vous et ne regardez pas celui qui est au-dessus : c'est plus digne de ne pas mépriser le bienfait reçu. »",ref:"Hadith · Muslim 2963"},
+{type:"hadith",tags:["culpabilite"],note:"Se tromper n'est pas une exception.",arabe:"كُلُّ ابْنِ آدَمَ خَطَّاءٌ وَخَيْرُ الْخَطَّائِينَ التَّوَّابُونَ",translit:"Kullu-bni ādama khaṭṭā'un wa-khayru-l-khaṭṭā'īna-t-tawwābūn.",texte:"« Tous les fils d'Adam commettent des fautes, et les meilleurs d'entre eux sont ceux qui reviennent. »",ref:"Hadith · Tirmidhî 2499"},
+{type:"hadith",tags:["anxiete","tristesse","charge"],note:"Une demande qui nomme précisément ce qui pèse.",arabe:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ",translit:"Allāhumma innī aʿūdhu bika mina-l-hammi wa-l-ḥazan.",texte:"« Ô Allah, je cherche refuge auprès de Toi contre le souci et la tristesse, contre l'impuissance et la paresse. »",ref:"Hadith · Bukhârî 6369"},
+{type:"hadith",tags:["desespoir","patience"],note:"Là où il y a un mal, il y a un remède à chercher.",arabe:"مَا أَنْزَلَ اللَّهُ دَاءً إِلَّا أَنْزَلَ لَهُ شِفَاءً",translit:"Mā anzala-llāhu dā'an illā anzala lahu shifā'an.",texte:"« Allah n'a fait descendre aucune maladie sans faire descendre aussi son remède. »",ref:"Hadith · Bukhârî 5678"},
+{type:"hadith",tags:["deuil","patience"],note:"Le premier choc est le plus dur — il passera.",arabe:"إِنَّمَا الصَّبْرُ عِنْدَ الصَّدْمَةِ الْأُولَىٰ",translit:"Innamā-ṣ-ṣabru ʿinda-ṣ-ṣadmati-l-ūlā.",texte:"« L'endurance est au moment du premier choc. »",ref:"Hadith · Bukhârî 1283"},
+{type:"hadith",tags:["deuil","doute"],note:"Une manière plus légère d'habiter le monde.",arabe:"كُنْ فِي الدُّنْيَا كَأَنَّكَ غَرِيبٌ أَوْ عَابِرُ سَبِيلٍ",translit:"Kun fī-d-dunyā ka-annaka gharībun aw ʿābiru sabīl.",texte:"« Sois dans ce monde comme un étranger, ou comme un voyageur de passage. »",ref:"Hadith · Bukhârî 6416"},
+{type:"hadith",tags:["doute","apaisement"],note:"Reviens à ce qui est clair en toi.",arabe:"دَعْ مَا يَرِيبُكَ إِلَىٰ مَا لَا يَرِيبُكَ",translit:"Daʿ mā yarībuka ilā mā lā yarībuk.",texte:"« Laisse ce qui te met dans le doute pour ce qui ne t'y met pas. »",ref:"Hadith · Tirmidhî 2518"},
+{type:"hadith",tags:["fatigue","charge"],note:"La durée compte plus que l'intensité.",arabe:"أَحَبُّ الْأَعْمَالِ إِلَى اللَّهِ أَدْوَمُهَا وَإِنْ قَلَّ",translit:"Aḥabbu-l-aʿmāli ilā-llāhi adwamuhā wa-in qall.",texte:"« Les actes les plus aimés d'Allah sont les plus constants, même s'ils sont peu de chose. »",ref:"Hadith · Bukhârî 6464"}
 ],
 philosophe:[
 {tags:["anxiete","peur"],note:"Une grande part de la souffrance vit dans l'anticipation.",texte:"Nous souffrons plus souvent en imagination qu'en réalité.",ref:"Sénèque · Lettres à Lucilius"},
@@ -389,7 +482,62 @@ philosophe:[
 {tags:["gratitude","doute"],note:"La richesse est dans le désir apaisé.",texte:"Ce n'est pas l'homme qui a peu qui est pauvre, mais celui qui désire davantage.",ref:"Sénèque · Lettres à Lucilius"},
 {tags:["desespoir","patience","tristesse"],note:"L'épreuve forge une solidité unique.",texte:"Le feu éprouve l'or, et l'adversité, les hommes courageux.",ref:"Sénèque · De la Providence"},
 {tags:["charge","anxiete"],note:"Ne porte pas tout en même temps.",texte:"Celui qui craint de souffrir souffre déjà de ce qu'il craint.",ref:"Montaigne · Essais III"},
-{tags:["decouragement","doute"],note:"Recommence, simplement.",texte:"Notre plus belle œuvre est de vivre à propos.",ref:"Montaigne · Essais III"}
+{tags:["decouragement","doute"],note:"Recommence, simplement.",texte:"Notre plus belle œuvre est de vivre à propos.",ref:"Montaigne · Essais III"},
+{tags:["anxiete","charge"],note:"L'agitation est parfois une fuite.",texte:"Tout le malheur des hommes vient d'une seule chose, qui est de ne savoir pas demeurer en repos dans une chambre.",ref:"Pascal · Pensées"},
+{tags:["anxiete","charge","doute"],note:"Trie ce qui t'appartient de ce qui ne t'appartient pas.",texte:"Il y a ce qui dépend de nous et ce qui ne dépend pas de nous.",ref:"Épictète · Manuel, I"},
+{tags:["anxiete","charge"],note:"Une seule journée à la fois suffit.",texte:"Ne te laisse pas troubler par la représentation de ta vie entière.",ref:"Marc Aurèle · Pensées, VIII"},
+{tags:["anxiete","peur"],note:"L'inquiétude grossit toujours l'objet.",texte:"Il y a plus de choses qui nous effraient que de choses qui nous nuisent.",ref:"Sénèque · Lettres à Lucilius"},
+{tags:["peur","doute"],note:"Comprendre desserre la peur.",texte:"Rien dans la vie n'est à craindre, tout est à comprendre.",ref:"Marie Curie"},
+{tags:["peur"],note:"C'est souvent l'idée qui fait trembler, pas la chose.",texte:"Ce n'est pas la mort ni la douleur qui est à craindre, mais la crainte de la douleur ou de la mort.",ref:"Épictète · Entretiens"},
+{tags:["peur","doute","patience"],note:"Ce qui te fait peur demande peut-être ta tendresse.",texte:"Peut-être tout ce qui nous effraie est-il, au plus profond, quelque chose de démuni qui attend notre amour.",ref:"Rilke · Lettres à un jeune poète"},
+{tags:["doute","patience"],note:"Vivre la question, sans forcer la réponse.",texte:"Ayez de la patience envers tout ce qui n'est pas résolu dans votre cœur, et essayez d'aimer les questions elles-mêmes.",ref:"Rilke · Lettres à un jeune poète"},
+{tags:["doute","desespoir","patience"],note:"Un pourquoi permet de tenir presque n'importe quel comment.",texte:"Celui qui a un pourquoi qui lui tient lieu de but peut supporter presque n'importe quel comment.",ref:"Nietzsche · Le Crépuscule des idoles"},
+{tags:["doute","decouragement"],note:"Le chemin n'existe pas avant qu'on marche.",texte:"Voyageur, il n'y a pas de chemin : le chemin se fait en marchant.",ref:"Antonio Machado · Champs de Castille"},
+{tags:["doute"],note:"On ne comprend qu'après — c'est normal.",texte:"La vie ne peut être comprise qu'en regardant en arrière, mais elle ne peut être vécue qu'en regardant en avant.",ref:"Kierkegaard · Journal"},
+{tags:["doute"],note:"Sans direction, aucun vent ne sert.",texte:"Il n'est pas de vent favorable pour celui qui ne sait où il va.",ref:"Sénèque · Lettres à Lucilius"},
+{tags:["colere"],note:"La colère emprunte les traits de la folie.",texte:"La colère est une courte folie.",ref:"Horace · Épîtres"},
+{tags:["colere","patience"],note:"Attendre est déjà un remède.",texte:"Le plus grand remède à la colère, c'est le délai.",ref:"Sénèque · De la colère"},
+{tags:["colere"],note:"Ce n'est pas la colère qui est difficile, c'est sa justesse.",texte:"Se mettre en colère est à la portée de tous ; mais le faire envers qui il faut, dans la mesure qu'il faut, au moment qu'il faut, cela n'est pas donné à tous.",ref:"Aristote · Éthique à Nicomaque"},
+{tags:["colere","culpabilite"],note:"Corriger ou excuser — pas ruminer.",texte:"Si tu le peux, corrige-le ; sinon, souviens-toi que l'indulgence t'a été donnée pour cela.",ref:"Marc Aurèle · Pensées"},
+{tags:["colere","apaisement"],note:"Le calme gouverne l'agitation.",texte:"Le calme est le maître de l'agitation.",ref:"Lao Tseu · Tao Te King, XXVI"},
+{tags:["tristesse","deuil"],note:"On ne contourne pas un chagrin, on le traverse.",texte:"On ne guérit d'une souffrance qu'à condition de l'éprouver pleinement.",ref:"Proust · Albertine disparue"},
+{tags:["tristesse","patience"],note:"La peine enseigne, même quand on s'en passerait.",texte:"L'homme est un apprenti, la douleur est son maître.",ref:"Alfred de Musset · La Nuit d'Octobre"},
+{tags:["tristesse","apaisement"],note:"Les larmes ne sont pas une faiblesse.",texte:"Les larmes sont le sang de l'âme.",ref:"Saint Augustin"},
+{tags:["tristesse","decouragement"],note:"Il y a de la dignité à continuer.",texte:"Ceux qui vivent, ce sont ceux qui luttent.",ref:"Victor Hugo · Les Châtiments"},
+{tags:["deuil"],note:"Rendre, plutôt que perdre.",texte:"Ne dis jamais de rien : « Je l'ai perdu », mais : « Je l'ai rendu ».",ref:"Épictète · Manuel, XI"},
+{tags:["deuil","gratitude"],note:"Le souvenir peut cesser de blesser.",texte:"Souvenons-nous avec joie de ceux que nous avons perdus.",ref:"Sénèque · Lettres à Lucilius, 63"},
+{tags:["deuil"],note:"Ils continuent quelque part.",texte:"La vie des morts est placée dans la mémoire des vivants.",ref:"Cicéron · Philippiques"},
+{tags:["deuil","patience"],note:"Le temps fait son travail sans qu'on l'aide.",texte:"Le temps guérit les douleurs et les querelles parce qu'on change, on n'est plus la même personne.",ref:"Pascal · Pensées"},
+{tags:["solitude","apaisement"],note:"Un lieu en toi que personne ne peut prendre.",texte:"Il se faut réserver une arrière-boutique toute nôtre, toute franche, en laquelle nous établissions notre vraie liberté.",ref:"Montaigne · Essais, I, 39"},
+{tags:["solitude","apaisement"],note:"La retraite la plus proche est intérieure.",texte:"Nulle part l'homme ne se retire dans une retraite plus tranquille et moins troublée que dans son âme.",ref:"Marc Aurèle · Pensées, IV"},
+{tags:["solitude"],note:"Être seul et être isolé sont deux choses.",texte:"Je n'ai jamais trouvé de compagnon d'aussi bonne compagnie que la solitude.",ref:"Thoreau · Walden"},
+{tags:["solitude","doute"],note:"La solitude choisie n'est pas un échec.",texte:"On n'est jamais moins seul que lorsqu'on est seul.",ref:"Cicéron · De la République"},
+{tags:["gratitude"],note:"La reconnaissance appelle tout le reste.",texte:"La gratitude n'est pas seulement la plus grande des vertus : elle est la mère de toutes les autres.",ref:"Cicéron · Pro Plancio"},
+{tags:["gratitude"],note:"Regarde ce qui est là, pas ce qui manque.",texte:"Ne gâche pas ce que tu as en désirant ce que tu n'as pas.",ref:"Épicure · Sentences"},
+{tags:["gratitude","charge"],note:"La pauvreté est dans le désir, pas dans l'avoir.",texte:"Ce n'est pas l'homme qui a peu qui est pauvre, mais celui qui désire davantage.",ref:"Sénèque · Lettres à Lucilius"},
+{tags:["gratitude"],note:"Imagine ne pas les avoir — puis regarde-les.",texte:"Songe aux biens que tu possèdes, et représente-toi avec quelle ardeur tu les chercherais si tu ne les avais pas.",ref:"Marc Aurèle · Pensées, VII"},
+{tags:["culpabilite"],note:"L'erreur est humaine ; s'y enfermer ne l'est pas.",texte:"Il est humain de se tromper ; il est diabolique de persévérer dans l'erreur.",ref:"Sénèque · d'après les Lettres à Lucilius"},
+{tags:["culpabilite"],note:"La vraie faute serait de ne rien changer.",texte:"Ne pas corriger ses fautes, c'est en commettre une nouvelle.",ref:"Confucius · Entretiens"},
+{tags:["culpabilite","tristesse"],note:"Se punir n'ajoute rien à la réparation.",texte:"Celui qui se repent de ce qu'il a fait est deux fois malheureux.",ref:"Spinoza · Éthique, IV"},
+{tags:["culpabilite","apaisement"],note:"Tu peux être de ton côté.",texte:"Il faut être bon avec soi-même comme on le serait avec un ami.",ref:"Sénèque · d'après les Lettres à Lucilius"},
+{tags:["patience"],note:"Rien ne se presse, et pourtant tout avance.",texte:"La nature ne se presse pas, et pourtant tout s'accomplit.",ref:"Lao Tseu · Tao Te King"},
+{tags:["patience","decouragement"],note:"La lenteur n'est pas l'échec.",texte:"Peu importe la lenteur à laquelle tu avances, tant que tu ne t'arrêtes pas.",ref:"Confucius · Entretiens"},
+{tags:["patience"],note:"Deux alliés discrets mais sûrs.",texte:"Les deux guerriers les plus puissants sont la patience et le temps.",ref:"Tolstoï · Guerre et Paix"},
+{tags:["fatigue","charge"],note:"Le temps n'est pas court, il est dispersé.",texte:"Ce n'est pas que nous ayons peu de temps : c'est que nous en perdons beaucoup.",ref:"Sénèque · De la brièveté de la vie"},
+{tags:["fatigue","charge"],note:"Retirer, plutôt qu'ajouter.",texte:"Simplifiez, simplifiez.",ref:"Thoreau · Walden"},
+{tags:["fatigue","decouragement"],note:"Demain recommence à zéro.",texte:"Termine chaque journée et considère-la comme close. Demain est un jour nouveau.",ref:"Emerson · Essais"},
+{tags:["fatigue","apaisement"],note:"S'arrêter fait partie du travail.",texte:"Le repos est aussi nécessaire à l'esprit que le sommeil au corps.",ref:"Sénèque · De la tranquillité de l'âme"},
+{tags:["decouragement"],note:"L'optimisme se décide, il ne se ressent pas.",texte:"Le pessimisme est d'humeur, l'optimisme est de volonté.",ref:"Alain · Propos sur le bonheur"},
+{tags:["decouragement","doute"],note:"Le premier pas coûte plus que le chemin.",texte:"Commencer est déjà la moitié de l'œuvre.",ref:"d'après Horace · Épîtres"},
+{tags:["decouragement","desespoir"],note:"L'obstacle finit parfois par indiquer la route.",texte:"Ce qui fait obstacle à l'action fait avancer l'action. Ce qui se met en travers du chemin devient le chemin.",ref:"Marc Aurèle · Pensées, V"},
+{tags:["desespoir"],note:"Le malheur commence quand on y croit.",texte:"Rien n'est misérable que de croire l'être.",ref:"Boèce · Consolation de la Philosophie"},
+{tags:["desespoir","patience"],note:"La nuit n'est pas la fin, seulement la nuit.",texte:"C'est le propre de la nuit d'être suivie du jour.",ref:"d'après Sénèque · Lettres à Lucilius"},
+{tags:["desespoir","decouragement"],note:"Ta valeur ne dépend pas de ton état d'aujourd'hui.",texte:"Un homme n'est pas fait pour être vaincu par ce qui lui arrive.",ref:"d'après Sénèque · De la Providence"},
+{tags:["charge","doute"],note:"Fais ce qui est devant toi, pas tout à la fois.",texte:"Fais chaque acte de ta vie comme s'il devait être le dernier.",ref:"Marc Aurèle · Pensées, II"},
+{tags:["charge","anxiete"],note:"Porter le jour présent, rien de plus.",texte:"Notre fardeau n'est jamais lourd que du poids que nous y ajoutons par la pensée du lendemain.",ref:"d'après Montaigne · Essais"},
+{tags:["apaisement","gratitude"],note:"Le contentement se fabrique.",texte:"Le bonheur ne dépend pas de ce que nous avons, mais de ce que nous pensons.",ref:"d'après Marc Aurèle · Pensées"},
+{tags:["apaisement","anxiete"],note:"Reviens à l'instant, il est habitable.",texte:"Le présent est le seul temps dont un homme puisse être dépouillé, puisque c'est le seul qu'il possède.",ref:"Marc Aurèle · Pensées, II"},
+{tags:["apaisement","solitude"],note:"Se retrouver soi-même est un repos.",texte:"La chose la plus grande du monde, c'est de savoir être à soi.",ref:"Montaigne · Essais, I"}
 ]
 };
 
@@ -416,7 +564,11 @@ charge:["trop","débord","debord","surcharg","accabl","n'en peux plus","nen peux
 deuil:["deuil","décès","deces","mort de","disparition de","enterrement","perdu un proche","perte de mon","perte de ma","perte d'un","il est parti","elle est partie"],
 decouragement:["découragé","decourage","baisse les bras","abandonne","tout lâcher","tout lacher","démotivé","demotive","ça sert à rien","ca sert a rien","envie de rien"]
 };
-const DETRESSE=["suicide","suicidaire","me suicider","me tuer","veux mourir","envie de mourir","plus envie de vivre","envie d'en finir","en finir avec la vie","en finir avec tout","mettre fin à mes jours","mettre fin a mes jours","me faire du mal","m'automutiler","automutil","me scarifier","scarifi","disparaître pour toujours","disparaitre pour toujours","plus la peine de vivre","à quoi bon vivre","a quoi bon vivre","ne plus exister","ne plus me réveiller","ne plus me reveiller"];
+const DETRESSE=["suicide","suicidaire","me suicider","me tuer","veux mourir","envie de mourir","plus envie de vivre","envie d'en finir","en finir avec la vie","en finir avec tout","mettre fin à mes jours","mettre fin a mes jours","me faire du mal","m'automutiler","automutil","me scarifier","scarifi","disparaître pour toujours","disparaitre pour toujours","plus la peine de vivre","à quoi bon vivre","a quoi bon vivre","ne plus exister","ne plus me réveiller","ne plus me reveiller",
+"ne veux plus vivre","veux plus vivre","envie de me tuer","idees noires","idées noires",
+"me pendre","me noyer","me jeter par la fenetre","me jeter sous","me defenestrer",
+"avaler des medicaments","prendre tous mes medicaments","abreger mes souffrances",
+"me supprimer","finir ma vie","en finir avec moi","plus rien ne me retient","me faire disparaitre"];
 
 /* ============================================================
    ÉTAT
@@ -426,7 +578,15 @@ let favoris=JSON.parse(Store.get("refuge_favoris")||"[]");
 let journal=JSON.parse(Store.get("refuge_journal")||"[]");
 let moodSel=null;
 
-function norm(t){return t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");}
+/* normalisation : minuscules, sans accents, apostrophes unifi\u00e9es, espaces r\u00e9duits.
+   Utilis\u00e9e pour TOUTE comparaison de texte \u2014 en particulier la d\u00e9tection de d\u00e9tresse. */
+function norm(t){return (t||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")
+  .replace(/[\u2019\u2018\u00b4`]/g,"'").replace(/\s+/g," ");}
+/* un seul point d'entr\u00e9e pour le risque suicidaire : jamais de comparaison brute ailleurs.
+   On retire aussi apostrophes et traits d'union : au clavier mobile on \u00e9crit souvent
+   \u00ab jai envie den finir \u00bb, et ce cas-l\u00e0 ne doit pas passer entre les mailles. */
+function aplati(t){return norm(t).replace(/['\-]/g,"");}
+function estDetresse(t){const n=aplati(t);return DETRESSE.some(m=>n.includes(aplati(m)));}
 function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");
   clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("show"),3200);}
 
@@ -505,7 +665,7 @@ function toggleFav(e){
 document.getElementById("submit-mood").onclick=()=>{
   const s=document.getElementById("mood-field").value.trim();
   if(!s){document.getElementById("mood-field").focus();return;}
-  if(DETRESSE.some(m=>s.toLowerCase().includes(m))){openSOS();return;}
+  if(estDetresse(s)){openSOS();return;}
   state.emos=detect(s);
   renderResult(pick(state.emos));
 };
@@ -526,7 +686,7 @@ function renderFav(){
     const body=f.arabe?`<div class="sacred-arabic" style="font-size:22px">${f.arabe}</div><p class="sacred-text" style="font-size:19px">${f.texte}</p>`:`<p class="sacred-text" style="font-size:19px">${f.texte}</p>`;
     return `<div class="result-card" style="margin-bottom:14px;padding:24px 22px"><span class="badge">${f.badge}</span>${body}
       <p class="sacred-ref">${f.ref}</p>
-      <button class="chat-flag" style="margin-top:14px" onclick="removeFav(${i})">Retirer</button></div>`;
+      <button class="link-btn" style="margin-top:14px" onclick="removeFav(${i})">Retirer</button></div>`;
   }).join("");
 }
 window.removeFav=function(i){favoris.splice(i,1);Store.set("refuge_favoris",JSON.stringify(favoris));renderFav();toast("Retiré");};
@@ -541,6 +701,7 @@ function buildMoodGrid(){
 document.getElementById("journal-save").onclick=()=>{
   if(moodSel===null){toast("Choisis ton humeur d'abord");return;}
   const note=document.getElementById("journal-note").value.trim();
+  if(estDetresse(note)){openSOS();return;}   // le journal aussi doit alerter
   journal.unshift({m:moodSel,note,d:new Date().toISOString()});
   Store.set("refuge_journal",JSON.stringify(journal));
   document.getElementById("journal-note").value="";document.querySelectorAll(".mood-pick").forEach(x=>x.classList.remove("sel"));moodSel=null;
@@ -587,52 +748,6 @@ function stopEx(){
 document.querySelectorAll("[data-ex]").forEach(b=>b.onclick=()=>startEx(b.dataset.ex));
 document.getElementById("breathe-stop").onclick=stopEx;
 
-/* ---- chat (démo) ---- */
-const FILTRE=[
-  /(\d[\s.\-]?){8,}/,                                   // longues séquences de chiffres
-  /0\s?[1-9]([\s.\-]?\d){8}/,                           // tel français 0X...
-  /\b(z[ée]ro|un|deux|trois|quatre|cinq|six|sept|huit|neuf)(\s+(z[ée]ro|un|deux|trois|quatre|cinq|six|sept|huit|neuf)){2,}/i, // chiffres en lettres
-  /\S+@\S+\.\S+/,                                       // email
-  /\barobase\b/i,
-  /\b(snap(chat)?|insta(gram)?|whats?app|telegram|signal|tiktok|messenger|facebook|discord)\b/i,
-  /\b(mon|le|ce)?\s?(num[ée]ro|t[ée]l[ée]phone|portable|gsm)\b/i,
-  /\b(j'habite|mon adresse|au\s\d|rue\s|avenue\s|all[ée]e\s|impasse\s|code postal)\b/i
-];
-const REPONSES=["Merci de me confier ça. Tu n'es pas seul à ressentir cela.","Je t'entends. Prends ton temps, je reste là.","C'est courageux de mettre des mots dessus.","Je comprends. Qu'est-ce qui t'aiderait, là, maintenant ?","Ce que tu traverses a du sens. Dis m'en plus si tu veux."];
-let reports=0;
-function bubble(txt,who){
-  const s=document.getElementById("chat-stream");
-  const d=document.createElement("div");d.className="bubble "+who;d.textContent=txt;s.appendChild(d);s.scrollTop=s.scrollHeight;
-}
-/* compagnon : réponse chaleureuse + parfois une parole tirée de la voie choisie */
-function botReply(txt){
-  const emos=detect(txt);
-  let r=REPONSES[Math.floor(Math.random()*REPONSES.length)];
-  if(emos.length&&Math.random()<0.6){
-    const e=pick(emos).e;
-    r+=" Une parole qui peut t'accompagner : « "+e.texte+" » — "+e.ref;
-  }
-  return r;
-}
-function chatSend(){
-  const f=document.getElementById("chat-field");const v=f.value.trim();if(!v)return;
-  if(FILTRE.some(rx=>rx.test(v))){toast("Message bloqué : pas de coordonnées (numéro, adresse, réseau). Cet espace reste anonyme.");return;}
-  if(DETRESSE.some(m=>v.toLowerCase().includes(m))){f.value="";openSOS();return;}
-  bubble(v,"me");f.value="";f.style.height="auto";
-  setTimeout(()=>bubble(botReply(v),"them"),900);
-}
-document.getElementById("chat-send").onclick=chatSend;
-document.getElementById("chat-field").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();chatSend();}});
-document.getElementById("chat-field").addEventListener("input",function(){this.style.height="auto";this.style.height=Math.min(this.scrollHeight,110)+"px";});
-document.getElementById("chat-report").onclick=()=>{reports++;toast(reports>=2?"Signalement enregistré. En vrai : revue puis blocage de cet identifiant.":"Signalement envoyé. Merci de protéger cet espace.");};
-document.getElementById("gate-yes").onclick=()=>{
-  document.getElementById("chat-gate").style.display="none";
-  document.getElementById("chat-live").style.display="block";
-  if(!document.getElementById("chat-stream").children.length){
-    bubble("Bonjour. Je suis un compagnon, pas une vraie personne — mais je suis là pour t'écouter en attendant que quelqu'un se connecte. Comment te sens-tu aujourd'hui ?","them");
-  }
-};
-
 /* ---- retour au menu (changer de voie) ---- */
 function backToMenu(){
   if(bzTimer)stopEx();
@@ -649,7 +764,29 @@ document.querySelectorAll("#screen-start .path-card").forEach(b=>b.onclick=()=>s
 document.querySelectorAll(".nav-btn").forEach(b=>b.onclick=()=>show(b.dataset.nav));
 document.querySelectorAll("[data-menu]").forEach(b=>b.onclick=backToMenu);
 document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{lastView=document.querySelector(".view.is-active")?.id||lastView;show(b.dataset.go);});
-document.querySelectorAll("[data-back]").forEach(b=>b.onclick=()=>show(lastView));
+/* retour : si aucune voie n'est choisie, on est venu de l'accueil — on y retourne,
+   sinon on entrerait dans l'app avec BASE[voie] indéfini */
+document.querySelectorAll("[data-back]").forEach(b=>b.onclick=()=>{
+  if(!voie||!lastView){backToMenu();return;}
+  show(lastView);
+});
+
+/* « À propos » depuis l'écran d'accueil, avant tout choix de voie */
+document.getElementById("about-start").onclick=()=>{
+  lastView=null;
+  document.getElementById("screen-start").classList.add("hidden");
+  show("view-apropos");
+};
+
+/* ---- partage ---- */
+document.getElementById("share-btn").onclick=async()=>{
+  const donnees={title:"Refuge",text:"Un mot pour ce que tu ressens.",url:location.href.split("#")[0]};
+  try{
+    if(navigator.share){await navigator.share(donnees);return;}
+    await navigator.clipboard.writeText(donnees.url);
+    toast("Lien copié — tu peux le coller où tu veux");
+  }catch(e){ /* partage annulé par la personne : rien à signaler */ }
+};
 
 /* ---- pastilles d'humeur rapides ---- */
 const CHIPS=["Triste","J'ai peur","Anxieux","En colère","Fatigué","Seul","Coupable","Reconnaissant"];
@@ -664,6 +801,14 @@ function buildChips(){
 
 buildMoodGrid();
 buildChips();
+
+/* ---- reprise : la voie déjà choisie n'est plus redemandée à chaque ouverture ---- */
+if(voie&&VOIES[voie])startApp(voie);
+
+/* ---- hors-ligne : l'app doit s'ouvrir même sans réseau ---- */
+if("serviceWorker" in navigator){
+  window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
+}
 </script>
 </body>
 </html>

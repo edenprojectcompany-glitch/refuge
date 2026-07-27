@@ -514,7 +514,7 @@ philosophe:[
 {tags:["solitude","doute"],note:"La solitude choisie n'est pas un échec.",texte:"On n'est jamais moins seul que lorsqu'on est seul.",ref:"Cicéron · De la République"},
 {tags:["gratitude"],note:"La reconnaissance appelle tout le reste.",texte:"La gratitude n'est pas seulement la plus grande des vertus : elle est la mère de toutes les autres.",ref:"Cicéron · Pro Plancio"},
 {tags:["gratitude"],note:"Regarde ce qui est là, pas ce qui manque.",texte:"Ne gâche pas ce que tu as en désirant ce que tu n'as pas.",ref:"Épicure · Sentences"},
-{tags:["gratitude","charge"],note:"La pauvreté est dans le désir, pas dans l'avoir.",texte:"Ce n'est pas l'homme qui a peu qui est pauvre, mais celui qui désire davantage.",ref:"Sénèque · Lettres à Lucilius"},
+{tags:["gratitude"],note:"La pauvreté est dans le désir, pas dans l'avoir.",texte:"Ce n'est pas l'homme qui a peu qui est pauvre, mais celui qui désire davantage.",ref:"Sénèque · Lettres à Lucilius"},
 {tags:["gratitude"],note:"Imagine ne pas les avoir — puis regarde-les.",texte:"Songe aux biens que tu possèdes, et représente-toi avec quelle ardeur tu les chercherais si tu ne les avais pas.",ref:"Marc Aurèle · Pensées, VII"},
 {tags:["culpabilite"],note:"L'erreur est humaine ; s'y enfermer ne l'est pas.",texte:"Il est humain de se tromper ; il est diabolique de persévérer dans l'erreur.",ref:"Sénèque · d'après les Lettres à Lucilius"},
 {tags:["culpabilite"],note:"La vraie faute serait de ne rien changer.",texte:"Ne pas corriger ses fautes, c'est en commettre une nouvelle.",ref:"Confucius · Entretiens"},
@@ -554,14 +554,19 @@ fatigue:["fatigu","épuis","epuis","crevé","creve","las","vidé","à bout","a b
 peur:["peur","effray","terrifi","crainte","panique","trouille","apeur","angoisse","redoute","appréhens","apprehens"],
 anxiete:["anxieu","anxiété","anxiete","inquiet","inquiét","stress","nerveu","tendu","oppress","rumin","tracass","préoccup","preoccup","mal au ventre"],
 colere:["colère","colere","énerv","enerv","furieu","furax","rage","agac","irrit","frustr","haine","révolt","revolt","ras le bol","ras-le-bol","exaspér"],
-doute:["doute","dout","confus","incertain","hésit","hesit","à quoi bon","a quoi bon","sens de ma vie","perdu","égaré","egare","remets en question","remet en question","remets tout","quel sens"],
+doute:["doute","dout","confus","incertain","hésit","hesit","à quoi bon","a quoi bon","sens de ma vie","suis perdu","me sens perdu","completement perdu","complètement perdu","égaré","egare","remets en question","remet en question","remets tout","quel sens"],
 desespoir:["désespoir","desespoir","désespér","desesper","sans espoir","fond du trou","fond du gouffre","plus de sens","tout noir","impasse","au bout du rouleau"],
 solitude:["seul","solitude","isolé","isole","abandonn","personne pour","personne avec","délaiss","delaiss","incompris"],
-gratitude:["reconnaiss","gratitude","heureu","serein","apais","content","en paix","ça va mieux","ca va mieux","soulag"],
+gratitude:["reconnaiss","gratitude","heureu","serein","apais","content","en paix","va mieux","vais mieux","soulag"],
 culpabilite:["coupable","culpabilit","faute","honte","regret","mal agi","pardon","je m'en veux","je men veux"],
 patience:["épreuve","epreuve","difficile","difficulté","difficulte","traverse","galère","galere","passe par","dur en ce moment"],
 charge:["trop","débord","debord","surcharg","accabl","n'en peux plus","nen peux plus","pression","responsabilit","submerg","crouler","croule"],
-deuil:["deuil","décès","deces","mort de","disparition de","enterrement","perdu un proche","perte de mon","perte de ma","perte d'un","il est parti","elle est partie"],
+/* deuil : « mort de » a été retiré, il se déclenchait sur « mort de fatigue » / « mort de rire ».
+   Les formes verbales gardent leur espace initiale pour ne pas attraper « c'est mort ». */
+deuil:["deuil","décès","deces"," est mort"," est morte"," est décédé"," est decede"," est décédée"," est decedee",
+"vient de mourir","viens de perdre","j'ai perdu mon","j'ai perdu ma","j'ai perdu un","j'ai perdu une",
+"perdu un proche","perte de mon","perte de ma","perte d'un","disparition de","enterrement","obsèques","obseques",
+"funérailles","funerailles","nous a quittés","nous a quittes","m'a quitté pour toujours","il est parti","elle est partie"],
 decouragement:["découragé","decourage","baisse les bras","abandonne","tout lâcher","tout lacher","démotivé","demotive","ça sert à rien","ca sert a rien","envie de rien"]
 };
 const DETRESSE=["suicide","suicidaire","me suicider","me tuer","veux mourir","envie de mourir","plus envie de vivre","envie d'en finir","en finir avec la vie","en finir avec tout","mettre fin à mes jours","mettre fin a mes jours","me faire du mal","m'automutiler","automutil","me scarifier","scarifi","disparaître pour toujours","disparaitre pour toujours","plus la peine de vivre","à quoi bon vivre","a quoi bon vivre","ne plus exister","ne plus me réveiller","ne plus me reveiller",
@@ -631,6 +636,14 @@ function pick(emos,exclude){
   let av=cand.filter(e=>!exclude.includes(e.ref)&&!recent.includes(e.ref));
   if(!av.length)av=cand.filter(e=>!exclude.includes(e.ref));
   if(!av.length)av=cand;
+  /* À nombre de correspondances égal, on préfère le texte le plus ciblé.
+     Sans ça, une citation sur la gratitude taguée aussi « charge » pouvait tomber
+     sur quelqu'un d'épuisé : elle matchait autant qu'un texte entièrement sur
+     l'épuisement. On ne resserre que s'il reste assez de choix pour varier. */
+  const precision=e=>{const m=e.tags.filter(t=>emos.includes(t)).length;return m-0.3*(e.tags.length-m);};
+  const meilleure=Math.max(...av.map(precision));
+  const cibles=av.filter(e=>precision(e)>meilleure-0.31);
+  if(cibles.length>=3)av=cibles;
   const chosen=av[Math.floor(Math.random()*av.length)];
   recent.push(chosen.ref);if(recent.length>8)recent.shift();
   return{e:chosen,m:true};

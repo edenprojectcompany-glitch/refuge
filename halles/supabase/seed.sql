@@ -204,7 +204,7 @@ insert into places (
 
 -- --- Culture ---
 ('b0000000-0000-4000-8000-000000000016','Paris','Musée Carnavalet','culture',
- '23 rue de Sévigné, 75003 Paris', 48.857500, 2.362700, 1,
+ '23 rue de Sévigné, 75003 Paris', 48.857500, 2.362700, null,
  'L''histoire de Paris, collection permanente gratuite.',
  'The history of Paris; permanent collection free of charge.',
  'L''histoire de Paris depuis la préhistoire, dans deux hôtels particuliers reliés par un jardin. La collection permanente est gratuite. Deux heures suffisent si l''on va droit aux salles de la Révolution.',
@@ -214,7 +214,7 @@ insert into places (
  null, '{"enfants","pluie"}', 'published', '2026-06-25'),
 
 ('b0000000-0000-4000-8000-000000000017','Paris','Galerie Perreau','culture',
- '9 rue Debelleyme, 75003 Paris', 48.861600, 2.363000, 1,
+ '9 rue Debelleyme, 75003 Paris', 48.861600, 2.363000, null,
  'Galerie d''art contemporain, entrée libre.',
  'Contemporary art gallery, free entry.',
  'Une galerie sur deux niveaux, six expositions par an, entrée libre. Le personnel laisse tranquille et répond volontiers si on demande. Vernissages le jeudi soir, ouverts à tous.',
@@ -266,7 +266,7 @@ insert into places (
 
 -- --- Balades ---
 ('b0000000-0000-4000-8000-000000000022','Paris','Place des Vosges','balade',
- 'Place des Vosges, 75004 Paris', 48.855600, 2.365500, 1,
+ 'Place des Vosges, 75004 Paris', 48.855600, 2.365500, null,
  'La plus ancienne place de Paris, arcades et pelouses.',
  'The oldest square in Paris: arcades and lawns.',
  'Trente-six pavillons de brique rose autour d''un carré de pelouses. On fait le tour sous les arcades quand il pleut, on s''assoit sur l''herbe quand il fait beau. Le jardin ferme à la tombée de la nuit.',
@@ -276,7 +276,7 @@ insert into places (
  null, '{"enfants","terrasse"}', 'published', '2026-06-25'),
 
 ('b0000000-0000-4000-8000-000000000023','Paris','Jardin de l''Hôtel de Sully','balade',
- '62 rue Saint-Antoine, 75004 Paris', 48.854900, 2.364300, 1,
+ '62 rue Saint-Antoine, 75004 Paris', 48.854900, 2.364300, null,
  'Passage discret entre Saint-Antoine et la place des Vosges.',
  'A quiet shortcut between Saint-Antoine and the Place des Vosges.',
  'Un jardin à la française coincé entre deux hôtels particuliers, et surtout un passage discret qui débouche directement sur la place des Vosges. Presque personne ne le connaît, alors qu''il est ouvert à tous.',
@@ -287,7 +287,7 @@ insert into places (
 
 -- --- Pratique ---
 ('b0000000-0000-4000-8000-000000000024','Paris','Pharmacie du Temple','pratique',
- '84 rue du Temple, 75003 Paris', 48.861500, 2.356100, 1,
+ '84 rue du Temple, 75003 Paris', 48.861500, 2.356100, null,
  'Pharmacie ouverte tard, personnel anglophone.',
  'Late-opening pharmacy, English-speaking staff.',
  'Ouverte jusqu''à 21 h en semaine, personnel anglophone. La plus proche de l''hôtel pour un dépannage du soir.',

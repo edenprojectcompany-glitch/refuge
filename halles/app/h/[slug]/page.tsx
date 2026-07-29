@@ -1,14 +1,17 @@
 import { notFound } from 'next/navigation';
-import { chargerGuide } from '@/lib/data/guide';
+import { chargerGuide, chargerItineraires } from '@/lib/data/guide';
 import { resoudreLocale } from '@/lib/i18n';
 import { compterEtablissementsAvecAvantage } from '@/lib/perks';
-import type { CategorieLieu } from '@/lib/types';
+import { ORDRE_CATEGORIES } from '@/lib/categories';
 import { EnTeteHotel } from '@/components/guest/EnTeteHotel';
 import { BandeauAvantages } from '@/components/guest/BandeauAvantages';
 import { GrilleCategories } from '@/components/guest/GrilleCategories';
 import { Incontournables } from '@/components/guest/Incontournables';
 import { InfosPratiques } from '@/components/guest/InfosPratiques';
+import { Itineraires } from '@/components/guest/Itineraires';
+import { BarreNavigation } from '@/components/guest/BarreNavigation';
 import { MemoireLangue } from '@/components/guest/MemoireLangue';
+import { SuiviEcran } from '@/components/guest/SuiviEcran';
 
 /**
  * Accueil du guide.
@@ -24,24 +27,14 @@ interface Props {
   searchParams: Promise<{ lang?: string | string[] }>;
 }
 
-/** Ordre d'affichage des catégories : ce qu'on cherche en premier en arrivant. */
-const ORDRE_CATEGORIES: CategorieLieu[] = [
-  'restaurant',
-  'bar',
-  'cafe',
-  'boulangerie',
-  'brunch',
-  'culture',
-  'shopping',
-  'balade',
-  'nuit',
-  'pratique',
-];
 
 export default async function PageAccueil({ params, searchParams }: Props) {
   const [{ slug }, requete] = await Promise.all([params, searchParams]);
 
-  const guide = await chargerGuide(slug);
+  const [guide, itineraires] = await Promise.all([
+    chargerGuide(slug),
+    chargerItineraires(slug),
+  ]);
   if (!guide) notFound();
 
   const { hotel, lieux } = guide;
@@ -67,14 +60,18 @@ export default async function PageAccueil({ params, searchParams }: Props) {
   return (
     /* `lang` sur le contenu et non sur <html> : le layout racine ne connaît pas
        la langue demandée, qui vit dans les paramètres d'URL de la page. */
-    <main lang={locale}>
+    <main lang={locale} className="flex min-h-dvh flex-col">
       <EnTeteHotel hotel={hotel} locale={locale} cheminCourant={base} />
       <BandeauAvantages nombreEtablissements={nombreEtablissements} locale={locale} base={base} />
       <GrilleCategories comptes={comptes} locale={locale} base={base} />
       <Incontournables lieux={incontournables} hotel={hotel} locale={locale} base={base} />
+      <Itineraires itineraires={itineraires} locale={locale} base={base} />
       <InfosPratiques hotel={hotel} locale={locale} base={base} />
 
       <MemoireLangue localeServie={locale} langueExplicite={requete.lang !== undefined} />
+      <SuiviEcran hotelId={hotel.id} locale={locale} />
+      <div className="mt-auto" />
+      <BarreNavigation base={base} locale={locale} actif="accueil" />
     </main>
   );
 }

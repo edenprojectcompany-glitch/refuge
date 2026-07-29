@@ -1,31 +1,7 @@
-import {
-  Croissant,
-  Coffee,
-  EggFried,
-  Footprints,
-  Landmark,
-  LifeBuoy,
-  Moon,
-  ShoppingBag,
-  UtensilsCrossed,
-  Wine,
-} from 'lucide-react';
 import type { CategorieLieu, Locale } from '@/lib/types';
 import { avecLangue, creerTraducteur } from '@/lib/i18n';
+import { ICONES_CATEGORIES } from '@/lib/categories';
 
-/** Une icône par catégorie ; jeu lucide-react exclusivement. */
-const ICONES: Record<CategorieLieu, typeof Coffee> = {
-  restaurant: UtensilsCrossed,
-  bar: Wine,
-  cafe: Coffee,
-  boulangerie: Croissant,
-  brunch: EggFried,
-  culture: Landmark,
-  shopping: ShoppingBag,
-  balade: Footprints,
-  pratique: LifeBuoy,
-  nuit: Moon,
-};
 
 /**
  * Grille de catégories, deux colonnes, cibles tactiles pleine largeur.
@@ -50,7 +26,7 @@ export function GrilleCategories({
 
       <ul className="mt-4 grid grid-cols-2 gap-2.5">
         {comptes.map(({ categorie, total }) => {
-          const Icone = ICONES[categorie];
+          const Icone = ICONES_CATEGORIES[categorie];
           return (
             <li key={categorie}>
               <a

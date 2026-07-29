@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { chargerHotel } from '@/lib/data/guide';
-import { variablesTheme } from '@/lib/theme';
+import { fondEnTete, variablesTheme } from '@/lib/theme';
 import type { CSSProperties } from 'react';
 
 /**
@@ -32,6 +32,9 @@ export async function generateMetadata({
     // Le guide n'a rien à faire dans un moteur de recherche : il s'adresse aux
     // clients de l'hôtel, et son contenu (mot de passe wifi compris) est privé.
     robots: { index: false, follow: false },
+    manifest: `/h/${slug}/manifest.webmanifest`,
+    appleWebApp: { capable: true, title: hotel.name, statusBarStyle: 'default' },
+    other: { 'theme-color': fondEnTete(hotel.primary_color) },
   };
 }
 

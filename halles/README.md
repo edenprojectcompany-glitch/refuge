@@ -84,9 +84,13 @@ npm run dev
 - Même guide en mode chemin : http://localhost:3000/h/lemarais
 - Vitrine : http://localhost:3000
 
-### 6. Tuiles cartographiques (phase 2)
+### 6. Tuiles cartographiques
 
-La carte lira un fichier `.pmtiles` auto-hébergé. Pour Paris :
+**Nécessaire pour que l'écran carte affiche un fond.** Sans
+`NEXT_PUBLIC_PMTILES_URL`, l'application le détecte et sert la liste des
+adresses à la place, avec un message : rien ne casse, mais il n'y a pas de plan.
+
+Pour Paris :
 
 ```bash
 # Extrait de la couverture mondiale Protomaps, limité à Paris intra-muros
@@ -98,6 +102,15 @@ npx pmtiles extract \
 Déposer `paris.pmtiles` dans un bucket public Supabase Storage (ou Cloudflare R2)
 et renseigner `NEXT_PUBLIC_PMTILES_URL` avec son URL. Le fichier pèse quelques
 dizaines de mégaoctets et se sert par requêtes de plage : aucun coût à la vue.
+
+Les libellés de la carte ont besoin de glyphes de police. Par défaut on utilise
+les fichiers statiques publics de Protomaps ; `NEXT_PUBLIC_GLYPHS_URL` permet
+d'en héberger une copie pour n'avoir aucun appel sortant.
+
+Le style de carte est écrit à la main dans `lib/carte/style.ts`, sur le schéma
+Protomaps v4. Il n'a pas encore été confronté à un vrai fichier de tuiles : les
+noms de couches (`earth`, `roads`, `places`…) sont ceux du schéma documenté,
+mais c'est le premier point à vérifier une fois le `.pmtiles` en place.
 
 ## Commandes
 
@@ -163,6 +176,24 @@ correct dans les deux modes.
 La colonne `hotels.custom_domain` existe pour les domaines par hôtel, mais n'est
 pas résolue en v1.
 
+### Progressive web app
+
+Le manifeste est généré par tenant (`/h/{slug}/manifest.webmanifest`) : un guide
+installé porte le nom, la couleur et le logo de SON hôtel. Le service worker
+garde les fichiers versionnés en cache et sert les pages déjà vues d'abord
+depuis le cache — un écran consulté reste lisible dans un restaurant sans
+réseau. Pas de mode hors ligne complet en v1 : rien n'est pré-chargé.
+
+La proposition d'installation n'apparaît qu'au deuxième écran, et jamais deux
+fois si elle a été refusée.
+
+### Mesure d'audience
+
+`POST /api/track` écrit avec la clé anonyme, donc sous le contrôle de la RLS.
+Identifiant de session en `sessionStorage`, aucune IP, aucun user-agent, aucun
+cookie. L'agrégation, le tableau de bord et les crons de purge arrivent en
+phase 3, de même que `docs/rgpd.md`.
+
 ### Sécurité
 
 La RLS est active sur les huit tables. Le contenu publié est lisible
@@ -179,7 +210,7 @@ son appartenance à l'hôtel.
 ## État d'avancement
 
 - [x] **Phase 1** — schéma, RLS, seed, middleware multi-tenant, accueil guest
-- [ ] **Phase 2** — carte, fiches, avantages, itinéraires, infos, i18n, PWA
+- [x] **Phase 2** — carte, fiches, avantages, itinéraires, infos, i18n, PWA
 - [ ] **Phase 3** — analytics et back-office CRUD
 - [ ] **Phase 4** — curation, duplication, QR codes en PDF
 - [ ] **Phase 5** — dashboard hôtelier et magic link

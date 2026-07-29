@@ -32,6 +32,24 @@ export const envPublic = {
     'https://protomaps.github.io/basemaps-assets/fonts/{fontstack}/{range}.pbf',
 };
 
+/**
+ * Mode démonstration : aucune instance Supabase configurée.
+ *
+ * L'application sert alors le jeu de démonstration embarqué. Permet de montrer
+ * le produit et de développer les écrans sans base — et évite qu'un
+ * déploiement mal configuré affiche une erreur brute au visiteur.
+ *
+ * Défini ici, et non dans lib/data/demo.ts : le middleware tourne sur le
+ * runtime edge et ne doit pas embarquer le jeu de données pour savoir dans quel
+ * mode il est.
+ */
+export function modeDemo(): boolean {
+  return envPublic.supabaseUrl === '' || envPublic.supabaseAnonKey === '';
+}
+
+/** Slug servi en mode démonstration. */
+export const SLUG_DEMO = 'lemarais';
+
 export function verifierEnvPublic() {
   requise('NEXT_PUBLIC_SUPABASE_URL', envPublic.supabaseUrl);
   requise('NEXT_PUBLIC_SUPABASE_ANON_KEY', envPublic.supabaseAnonKey);

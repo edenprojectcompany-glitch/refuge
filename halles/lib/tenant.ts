@@ -1,4 +1,4 @@
-import { envPublic } from '@/lib/env';
+import { envPublic, modeDemo, SLUG_DEMO } from '@/lib/env';
 
 /**
  * Résolution du tenant à partir de l'hôte de la requête.
@@ -69,6 +69,9 @@ export function viderCacheSlugs() {
 
 export async function slugExiste(slug: string): Promise<boolean> {
   if (!slugValide(slug)) return false;
+
+  // Sans Supabase, l'application sert le jeu de démonstration : un seul tenant.
+  if (modeDemo()) return slug === SLUG_DEMO;
 
   const maintenant = Date.now();
   const enCache = cacheSlugs.get(slug);

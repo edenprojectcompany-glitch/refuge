@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 import { creerClientEcriture } from '@/lib/supabase/public';
+import { modeDemo } from '@/lib/env';
 
 /**
  * Ingestion des événements de mesure d'audience.
@@ -50,6 +51,9 @@ export async function POST(requete: Request) {
   if (!resultat.success) {
     return NextResponse.json({ erreur: 'evenement_invalide' }, { status: 400 });
   }
+
+  // En démonstration il n'y a pas de base : on valide et on jette.
+  if (modeDemo()) return new NextResponse(null, { status: 204 });
 
   const { meta, ...evenement } = resultat.data;
   const supabase = creerClientEcriture();

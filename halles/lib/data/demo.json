@@ -1,0 +1,2098 @@
+{
+    "hotel": {
+        "id": "a0000000-0000-4000-8000-000000000001",
+        "lat": 48.85837,
+        "lng": 2.3552,
+        "city": "Paris",
+        "name": "Hôtel Sainte-Croix",
+        "plan": "standard",
+        "slug": "lemarais",
+        "status": "published",
+        "address": "18 rue Sainte-Croix de la Bretonnerie, 75004 Paris",
+        "logo_url": null,
+        "wifi_name": "Sainte-Croix Guests",
+        "created_at": "2026-07-29T17:34:57.78754+00:00",
+        "updated_at": "2026-07-29T17:34:57.78754+00:00",
+        "rooms_count": 34,
+        "checkin_info": "Arrivée à partir de 15 h. Réception ouverte 24 h/24.",
+        "checkout_info": "Départ avant 11 h. Bagagerie gratuite le jour du départ.",
+        "contact_phone": "+33142000000",
+        "custom_blocks": [
+            {
+                "body": "Des parapluies sont à votre disposition à la réception, sans supplément.",
+                "icon": "umbrella",
+                "title": "Parapluies"
+            },
+            {
+                "body": "Dépôt avant 9 h, retour le lendemain soir. Tarifs affichés à la réception.",
+                "icon": "shirt",
+                "title": "Pressing"
+            }
+        ],
+        "custom_domain": null,
+        "primary_color": "#2f4b3f",
+        "wifi_password": "bonjour2026",
+        "breakfast_info": "Petit-déjeuner servi de 7 h à 10 h 30 dans la salle voûtée du rez-de-chaussée. 14 € par personne, en supplément.",
+        "default_locale": "fr",
+        "transport_info": "Métro Hôtel de Ville (lignes 1 et 11) à 4 minutes à pied. Rambuteau (ligne 11) à 5 minutes. Station Vélib' au 25 rue du Temple.",
+        "contact_whatsapp": "+33600000000"
+    },
+    "lieux": [
+        {
+            "id": "b0000000-0000-4000-8000-000000000001",
+            "lat": 48.85802,
+            "lng": 2.3559,
+            "city": "Paris",
+            "name": "Le Comptoir des Archives",
+            "tags": [
+                "terrasse",
+                "sans-resa"
+            ],
+            "phone": "+33142720001",
+            "status": "published",
+            "address": "32 rue des Archives, 75004 Paris",
+            "website": "https://exemple.fr/comptoir-archives",
+            "category": "restaurant",
+            "position": 10,
+            "avantages": [
+                {
+                    "id": "c0000000-0000-4000-8000-000000000001",
+                    "status": "published",
+                    "place_id": "b0000000-0000-4000-8000-000000000001",
+                    "title_en": "Complimentary aperitif",
+                    "title_fr": "Apéritif offert",
+                    "created_at": "2026-07-29T17:34:57.800303+00:00",
+                    "updated_at": "2026-07-29T17:34:57.800303+00:00",
+                    "valid_from": "2026-01-01",
+                    "valid_until": "2026-12-31",
+                    "conditions_en": "Dinner service only, excluding Friday and Saturday. One glass per person. Mention before ordering.",
+                    "conditions_fr": "Valable au dîner uniquement, hors vendredi et samedi. Un verre par personne. À signaler avant la commande.",
+                    "description_en": "A glass of wine or a kir offered to each guest before the meal.",
+                    "description_fr": "Un verre de vin ou un kir offert à chaque convive avant le repas."
+                }
+            ],
+            "instagram": "comptoirdesarchives",
+            "photo_url": null,
+            "created_at": "2026-07-29T17:34:57.792918+00:00",
+            "updated_at": "2026-07-29T17:34:57.792918+00:00",
+            "booking_url": null,
+            "is_featured": true,
+            "price_range": 2,
+            "verified_at": "2026-06-12",
+            "long_desc_en": "A narrow room, twenty-eight seats, and a chalkboard rewritten each morning around whatever the market offered. Straightforward French cooking: one fish, one meat, one vegetarian dish. Come early, around 7.30pm, before the queue forms on the pavement.",
+            "long_desc_fr": "Une salle étroite, vingt-huit couverts, une ardoise réécrite chaque matin selon le marché. La cuisine est française sans détour : un poisson, une viande, un plat végétarien. On y va pour dîner tôt, vers 19 h 30, avant que la file ne se forme sur le trottoir.",
+            "hotel_note_en": "Our own canteen. Say you are staying with us and Marc will keep you a table by the window.",
+            "hotel_note_fr": "Notre cantine à nous. Dites que vous venez de l'hôtel, Marc vous gardera une table près de la fenêtre.",
+            "opening_hours": {
+                "fri": [
+                    [
+                        "12:00",
+                        "14:30"
+                    ],
+                    [
+                        "19:00",
+                        "23:00"
+                    ]
+                ],
+                "mon": [
+                ],
+                "sat": [
+                    [
+                        "19:00",
+                        "23:00"
+                    ]
+                ],
+                "sun": [
+                ],
+                "thu": [
+                    [
+                        "12:00",
+                        "14:30"
+                    ],
+                    [
+                        "19:00",
+                        "22:30"
+                    ]
+                ],
+                "tue": [
+                    [
+                        "12:00",
+                        "14:30"
+                    ],
+                    [
+                        "19:00",
+                        "22:30"
+                    ]
+                ],
+                "wed": [
+                    [
+                        "12:00",
+                        "14:30"
+                    ],
+                    [
+                        "19:00",
+                        "22:30"
+                    ]
+                ]
+            },
+            "short_desc_en": "Neighbourhood bistro with a daily changing chalkboard menu.",
+            "short_desc_fr": "Bistrot de quartier, ardoise qui change chaque jour."
+        },
+        {
+            "id": "b0000000-0000-4000-8000-000000000008",
+            "lat": 48.8543,
+            "lng": 2.3577,
+            "city": "Paris",
+            "name": "Brasserie du Pont-Marie",
+            "tags": [
+                "terrasse",
+                "sans-resa",
+                "enfants"
+            ],
+            "phone": "+33142720008",
+            "status": "published",
+            "address": "2 rue de l'Hôtel de Ville, 75004 Paris",
+            "website": null,
+            "category": "bar",
+            "position": 100,
+            "avantages": [
+            ],
+            "instagram": null,
+            "photo_url": null,
+            "created_at": "2026-07-29T17:34:57.792918+00:00",
+            "updated_at": "2026-07-29T17:34:57.792918+00:00",
+            "booking_url": null,
+            "is_featured": false,
+            "price_range": 2,
+            "verified_at": "2026-06-05",
+            "long_desc_en": "The kind of brasserie where you sit down without reading the menu, for a beer and the view of the Île Saint-Louis. The food is fine; the terrace at sunset is the reason to come.",
+            "long_desc_fr": "Le genre de brasserie où l'on s'assoit sans regarder la carte, pour une bière et la vue sur l'île Saint-Louis. La cuisine est correcte sans plus ; la terrasse, elle, vaut le détour au coucher du soleil.",
+            "hotel_note_en": "The food is ordinary; the terrace at sunset is not.",
+            "hotel_note_fr": "La cuisine est ordinaire, la terrasse au coucher du soleil ne l'est pas.",
+            "opening_hours": {
+                "fri": [
+                    [
+                        "08:00",
+                        "02:00"
+                    ]
+                ],
+                "mon": [
+                    [
+                        "08:00",
+                        "01:00"
+                    ]
+                ],
+                "sat": [
+                    [
+                        "08:00",
+                        "02:00"
+                    ]
+                ],
+                "sun": [
+                    [
+                        "08:00",
+                        "01:00"
+                    ]
+                ],
+                "thu": [
+                    [
+                        "08:00",
+                        "01:00"
+                    ]
+                ],
+                "tue": [
+                    [
+                        "08:00",
+                        "01:00"
+                    ]
+                ],
+                "wed": [
+                    [
+                        "08:00",
+                        "01:00"
+                    ]
+                ]
+            },
+            "short_desc_en": "Large terrace by the Seine.",
+            "short_desc_fr": "Grande terrasse au bord de la Seine."
+        },
+        {
+            "id": "b0000000-0000-4000-8000-000000000009",
+            "lat": 48.8593,
+            "lng": 2.3601,
+            "city": "Paris",
+            "name": "Torréfaction Barbette",
+            "tags": [
+                "sans-resa",
+                "vegan"
+            ],
+            "phone": "+33142720009",
+            "status": "published",
+            "address": "11 rue Barbette, 75003 Paris",
+            "website": "https://exemple.fr/barbette",
+            "category": "cafe",
+            "position": 110,
+            "avantages": [
+                {
+                    "id": "c0000000-0000-4000-8000-000000000005",
+                    "status": "published",
+                    "place_id": "b0000000-0000-4000-8000-000000000009",
+                    "title_en": "Free filter coffee",
+                    "title_fr": "Café filtre offert",
+                    "created_at": "2026-07-29T17:34:57.800303+00:00",
+                    "updated_at": "2026-07-29T17:34:57.800303+00:00",
+                    "valid_from": "2026-01-15",
+                    "valid_until": "2026-12-31",
+                    "conditions_en": "One per person per day. In-store only.",
+                    "conditions_fr": "Un par jour et par personne. Sur place uniquement.",
+                    "description_en": "A filter coffee offered with any purchase of coffee beans.",
+                    "description_fr": "Un café filtre offert pour tout achat de café en grains."
+                }
+            ],
+            "instagram": "torrefaction.barbette",
+            "photo_url": null,
+            "created_at": "2026-07-29T17:34:57.792918+00:00",
+            "updated_at": "2026-07-29T17:34:57.792918+00:00",
+            "booking_url": null,
+            "is_featured": false,
+            "price_range": 1,
+            "verified_at": "2026-06-18",
+            "long_desc_en": "They roast in the back room twice a week and you can smell it from the pavement. Only four stools: this is a place to take your coffee and keep walking.",
+            "long_desc_fr": "On torréfie dans l'arrière-boutique deux fois par semaine, l'odeur se sent depuis le trottoir. Quatre tabourets seulement : c'est un endroit où l'on prend son café et où l'on repart marcher.",
+            "hotel_note_en": "The best coffee nearby, to take away. Four stools, no more.",
+            "hotel_note_fr": "Le meilleur café du quartier, à emporter. Quatre tabourets, pas plus.",
+            "opening_hours": {
+                "fri": [
+                    [
+                        "08:00",
+                        "18:00"
+                    ]
+                ],
+                "mon": [
+                    [
+                        "08:00",
+                        "18:00"
+                    ]
+                ],
+                "sat": [
+                    [
+                        "09:00",
+                        "19:00"
+                    ]
+                ],
+                "sun": [
+                    [
+                        "09:00",
+                        "17:00"
+                    ]
+                ],
+                "thu": [
+                    [
+                        "08:00",
+                        "18:00"
+                    ]
+                ],
+                "tue": [
+                    [
+                        "08:00",
+                        "18:00"
+                    ]
+                ],
+                "wed": [
+                    [
+                        "08:00",
+                        "18:00"
+                    ]
+                ]
+            },
+            "short_desc_en": "Roastery serving filter and espresso to take away.",
+            "short_desc_fr": "Torréfacteur, filtre et espresso à emporter."
+        },
+        {
+            "id": "b0000000-0000-4000-8000-000000000010",
+            "lat": 48.8588,
+            "lng": 2.3573,
+            "city": "Paris",
+            "name": "Café des Blancs-Manteaux",
+            "tags": [
+                "terrasse",
+                "sans-resa",
+                "enfants"
+            ],
+            "phone": "+33142720010",
+            "status": "published",
+            "address": "25 rue des Blancs-Manteaux, 75004 Paris",
+            "website": null,
+            "category": "cafe",
+            "position": 120,
+            "avantages": [
+            ],
+            "instagram": null,
+            "photo_url": null,
+            "created_at": "2026-07-29T17:34:57.792918+00:00",
+            "updated_at": "2026-07-29T17:34:57.792918+00:00",
+            "booking_url": null,
+            "is_featured": false,
+            "price_range": 1,
+            "verified_at": "2026-06-02",
+            "long_desc_en": "A neighbourhood café of a kind now rare in the Marais: zinc counter, regulars with newspapers, croissants delivered at 7am. The terrace gets sun until noon.",
+            "long_desc_fr": "Un café de quartier comme il en reste peu dans le Marais : comptoir en zinc, habitués qui lisent le journal, croissants livrés à 7 h. La terrasse prend le soleil jusqu'à midi.",
+            "hotel_note_en": "If you would rather have breakfast out: the terrace gets the morning sun.",
+            "hotel_note_fr": "Si vous préférez petit-déjeuner dehors : la terrasse a le soleil du matin.",
+            "opening_hours": {
+                "fri": [
+                    [
+                        "07:00",
+                        "20:00"
+                    ]
+                ],
+                "mon": [
+                    [
+                        "07:00",
+                        "20:00"
+                    ]
+                ],
+                "sat": [
+                    [
+                        "08:00",
+                        "20:00"
+                    ]
+                ],
+                "sun": [
+                    [
+                        "08:00",
+                        "14:00"
+                    ]
+                ],
+                "thu": [
+                    [
+                        "07:00",
+                        "20:00"
+                    ]
+                ],
+                "tue": [
+                    [
+                        "07:00",
+                        "20:00"
+                    ]
+                ],
+                "wed": [
+                    [
+                        "07:00",
+                        "20:00"
+                    ]
+                ]
+            },
+            "short_desc_en": "Neighbourhood café, morning sun on the terrace.",
+            "short_desc_fr": "Café de quartier, terrasse au soleil du matin."
+        },
+        {
+            "id": "b0000000-0000-4000-8000-000000000011",
+            "lat": 48.8581,
+            "lng": 2.3645,
+            "city": "Paris",
+            "name": "Le Salon de Bretagne",
+            "tags": [
+                "enfants"
+            ],
+            "phone": "+33142720011",
+            "status": "published",
+            "address": "38 rue de Turenne, 75003 Paris",
+            "website": null,
+            "category": "cafe",
+            "position": 130,
+            "avantages": [
+            ],
+            "instagram": null,
+            "photo_url": null,
+            "created_at": "2026-07-29T17:34:57.792918+00:00",
+            "updated_at": "2026-07-29T17:34:57.792918+00:00",
+            "booking_url": null,
+            "is_featured": false,
+            "price_range": 2,
+            "verified_at": "2026-05-20",
+            "long_desc_en": "A quiet afternoon address with forty loose-leaf teas and pastries made on site. The only place nearby where you can read for two hours without being asked to free the table.",
+            "long_desc_fr": "Une adresse calme pour l'après-midi, avec quarante thés en vrac et des pâtisseries faites sur place. Le seul endroit du quartier où l'on peut lire deux heures sans qu'on vous demande de libérer la table.",
+            "hotel_note_en": "A rainy afternoon passes well here.",
+            "hotel_note_fr": "Un après-midi de pluie s'y passe très bien.",
+            "opening_hours": {
+                "fri": [
+                    [
+                        "12:00",
+                        "19:00"
+                    ]
+                ],
+                "mon": [
+                ],
+                "sat": [
+                    [
+                        "11:00",
+                        "19:30"
+                    ]
+                ],
+                "sun": [
+                    [
+                        "11:00",
+                        "19:30"
+                    ]
+                ],
+                "thu": [
+                    [
+                        "12:00",
+                        "19:00"
+                    ]
+                ],
+                "tue": [
+                    [
+                        "12:00",
+                        "19:00"
+                    ]
+                ],
+                "wed": [
+                    [
+                        "12:00",
+                        "19:00"
+                    ]
+                ]
+            },
+            "short_desc_en": "Tea room, forty teas, house-made pastries.",
+            "short_desc_fr": "Salon de thé, quarante thés, pâtisseries maison."
+        },
+        {
+            "id": "b0000000-0000-4000-8000-000000000013",
+            "lat": 48.8662,
+            "lng": 2.3571,
+            "city": "Paris",
+            "name": "Maison Volta",
+            "tags": [
+                "sans-resa"
+            ],
+            "phone": "+33142720013",
+            "status": "published",
+            "address": "3 rue Volta, 75003 Paris",
+            "website": null,
+            "category": "boulangerie",
+            "position": 140,
+            "avantages": [
+            ],
+            "instagram": "maisonvolta",
+            "photo_url": null,
+            "created_at": "2026-07-29T17:34:57.792918+00:00",
+            "updated_at": "2026-07-29T17:34:57.792918+00:00",
+            "booking_url": null,
+            "is_featured": false,
+            "price_range": 1,
+            "verified_at": "2026-04-10",
+            "long_desc_en": "A small bakery in the upper Marais whose kouign-amann sells out before noon. The pastries are made with churned butter, and it shows.",
+            "long_desc_fr": "Petite boulangerie du Haut-Marais dont le kouign-amann se vend jusqu'au dernier avant midi. Les viennoiseries sont au beurre de baratte, ça se sent.",
+            "hotel_note_en": "A little further, but the kouign-amann justifies the ten-minute walk.",
+            "hotel_note_fr": "Un peu plus loin, mais le kouign-amann justifie les dix minutes de marche.",
+            "opening_hours": {
+                "fri": [
+                    [
+                        "07:00",
+                        "19:30"
+                    ]
+                ],
+                "mon": [
+                    [
+                        "07:00",
+                        "19:30"
+                    ]
+                ],
+                "sat": [
+                    [
+                        "07:00",
+                        "19:30"
+                    ]
+                ],
+                "sun": [
+                ],
+                "thu": [
+                    [
+                        "07:00",
+                        "19:30"
+                    ]
+                ],
+                "tue": [
+                    [
+                        "07:00",
+                        "19:30"
+                    ]
+                ],
+                "wed": [
+                    [
+                        "07:00",
+                        "19:30"
+                    ]
+                ]
+            },
+            "short_desc_en": "Butter pastries; the kouign-amann is the one to get.",
+            "short_desc_fr": "Viennoiseries au beurre, kouign-amann réputé."
+        },
+        {
+            "id": "b0000000-0000-4000-8000-000000000014",
+            "lat": 48.8624,
+            "lng": 2.3631,
+            "city": "Paris",
+            "name": "Dimanche Matin",
+            "tags": [
+                "sans-resa",
+                "enfants",
+                "vegan"
+            ],
+            "phone": "+33142720014",
+            "status": "published",
+            "address": "17 rue de Poitou, 75003 Paris",
+            "website": null,
+            "category": "brunch",
+            "position": 150,
+            "avantages": [
+                {
+                    "id": "c0000000-0000-4000-8000-000000000006",
+                    "status": "published",
+                    "place_id": "b0000000-0000-4000-8000-000000000014",
+                    "title_en": "Free fresh juice",
+                    "title_fr": "Jus pressé offert",
+                    "created_at": "2026-07-29T17:34:57.800303+00:00",
+                    "updated_at": "2026-07-29T17:34:57.800303+00:00",
+                    "valid_from": "2026-04-01",
+                    "valid_until": "2026-10-31",
+                    "conditions_en": "Friday, Saturday and Sunday. One juice per brunch ordered. Mention when ordering.",
+                    "conditions_fr": "Vendredi, samedi et dimanche. Un jus par brunch commandé. À signaler à la prise de commande.",
+                    "description_en": "A fresh juice offered with every full brunch.",
+                    "description_fr": "Un jus pressé offert avec chaque brunch complet."
+                }
+            ],
+            "instagram": "dimanchematin.paris",
+            "photo_url": null,
+            "created_at": "2026-07-29T17:34:57.792918+00:00",
+            "updated_at": "2026-07-29T17:34:57.792918+00:00",
+            "booking_url": null,
+            "is_featured": false,
+            "price_range": 2,
+            "verified_at": "2026-06-21",
+            "long_desc_en": "Poached eggs, bread from the bakery next door, juice pressed in front of you. No bookings: leave your name and wait at the counter with a coffee. Expect a twenty-minute wait around 11.30am.",
+            "long_desc_fr": "Œufs pochés, pain de la boulangerie d'à côté, jus pressé devant vous. On ne réserve pas : on donne son prénom et on attend au comptoir avec un café. Compter vingt minutes d'attente vers 11 h 30.",
+            "hotel_note_en": "Our Sunday address. Arrive at 9am or after 2pm.",
+            "hotel_note_fr": "Notre adresse du dimanche. Arrivez à 9 h ou après 14 h.",
+            "opening_hours": {
+                "fri": [
+                    [
+                        "09:00",
+                        "15:00"
+                    ]
+                ],
+                "mon": [
+                ],
+                "sat": [
+                    [
+                        "09:00",
+                        "16:00"
+                    ]
+                ],
+                "sun": [
+                    [
+                        "09:00",
+                        "16:00"
+                    ]
+                ],
+                "thu": [
+                ],
+                "tue": [
+                ],
+                "wed": [
+                ]
+            },
+            "short_desc_en": "Brunch Friday to Sunday, walk-ins only.",
+            "short_desc_fr": "Brunch servi du vendredi au dimanche, sans réservation."
+        },
+        {
+            "id": "b0000000-0000-4000-8000-000000000015",
+            "lat": 48.8629,
+            "lng": 2.3637,
+            "city": "Paris",
+            "name": "La Table Longue",
+            "tags": [
+                "enfants",
+                "vegan"
+            ],
+            "phone": "+33142720015",
+            "status": "published",
+            "address": "44 rue de Saintonge, 75003 Paris",
+            "website": "https://exemple.fr/table-longue",
+            "category": "brunch",
+            "position": 160,
+            "avantages": [
+            ],
+            "instagram": null,
+            "photo_url": null,
+            "created_at": "2026-07-29T17:34:57.792918+00:00",
+            "updated_at": "2026-07-29T17:34:57.792918+00:00",
+            "booking_url": null,
+            "is_featured": false,
+            "price_range": 2,
+            "verified_at": "2026-06-08",
+            "long_desc_en": "A single twenty-seat table where you sit next to strangers. Brunch served daily until 3pm, one set formula. Good for solo travellers.",
+            "long_desc_fr": "Une seule grande table de vingt places, où l'on s'assoit à côté d'inconnus. Brunch servi tous les jours jusqu'à 15 h, avec une formule unique. Convient bien aux voyageurs seuls.",
+            "hotel_note_en": "The long shared table: good when travelling alone.",
+            "hotel_note_fr": "La grande table partagée : agréable quand on voyage seul.",
+            "opening_hours": {
+                "fri": [
+                    [
+                        "09:30",
+                        "15:00"
+                    ]
+                ],
+                "mon": [
+                    [
+                        "09:30",
+                        "15:00"
+                    ]
+                ],
+                "sat": [
+                    [
+                        "09:30",
+                        "16:00"
+                    ]
+                ],
+                "sun": [
+                    [
+                        "09:30",
+                        "16:00"
+                    ]
+                ],
+                "thu": [
+                    [
+                        "09:30",
+                        "15:00"
+                    ]
+                ],
+                "tue": [
+                    [
+                        "09:30",
+                        "15:00"
+                    ]
+                ],
+                "wed": [
+                    [
+                        "09:30",
+                        "15:00"
+                    ]
+                ]
+            },
+            "short_desc_en": "One long shared table, brunch every day.",
+            "short_desc_fr": "Grande table partagée, brunch tous les jours."
+        },
+        {
+            "id": "b0000000-0000-4000-8000-000000000016",
+            "lat": 48.8575,
+            "lng": 2.3627,
+            "city": "Paris",
+            "name": "Musée Carnavalet",
+            "tags": [
+                "enfants",
+                "pluie"
+            ],
+            "phone": "+33144595858",
+            "status": "published",
+            "address": "23 rue de Sévigné, 75003 Paris",
+            "website": "https://www.carnavalet.paris.fr",
+            "category": "culture",
+            "position": 170,
+            "avantages": [
+            ],
+            "instagram": null,
+            "photo_url": null,
+            "created_at": "2026-07-29T17:34:57.792918+00:00",
+            "updated_at": "2026-07-29T17:34:57.792918+00:00",
+            "booking_url": null,
+            "is_featured": false,
+            "price_range": 1,
+            "verified_at": "2026-06-25",
+            "long_desc_en": "The history of Paris from prehistory onwards, across two mansions joined by a garden. The permanent collection is free. Two hours is enough if you head straight for the Revolution rooms.",
+            "long_desc_fr": "L'histoire de Paris depuis la préhistoire, dans deux hôtels particuliers reliés par un jardin. La collection permanente est gratuite. Deux heures suffisent si l'on va droit aux salles de la Révolution.",
+            "hotel_note_en": "Free permanent collection, seven minutes away. Start on the second floor.",
+            "hotel_note_fr": "Collection permanente gratuite, à sept minutes. Commencez par le deuxième étage.",
+            "opening_hours": {
+                "fri": [
+                    [
+                        "10:00",
+                        "18:00"
+                    ]
+                ],
+                "mon": [
+                ],
+                "sat": [
+                    [
+                        "10:00",
+                        "18:00"
+                    ]
+                ],
+                "sun": [
+                    [
+                        "10:00",
+                        "18:00"
+                    ]
+                ],
+                "thu": [
+                    [
+                        "10:00",
+                        "18:00"
+                    ]
+                ],
+                "tue": [
+                    [
+                        "10:00",
+                        "18:00"
+                    ]
+                ],
+                "wed": [
+                    [
+                        "10:00",
+                        "18:00"
+                    ]
+                ]
+            },
+            "short_desc_en": "The history of Paris; permanent collection free of charge.",
+            "short_desc_fr": "L'histoire de Paris, collection permanente gratuite."
+        },
+        {
+            "id": "b0000000-0000-4000-8000-000000000017",
+            "lat": 48.8616,
+            "lng": 2.363,
+            "city": "Paris",
+            "name": "Galerie Perreau",
+            "tags": [
+                "pluie"
+            ],
+            "phone": "+33142720017",
+            "status": "published",
+            "address": "9 rue Debelleyme, 75003 Paris",
+            "website": "https://exemple.fr/galerie-perreau",
+            "category": "culture",
+            "position": 180,
+            "avantages": [
+            ],
+            "instagram": "galerieperreau",
+            "photo_url": null,
+            "created_at": "2026-07-29T17:34:57.792918+00:00",
+            "updated_at": "2026-07-29T17:34:57.792918+00:00",
+            "booking_url": null,
+            "is_featured": false,
+            "price_range": 1,
+            "verified_at": "2026-06-19",
+            "long_desc_en": "A two-floor gallery with six shows a year and free entry. Staff leave you alone and answer gladly if asked. Openings on Thursday evenings, everyone welcome.",
+            "long_desc_fr": "Une galerie sur deux niveaux, six expositions par an, entrée libre. Le personnel laisse tranquille et répond volontiers si on demande. Vernissages le jeudi soir, ouverts à tous.",
+            "hotel_note_en": "Free entry; twenty minutes is a perfectly respectable visit.",
+            "hotel_note_fr": "Entrée libre, on peut y passer vingt minutes sans culpabiliser.",
+            "opening_hours": {
+                "fri": [
+                    [
+                        "11:00",
+                        "19:00"
+                    ]
+                ],
+                "mon": [
+                ],
+                "sat": [
+                    [
+                        "11:00",
+                        "19:00"
+                    ]
+                ],
+                "sun": [
+                ],
+                "thu": [
+                    [
+                        "11:00",
+                        "21:00"
+                    ]
+                ],
+                "tue": [
+                    [
+                        "11:00",
+                        "19:00"
+                    ]
+                ],
+                "wed": [
+                    [
+                        "11:00",
+                        "19:00"
+                    ]
+                ]
+            },
+            "short_desc_en": "Contemporary art gallery, free entry.",
+            "short_desc_fr": "Galerie d'art contemporain, entrée libre."
+        },
+        {
+            "id": "b0000000-0000-4000-8000-000000000018",
+            "lat": 48.8548,
+            "lng": 2.362,
+            "city": "Paris",
+            "name": "Cinéma Saint-Paul",
+            "tags": [
+                "pluie",
+                "tardif"
+            ],
+            "phone": "+33142720018",
+            "status": "published",
+            "address": "73 rue Saint-Antoine, 75004 Paris",
+            "website": "https://exemple.fr/cinema-saint-paul",
+            "category": "culture",
+            "position": 190,
+            "avantages": [
+            ],
+            "instagram": null,
+            "photo_url": null,
+            "created_at": "2026-07-29T17:34:57.792918+00:00",
+            "updated_at": "2026-07-29T17:34:57.792918+00:00",
+            "booking_url": null,
+            "is_featured": false,
+            "price_range": 2,
+            "verified_at": "2026-05-15",
+            "long_desc_en": "Three small screens, everything in the original language with subtitles, last shows at 10.30pm. The seats have seen better days; the programming more than makes up for it.",
+            "long_desc_fr": "Trois petites salles, programmation en version originale sous-titrée, séances jusqu'à 22 h 30. Les fauteuils datent, la programmation rattrape largement.",
+            "hotel_note_en": "Films in their original language, six minutes on foot.",
+            "hotel_note_fr": "Films en version originale, à six minutes à pied.",
+            "opening_hours": {
+                "fri": [
+                    [
+                        "14:00",
+                        "23:00"
+                    ]
+                ],
+                "mon": [
+                    [
+                        "14:00",
+                        "22:30"
+                    ]
+                ],
+                "sat": [
+                    [
+                        "11:00",
+                        "23:00"
+                    ]
+                ],
+                "sun": [
+                    [
+                        "11:00",
+                        "22:00"
+                    ]
+                ],
+                "thu": [
+                    [
+                        "14:00",
+                        "22:30"
+                    ]
+                ],
+                "tue": [
+                    [
+                        "14:00",
+                        "22:30"
+                    ]
+                ],
+                "wed": [
+                    [
+                        "11:00",
+                        "22:30"
+                    ]
+                ]
+            },
+            "short_desc_en": "Three screens, films in their original language.",
+            "short_desc_fr": "Trois salles, films en version originale."
+        },
+        {
+            "id": "b0000000-0000-4000-8000-000000000006",
+            "lat": 48.861,
+            "lng": 2.3563,
+            "city": "Paris",
+            "name": "Le Petit Temple",
+            "tags": [
+                "tardif",
+                "sans-resa"
+            ],
+            "phone": "+33142720006",
+            "status": "published",
+            "address": "78 rue du Temple, 75003 Paris",
+            "website": null,
+            "category": "bar",
+            "position": 20,
+            "avantages": [
+                {
+                    "id": "c0000000-0000-4000-8000-000000000004",
+                    "status": "published",
+                    "place_id": "b0000000-0000-4000-8000-000000000006",
+                    "title_en": "Second glass half price",
+                    "title_fr": "Deuxième verre à moitié prix",
+                    "created_at": "2026-07-29T17:34:57.800303+00:00",
+                    "updated_at": "2026-07-29T17:34:57.800303+00:00",
+                    "valid_from": "2026-02-01",
+                    "valid_until": "2026-12-31",
+                    "conditions_en": "Monday to Thursday, before 8pm. One per person per evening.",
+                    "conditions_fr": "Du lundi au jeudi, avant 20 h. Un avantage par personne et par soirée.",
+                    "description_en": "Second glass of wine at half price, across the by-the-glass list.",
+                    "description_fr": "Le deuxième verre de vin à moitié prix, sur toute la carte au verre."
+                }
+            ],
+            "instagram": "lepetittemple",
+            "photo_url": null,
+            "created_at": "2026-07-29T17:34:57.792918+00:00",
+            "updated_at": "2026-07-29T17:34:57.792918+00:00",
+            "booking_url": null,
+            "is_featured": true,
+            "price_range": 2,
+            "verified_at": "2026-06-12",
+            "long_desc_en": "Thirty wines by the glass, a list rewritten weekly, and an owner who lets you taste before pouring. Eat a charcuterie board standing at the bar or at one of the three tables at the back. Fills up around 7pm.",
+            "long_desc_fr": "Trente références au verre, ardoise renouvelée chaque semaine, et un patron qui fait goûter avant de servir. On y mange une planche debout au comptoir ou assis sur les trois tables du fond. Ça se remplit vers 19 h.",
+            "hotel_note_en": "Just up the rue du Temple. The owner lets you taste before pouring — let him choose for you.",
+            "hotel_note_fr": "En remontant la rue du Temple. Le patron fait goûter avant de servir : laissez-vous guider plutôt que de choisir.",
+            "opening_hours": {
+                "fri": [
+                    [
+                        "17:00",
+                        "02:00"
+                    ]
+                ],
+                "mon": [
+                    [
+                        "17:00",
+                        "00:00"
+                    ]
+                ],
+                "sat": [
+                    [
+                        "17:00",
+                        "02:00"
+                    ]
+                ],
+                "sun": [
+                ],
+                "thu": [
+                    [
+                        "17:00",
+                        "01:00"
+                    ]
+                ],
+                "tue": [
+                    [
+                        "17:00",
+                        "00:00"
+                    ]
+                ],
+                "wed": [
+                    [
+                        "17:00",
+                        "00:00"
+                    ]
+                ]
+            },
+            "short_desc_en": "Natural wine bar with charcuterie boards.",
+            "short_desc_fr": "Bar à vins nature, planches de charcuterie."
+        },
+        {
+            "id": "b0000000-0000-4000-8000-000000000019",
+            "lat": 48.8607,
+            "lng": 2.359,
+            "city": "Paris",
+            "name": "Papeterie Guénégaud",
+            "tags": [
+                "pluie"
+            ],
+            "phone": "+33142720019",
+            "status": "published",
+            "address": "5 rue Guénégaud, 75003 Paris",
+            "website": null,
+            "category": "shopping",
+            "position": 200,
+            "avantages": [
+            ],
+            "instagram": null,
+            "photo_url": null,
+            "created_at": "2026-07-29T17:34:57.792918+00:00",
+            "updated_at": "2026-07-29T17:34:57.792918+00:00",
+            "booking_url": null,
+            "is_featured": false,
+            "price_range": 2,
+            "verified_at": "2026-06-10",
+            "long_desc_en": "Marbled papers, hand-sewn notebooks, bottled inks. A shop from another century: you go in for ten minutes and stay an hour.",
+            "long_desc_fr": "Papiers marbrés, carnets cousus main, encres en flacon. Une boutique d'un autre siècle où l'on entre pour dix minutes et où l'on reste une heure.",
+            "hotel_note_en": "For bringing home something other than a fridge magnet.",
+            "hotel_note_fr": "Pour rapporter autre chose qu'un aimant de frigo.",
+            "opening_hours": {
+                "fri": [
+                    [
+                        "11:00",
+                        "19:00"
+                    ]
+                ],
+                "mon": [
+                ],
+                "sat": [
+                    [
+                        "11:00",
+                        "19:00"
+                    ]
+                ],
+                "sun": [
+                ],
+                "thu": [
+                    [
+                        "11:00",
+                        "19:00"
+                    ]
+                ],
+                "tue": [
+                    [
+                        "11:00",
+                        "19:00"
+                    ]
+                ],
+                "wed": [
+                    [
+                        "11:00",
+                        "19:00"
+                    ]
+                ]
+            },
+            "short_desc_en": "Paper, notebooks and inks, since 1954.",
+            "short_desc_fr": "Papiers, carnets et encres, depuis 1954."
+        },
+        {
+            "id": "b0000000-0000-4000-8000-000000000020",
+            "lat": 48.8634,
+            "lng": 2.3628,
+            "city": "Paris",
+            "name": "Fripe Charlot",
+            "tags": [
+                "pluie"
+            ],
+            "phone": "+33142720020",
+            "status": "published",
+            "address": "62 rue Charlot, 75003 Paris",
+            "website": null,
+            "category": "shopping",
+            "position": 210,
+            "avantages": [
+                {
+                    "id": "c0000000-0000-4000-8000-000000000007",
+                    "status": "published",
+                    "place_id": "b0000000-0000-4000-8000-000000000020",
+                    "title_en": "15% off in store",
+                    "title_fr": "-15 % sur la boutique",
+                    "created_at": "2026-07-29T17:34:57.800303+00:00",
+                    "updated_at": "2026-07-29T17:34:57.800303+00:00",
+                    "valid_from": "2026-01-01",
+                    "valid_until": "2026-08-31",
+                    "conditions_en": "Excludes sale periods. Not combinable with other discounts. One use per stay.",
+                    "conditions_fr": "Hors périodes de soldes. Non cumulable avec une autre remise. Une utilisation par séjour.",
+                    "description_en": "Fifteen percent off everything in store.",
+                    "description_fr": "Quinze pour cent de remise sur l'ensemble des pièces."
+                }
+            ],
+            "instagram": "fripecharlot",
+            "photo_url": null,
+            "created_at": "2026-07-29T17:34:57.792918+00:00",
+            "updated_at": "2026-07-29T17:34:57.792918+00:00",
+            "booking_url": null,
+            "is_featured": false,
+            "price_range": 2,
+            "verified_at": "2026-06-14",
+            "long_desc_en": "Curated vintage rather than a bin to rummage through: two hundred selected pieces from the 60s to the 90s. Prices are marked and alterations are done on site at no charge.",
+            "long_desc_fr": "Une friperie triée, pas un bac à fouiller : deux cents pièces sélectionnées, des années 60 aux années 90. Les prix sont affichés, la retouche est offerte sur place.",
+            "hotel_note_en": "Properly curated vintage. Alterations are done on site at no charge.",
+            "hotel_note_fr": "Friperie sérieusement triée. La retouche est offerte sur place.",
+            "opening_hours": {
+                "fri": [
+                    [
+                        "13:00",
+                        "19:30"
+                    ]
+                ],
+                "mon": [
+                    [
+                        "13:00",
+                        "19:30"
+                    ]
+                ],
+                "sat": [
+                    [
+                        "12:00",
+                        "20:00"
+                    ]
+                ],
+                "sun": [
+                    [
+                        "14:00",
+                        "19:00"
+                    ]
+                ],
+                "thu": [
+                    [
+                        "13:00",
+                        "19:30"
+                    ]
+                ],
+                "tue": [
+                    [
+                        "13:00",
+                        "19:30"
+                    ]
+                ],
+                "wed": [
+                    [
+                        "13:00",
+                        "19:30"
+                    ]
+                ]
+            },
+            "short_desc_en": "Curated vintage, 1960s to 1990s.",
+            "short_desc_fr": "Friperie triée, pièces des années 60 à 90."
+        },
+        {
+            "id": "b0000000-0000-4000-8000-000000000021",
+            "lat": 48.8629,
+            "lng": 2.3621,
+            "city": "Paris",
+            "name": "Marché des Enfants Rouges",
+            "tags": [
+                "pluie",
+                "enfants",
+                "sans-resa"
+            ],
+            "phone": null,
+            "status": "published",
+            "address": "39 rue de Bretagne, 75003 Paris",
+            "website": null,
+            "category": "shopping",
+            "position": 220,
+            "avantages": [
+            ],
+            "instagram": null,
+            "photo_url": null,
+            "created_at": "2026-07-29T17:34:57.792918+00:00",
+            "updated_at": "2026-07-29T17:34:57.792918+00:00",
+            "booking_url": null,
+            "is_featured": false,
+            "price_range": 1,
+            "verified_at": "2026-06-25",
+            "long_desc_en": "The oldest covered market in Paris, opened in 1615. Greengrocers, food stalls from all over, and a few tightly packed tables. Rammed at lunchtime — go around 11am or after 2pm.",
+            "long_desc_fr": "Le plus vieux marché couvert de Paris, ouvert en 1615. Maraîchers, traiteurs du monde entier et quelques tables serrées. À midi c'est bondé : y aller vers 11 h ou après 14 h.",
+            "hotel_note_en": "The covered market from 1615. Ideal on a rainy lunchtime.",
+            "hotel_note_fr": "Le marché couvert de 1615. Idéal un midi de pluie.",
+            "opening_hours": {
+                "fri": [
+                    [
+                        "08:30",
+                        "20:30"
+                    ]
+                ],
+                "mon": [
+                ],
+                "sat": [
+                    [
+                        "08:30",
+                        "20:30"
+                    ]
+                ],
+                "sun": [
+                    [
+                        "08:30",
+                        "17:00"
+                    ]
+                ],
+                "thu": [
+                    [
+                        "08:30",
+                        "20:30"
+                    ]
+                ],
+                "tue": [
+                    [
+                        "08:30",
+                        "20:30"
+                    ]
+                ],
+                "wed": [
+                    [
+                        "08:30",
+                        "20:30"
+                    ]
+                ]
+            },
+            "short_desc_en": "The oldest covered market in Paris (1615).",
+            "short_desc_fr": "Le plus vieux marché couvert de Paris (1615)."
+        },
+        {
+            "id": "b0000000-0000-4000-8000-000000000022",
+            "lat": 48.8556,
+            "lng": 2.3655,
+            "city": "Paris",
+            "name": "Place des Vosges",
+            "tags": [
+                "enfants",
+                "terrasse"
+            ],
+            "phone": null,
+            "status": "published",
+            "address": "Place des Vosges, 75004 Paris",
+            "website": null,
+            "category": "balade",
+            "position": 230,
+            "avantages": [
+            ],
+            "instagram": null,
+            "photo_url": null,
+            "created_at": "2026-07-29T17:34:57.792918+00:00",
+            "updated_at": "2026-07-29T17:34:57.792918+00:00",
+            "booking_url": null,
+            "is_featured": false,
+            "price_range": 1,
+            "verified_at": "2026-06-25",
+            "long_desc_en": "Thirty-six pink-brick pavilions around a square of lawns. Walk the arcades when it rains, sit on the grass when it doesn't. The garden closes at dusk.",
+            "long_desc_fr": "Trente-six pavillons de brique rose autour d'un carré de pelouses. On fait le tour sous les arcades quand il pleut, on s'assoit sur l'herbe quand il fait beau. Le jardin ferme à la tombée de la nuit.",
+            "hotel_note_en": "Five minutes via the rue de Turenne. The arcades stay dry when it rains.",
+            "hotel_note_fr": "Cinq minutes par la rue de Turenne. Les arcades restent sèches quand il pleut.",
+            "opening_hours": {
+                "fri": [
+                    [
+                        "08:00",
+                        "21:00"
+                    ]
+                ],
+                "mon": [
+                    [
+                        "08:00",
+                        "21:00"
+                    ]
+                ],
+                "sat": [
+                    [
+                        "08:00",
+                        "21:00"
+                    ]
+                ],
+                "sun": [
+                    [
+                        "08:00",
+                        "21:00"
+                    ]
+                ],
+                "thu": [
+                    [
+                        "08:00",
+                        "21:00"
+                    ]
+                ],
+                "tue": [
+                    [
+                        "08:00",
+                        "21:00"
+                    ]
+                ],
+                "wed": [
+                    [
+                        "08:00",
+                        "21:00"
+                    ]
+                ]
+            },
+            "short_desc_en": "The oldest square in Paris: arcades and lawns.",
+            "short_desc_fr": "La plus ancienne place de Paris, arcades et pelouses."
+        },
+        {
+            "id": "b0000000-0000-4000-8000-000000000024",
+            "lat": 48.8615,
+            "lng": 2.3561,
+            "city": "Paris",
+            "name": "Pharmacie du Temple",
+            "tags": [
+            ],
+            "phone": "+33142720024",
+            "status": "published",
+            "address": "84 rue du Temple, 75003 Paris",
+            "website": null,
+            "category": "pratique",
+            "position": 240,
+            "avantages": [
+            ],
+            "instagram": null,
+            "photo_url": null,
+            "created_at": "2026-07-29T17:34:57.792918+00:00",
+            "updated_at": "2026-07-29T17:34:57.792918+00:00",
+            "booking_url": null,
+            "is_featured": false,
+            "price_range": 1,
+            "verified_at": "2026-06-25",
+            "long_desc_en": "Open until 9pm on weekdays with English-speaking staff. The closest option to the hotel for an evening emergency.",
+            "long_desc_fr": "Ouverte jusqu'à 21 h en semaine, personnel anglophone. La plus proche de l'hôtel pour un dépannage du soir.",
+            "hotel_note_en": "The nearest pharmacy, open until 9pm.",
+            "hotel_note_fr": "La pharmacie la plus proche, ouverte jusqu'à 21 h.",
+            "opening_hours": {
+                "fri": [
+                    [
+                        "08:30",
+                        "21:00"
+                    ]
+                ],
+                "mon": [
+                    [
+                        "08:30",
+                        "21:00"
+                    ]
+                ],
+                "sat": [
+                    [
+                        "09:00",
+                        "20:00"
+                    ]
+                ],
+                "sun": [
+                    [
+                        "10:00",
+                        "13:00"
+                    ]
+                ],
+                "thu": [
+                    [
+                        "08:30",
+                        "21:00"
+                    ]
+                ],
+                "tue": [
+                    [
+                        "08:30",
+                        "21:00"
+                    ]
+                ],
+                "wed": [
+                    [
+                        "08:30",
+                        "21:00"
+                    ]
+                ]
+            },
+            "short_desc_en": "Late-opening pharmacy, English-speaking staff.",
+            "short_desc_fr": "Pharmacie ouverte tard, personnel anglophone."
+        },
+        {
+            "id": "b0000000-0000-4000-8000-000000000025",
+            "lat": 48.8618,
+            "lng": 2.355,
+            "city": "Paris",
+            "name": "Le Sous-Sol",
+            "tags": [
+                "tardif",
+                "pluie"
+            ],
+            "phone": "+33142720025",
+            "status": "published",
+            "address": "12 rue Michel le Comte, 75003 Paris",
+            "website": "https://exemple.fr/le-sous-sol",
+            "category": "nuit",
+            "position": 250,
+            "avantages": [
+                {
+                    "id": "c0000000-0000-4000-8000-000000000008",
+                    "status": "published",
+                    "place_id": "b0000000-0000-4000-8000-000000000025",
+                    "title_en": "Reduced entry",
+                    "title_fr": "Entrée au tarif réduit",
+                    "created_at": "2026-07-29T17:34:57.800303+00:00",
+                    "updated_at": "2026-07-29T17:34:57.800303+00:00",
+                    "valid_from": "2026-01-01",
+                    "valid_until": "2026-12-31",
+                    "conditions_en": "Subject to availability. Maximum two entries. Phoning ahead is advised.",
+                    "conditions_fr": "Dans la limite des places disponibles. Deux entrées maximum. Réservation conseillée par téléphone.",
+                    "description_en": "Reduced entry for Thursday and Friday concerts.",
+                    "description_fr": "Entrée au tarif réduit pour les concerts du jeudi et du vendredi."
+                }
+            ],
+            "instagram": "lesoussol.jazz",
+            "photo_url": null,
+            "created_at": "2026-07-29T17:34:57.792918+00:00",
+            "updated_at": "2026-07-29T17:34:57.792918+00:00",
+            "booking_url": null,
+            "is_featured": false,
+            "price_range": 2,
+            "verified_at": "2026-06-11",
+            "long_desc_en": "A vaulted cellar under a 17th-century building, jazz sets at 9.30pm Thursday to Saturday. Fifty seats, pay-what-you-like on Thursdays. The sound is best at the back left.",
+            "long_desc_fr": "Une cave voûtée sous un immeuble du XVIIe, concerts de jazz à 21 h 30 du jeudi au samedi. Cinquante places, entrée à prix libre le jeudi. Le son est meilleur au fond à gauche.",
+            "hotel_note_en": "Sets at 9.30pm. Ask for a seat at the back left, where the sound is best.",
+            "hotel_note_fr": "Concerts à 21 h 30. Demandez une place au fond à gauche, le son y est meilleur.",
+            "opening_hours": {
+                "fri": [
+                    [
+                        "20:00",
+                        "02:00"
+                    ]
+                ],
+                "mon": [
+                ],
+                "sat": [
+                    [
+                        "20:00",
+                        "02:00"
+                    ]
+                ],
+                "sun": [
+                ],
+                "thu": [
+                    [
+                        "20:00",
+                        "01:00"
+                    ]
+                ],
+                "tue": [
+                ],
+                "wed": [
+                ]
+            },
+            "short_desc_en": "Vaulted cellar, jazz sets Thursday to Saturday.",
+            "short_desc_fr": "Cave voûtée, concerts jazz du jeudi au samedi."
+        },
+        {
+            "id": "b0000000-0000-4000-8000-000000000012",
+            "lat": 48.8599,
+            "lng": 2.363,
+            "city": "Paris",
+            "name": "Fournil Sainte-Anastase",
+            "tags": [
+                "sans-resa"
+            ],
+            "phone": "+33142720012",
+            "status": "published",
+            "address": "6 rue Sainte-Anastase, 75003 Paris",
+            "website": null,
+            "category": "boulangerie",
+            "position": 30,
+            "avantages": [
+            ],
+            "instagram": null,
+            "photo_url": null,
+            "created_at": "2026-07-29T17:34:57.792918+00:00",
+            "updated_at": "2026-07-29T17:34:57.792918+00:00",
+            "booking_url": null,
+            "is_featured": true,
+            "price_range": 1,
+            "verified_at": "2026-06-15",
+            "long_desc_en": "Sourdough, stone-milled flour, and a second bake at 5pm for anyone getting back late. The tradition baguette sells out before 10am on Sundays.",
+            "long_desc_fr": "Pain au levain, farines de meule, une seconde fournée à 17 h pour ceux qui rentrent tard. La baguette de tradition part avant 10 h le dimanche.",
+            "hotel_note_en": "The 5pm bake is worth timing your return for. The walnut bread goes fast.",
+            "hotel_note_fr": "La fournée de 17 h vaut le détour si vous rentrez tard. Le pain aux noix part très vite.",
+            "opening_hours": {
+                "fri": [
+                    [
+                        "07:00",
+                        "20:00"
+                    ]
+                ],
+                "mon": [
+                ],
+                "sat": [
+                    [
+                        "07:00",
+                        "20:00"
+                    ]
+                ],
+                "sun": [
+                    [
+                        "07:00",
+                        "14:00"
+                    ]
+                ],
+                "thu": [
+                    [
+                        "07:00",
+                        "20:00"
+                    ]
+                ],
+                "tue": [
+                    [
+                        "07:00",
+                        "20:00"
+                    ]
+                ],
+                "wed": [
+                    [
+                        "07:00",
+                        "20:00"
+                    ]
+                ]
+            },
+            "short_desc_en": "Naturally leavened bread, second bake at 5pm.",
+            "short_desc_fr": "Levain naturel, fournée de 17 h."
+        },
+        {
+            "id": "b0000000-0000-4000-8000-000000000023",
+            "lat": 48.8549,
+            "lng": 2.3643,
+            "city": "Paris",
+            "name": "Jardin de l'Hôtel de Sully",
+            "tags": [
+                "enfants"
+            ],
+            "phone": null,
+            "status": "published",
+            "address": "62 rue Saint-Antoine, 75004 Paris",
+            "website": null,
+            "category": "balade",
+            "position": 40,
+            "avantages": [
+            ],
+            "instagram": null,
+            "photo_url": null,
+            "created_at": "2026-07-29T17:34:57.792918+00:00",
+            "updated_at": "2026-07-29T17:34:57.792918+00:00",
+            "booking_url": null,
+            "is_featured": true,
+            "price_range": 1,
+            "verified_at": "2026-06-25",
+            "long_desc_en": "A formal garden wedged between two mansions, and above all a discreet passage that comes out directly on the Place des Vosges. Almost nobody knows it, though it is open to everyone.",
+            "long_desc_fr": "Un jardin à la française coincé entre deux hôtels particuliers, et surtout un passage discret qui débouche directement sur la place des Vosges. Presque personne ne le connaît, alors qu'il est ouvert à tous.",
+            "hotel_note_en": "Our favourite shortcut to the Place des Vosges. Cross the garden; the far door is open to everyone.",
+            "hotel_note_fr": "Notre raccourci préféré vers la place des Vosges. Traversez le jardin, la porte du fond est ouverte à tous.",
+            "opening_hours": {
+                "fri": [
+                    [
+                        "09:00",
+                        "19:00"
+                    ]
+                ],
+                "mon": [
+                    [
+                        "09:00",
+                        "19:00"
+                    ]
+                ],
+                "sat": [
+                    [
+                        "09:00",
+                        "19:00"
+                    ]
+                ],
+                "sun": [
+                    [
+                        "09:00",
+                        "19:00"
+                    ]
+                ],
+                "thu": [
+                    [
+                        "09:00",
+                        "19:00"
+                    ]
+                ],
+                "tue": [
+                    [
+                        "09:00",
+                        "19:00"
+                    ]
+                ],
+                "wed": [
+                    [
+                        "09:00",
+                        "19:00"
+                    ]
+                ]
+            },
+            "short_desc_en": "A quiet shortcut between Saint-Antoine and the Place des Vosges.",
+            "short_desc_fr": "Passage discret entre Saint-Antoine et la place des Vosges."
+        },
+        {
+            "id": "b0000000-0000-4000-8000-000000000002",
+            "lat": 48.8586,
+            "lng": 2.3546,
+            "city": "Paris",
+            "name": "Table Sainte-Croix",
+            "tags": [
+                "enfants"
+            ],
+            "phone": "+33142720002",
+            "status": "published",
+            "address": "9 rue Sainte-Croix de la Bretonnerie, 75004 Paris",
+            "website": "https://exemple.fr/table-sainte-croix",
+            "category": "restaurant",
+            "position": 50,
+            "avantages": [
+                {
+                    "id": "c0000000-0000-4000-8000-000000000002",
+                    "status": "published",
+                    "place_id": "b0000000-0000-4000-8000-000000000002",
+                    "title_en": "10% off the bill",
+                    "title_fr": "-10 % sur l'addition",
+                    "created_at": "2026-07-29T17:34:57.800303+00:00",
+                    "updated_at": "2026-07-29T17:34:57.800303+00:00",
+                    "valid_from": "2026-01-01",
+                    "valid_until": "2026-12-31",
+                    "conditions_en": "Excludes group menus and 24 and 31 December. One discount per table. Show before the bill arrives.",
+                    "conditions_fr": "Hors menus de groupe et hors 24 et 31 décembre. Une remise par table. À présenter avant l'arrivée de l'addition.",
+                    "description_en": "Ten percent off the total, drinks included.",
+                    "description_fr": "Dix pour cent de remise sur le total, boissons comprises."
+                }
+            ],
+            "instagram": null,
+            "photo_url": null,
+            "created_at": "2026-07-29T17:34:57.792918+00:00",
+            "updated_at": "2026-07-29T17:34:57.792918+00:00",
+            "booking_url": "https://exemple.fr/table-sainte-croix/reserver",
+            "is_featured": false,
+            "price_range": 3,
+            "verified_at": "2026-06-12",
+            "long_desc_en": "Under the vaults of a former wine cellar, south-western cooking run by the same family since 1998. Duck, tarbais beans, prunes in armagnac. Generous portions, unhurried service. Book ahead at weekends.",
+            "long_desc_fr": "Sous les voûtes d'une ancienne cave à vin, une cuisine du Sud-Ouest tenue par la même famille depuis 1998. Canard, haricots tarbais, pruneaux à l'armagnac. Portions généreuses, service qui prend le temps. Réservation vivement conseillée le week-end.",
+            "hotel_note_en": "For a long dinner. Book ahead, especially on Saturdays.",
+            "hotel_note_fr": "Pour un dîner qui dure. Réservez, surtout le samedi.",
+            "opening_hours": {
+                "fri": [
+                    [
+                        "19:00",
+                        "23:00"
+                    ]
+                ],
+                "mon": [
+                    [
+                        "19:00",
+                        "22:30"
+                    ]
+                ],
+                "sat": [
+                    [
+                        "12:00",
+                        "14:30"
+                    ],
+                    [
+                        "19:00",
+                        "23:00"
+                    ]
+                ],
+                "sun": [
+                    [
+                        "12:00",
+                        "15:00"
+                    ]
+                ],
+                "thu": [
+                    [
+                        "19:00",
+                        "22:30"
+                    ]
+                ],
+                "tue": [
+                    [
+                        "19:00",
+                        "22:30"
+                    ]
+                ],
+                "wed": [
+                    [
+                        "19:00",
+                        "22:30"
+                    ]
+                ]
+            },
+            "short_desc_en": "South-west French cooking under a 17th-century vaulted ceiling.",
+            "short_desc_fr": "Cuisine du sud-ouest, salle voûtée du XVIIe."
+        },
+        {
+            "id": "b0000000-0000-4000-8000-000000000003",
+            "lat": 48.8612,
+            "lng": 2.3578,
+            "city": "Paris",
+            "name": "Kubo",
+            "tags": [
+                "sans-resa",
+                "tardif"
+            ],
+            "phone": "+33142720003",
+            "status": "published",
+            "address": "4 rue de Braque, 75003 Paris",
+            "website": null,
+            "category": "restaurant",
+            "position": 60,
+            "avantages": [
+            ],
+            "instagram": "kubo.paris",
+            "photo_url": null,
+            "created_at": "2026-07-29T17:34:57.792918+00:00",
+            "updated_at": "2026-07-29T17:34:57.792918+00:00",
+            "booking_url": null,
+            "is_featured": false,
+            "price_range": 2,
+            "verified_at": "2026-05-30",
+            "long_desc_en": "Fifteen stools facing the counter and no written menu: the chef announces whatever he found at Rungis that morning. Allow ninety minutes, no more. No bookings — write your name in the notebook by the door.",
+            "long_desc_fr": "Quinze tabourets face au comptoir, aucun menu écrit : le chef annonce ce qu'il a trouvé le matin à Rungis. Compter une heure trente, pas plus — le service tourne. Pas de réservation, on inscrit son prénom sur le carnet à l'entrée.",
+            "hotel_note_en": "Only fifteen seats: drop by in the late afternoon to leave your name.",
+            "hotel_note_fr": "Quinze places seulement : passez inscrire votre prénom en fin d'après-midi.",
+            "opening_hours": {
+                "fri": [
+                    [
+                        "19:00",
+                        "22:30"
+                    ]
+                ],
+                "mon": [
+                ],
+                "sat": [
+                    [
+                        "19:00",
+                        "22:30"
+                    ]
+                ],
+                "sun": [
+                ],
+                "thu": [
+                    [
+                        "19:00",
+                        "22:00"
+                    ]
+                ],
+                "tue": [
+                    [
+                        "19:00",
+                        "22:00"
+                    ]
+                ],
+                "wed": [
+                    [
+                        "19:00",
+                        "22:00"
+                    ]
+                ]
+            },
+            "short_desc_en": "Japanese counter, fifteen seats, fish of the day.",
+            "short_desc_fr": "Comptoir japonais, quinze places, poisson du jour."
+        },
+        {
+            "id": "b0000000-0000-4000-8000-000000000004",
+            "lat": 48.8569,
+            "lng": 2.3584,
+            "city": "Paris",
+            "name": "Chez Perrine",
+            "tags": [
+                "sans-resa",
+                "enfants"
+            ],
+            "phone": "+33142720004",
+            "status": "published",
+            "address": "21 rue du Roi de Sicile, 75004 Paris",
+            "website": null,
+            "category": "restaurant",
+            "position": 70,
+            "avantages": [
+            ],
+            "instagram": null,
+            "photo_url": null,
+            "created_at": "2026-07-29T17:34:57.792918+00:00",
+            "updated_at": "2026-07-29T17:34:57.792918+00:00",
+            "booking_url": null,
+            "is_featured": false,
+            "price_range": 1,
+            "verified_at": "2026-06-01",
+            "long_desc_en": "An unfussy canteen where you eat for under twenty euros. Paper tablecloths, the day's dish chalked on the window, a carafe of water brought without asking. Packed between 12.30 and 1.30pm — come before or after.",
+            "long_desc_fr": "Une cantine sans manières où l'on mange pour moins de vingt euros. Nappes en papier, plat du jour affiché à la craie sur la vitrine, une carafe d'eau posée sans qu'on la demande. Bondé entre 12 h 30 et 13 h 30 : venir avant ou après.",
+            "hotel_note_en": "Lunch, quick and good and cheap. Avoid 12.30pm.",
+            "hotel_note_fr": "Le midi, pour manger vite et bien sans se ruiner. Évitez 12 h 30.",
+            "opening_hours": {
+                "fri": [
+                    [
+                        "12:00",
+                        "15:00"
+                    ]
+                ],
+                "mon": [
+                    [
+                        "12:00",
+                        "15:00"
+                    ]
+                ],
+                "sat": [
+                ],
+                "sun": [
+                ],
+                "thu": [
+                    [
+                        "12:00",
+                        "15:00"
+                    ]
+                ],
+                "tue": [
+                    [
+                        "12:00",
+                        "15:00"
+                    ]
+                ],
+                "wed": [
+                    [
+                        "12:00",
+                        "15:00"
+                    ]
+                ]
+            },
+            "short_desc_en": "Family canteen, daily special at €14.",
+            "short_desc_fr": "Cantine familiale, plat du jour à 14 €."
+        },
+        {
+            "id": "b0000000-0000-4000-8000-000000000005",
+            "lat": 48.8631,
+            "lng": 2.3624,
+            "city": "Paris",
+            "name": "Verger",
+            "tags": [
+                "vegan",
+                "terrasse"
+            ],
+            "phone": "+33142720005",
+            "status": "published",
+            "address": "55 rue Charlot, 75003 Paris",
+            "website": "https://exemple.fr/verger",
+            "category": "restaurant",
+            "position": 80,
+            "avantages": [
+                {
+                    "id": "c0000000-0000-4000-8000-000000000003",
+                    "status": "published",
+                    "place_id": "b0000000-0000-4000-8000-000000000005",
+                    "title_en": "Complimentary dessert",
+                    "title_fr": "Dessert offert",
+                    "created_at": "2026-07-29T17:34:57.800303+00:00",
+                    "updated_at": "2026-07-29T17:34:57.800303+00:00",
+                    "valid_from": "2026-03-01",
+                    "valid_until": "2026-11-30",
+                    "conditions_en": "Lunch and dinner, Wednesday to Sunday. One dessert per two set menus. Show this screen before ordering.",
+                    "conditions_fr": "Valable midi et soir, du mercredi au dimanche. Un dessert pour deux menus. Sur présentation de l'écran avant la commande.",
+                    "description_en": "The dessert of the day, free with two set menus ordered.",
+                    "description_fr": "Le dessert du jour offert pour deux menus commandés."
+                }
+            ],
+            "instagram": "verger.paris",
+            "photo_url": null,
+            "created_at": "2026-07-29T17:34:57.792918+00:00",
+            "updated_at": "2026-07-29T17:34:57.792918+00:00",
+            "booking_url": "https://exemple.fr/verger/reserver",
+            "is_featured": false,
+            "price_range": 3,
+            "verified_at": "2026-06-20",
+            "long_desc_en": "Fully plant-based cooking without the lecture: vegetables from four farms around Paris, menu rewritten every three weeks. Five-course tasting menu in the evening, a shorter set lunch. Good natural wine list.",
+            "long_desc_fr": "Cuisine entièrement végétale, sans militantisme affiché : les légumes viennent de quatre fermes d'Île-de-France et la carte change toutes les trois semaines. Menu en cinq services le soir, formule courte le midi. Belle carte de vins nature.",
+            "hotel_note_en": "Even if you are not vegetarian. The evening menu is the best thing in the neighbourhood.",
+            "hotel_note_fr": "Même si vous n'êtes pas végétarien. Le menu du soir est ce qui se fait de mieux dans le quartier.",
+            "opening_hours": {
+                "fri": [
+                    [
+                        "12:00",
+                        "14:00"
+                    ],
+                    [
+                        "19:30",
+                        "22:30"
+                    ]
+                ],
+                "mon": [
+                ],
+                "sat": [
+                    [
+                        "19:30",
+                        "22:30"
+                    ]
+                ],
+                "sun": [
+                    [
+                        "12:00",
+                        "15:00"
+                    ]
+                ],
+                "thu": [
+                    [
+                        "12:00",
+                        "14:00"
+                    ],
+                    [
+                        "19:30",
+                        "22:00"
+                    ]
+                ],
+                "tue": [
+                ],
+                "wed": [
+                    [
+                        "12:00",
+                        "14:00"
+                    ],
+                    [
+                        "19:30",
+                        "22:00"
+                    ]
+                ]
+            },
+            "short_desc_en": "Fully plant-based, produce from the Paris region.",
+            "short_desc_fr": "Entièrement végétal, produits d'Île-de-France."
+        },
+        {
+            "id": "b0000000-0000-4000-8000-000000000007",
+            "lat": 48.8574,
+            "lng": 2.3596,
+            "city": "Paris",
+            "name": "Bar des Rosiers",
+            "tags": [
+                "tardif"
+            ],
+            "phone": "+33142720007",
+            "status": "published",
+            "address": "14 rue des Rosiers, 75004 Paris",
+            "website": null,
+            "category": "bar",
+            "position": 90,
+            "avantages": [
+            ],
+            "instagram": null,
+            "photo_url": null,
+            "created_at": "2026-07-29T17:34:57.792918+00:00",
+            "updated_at": "2026-07-29T17:34:57.792918+00:00",
+            "booking_url": null,
+            "is_featured": false,
+            "price_range": 2,
+            "verified_at": "2026-05-28",
+            "long_desc_en": "A dozen classic cocktails made properly, in a room unchanged for twenty years. No smoke, no tweezers: a negroni, a daiquiri, a conversation. Last orders at 1am.",
+            "long_desc_fr": "Une dizaine de cocktails classiques exécutés correctement, dans une salle qui n'a pas changé depuis vingt ans. Pas de fumée, pas de pince à épiler : un negroni, un daiquiri, une conversation. Dernier service à 1 h.",
+            "hotel_note_en": "For a quiet last drink, without loud music.",
+            "hotel_note_fr": "Pour un dernier verre calme, sans musique forte.",
+            "opening_hours": {
+                "fri": [
+                    [
+                        "18:00",
+                        "02:00"
+                    ]
+                ],
+                "mon": [
+                ],
+                "sat": [
+                    [
+                        "18:00",
+                        "02:00"
+                    ]
+                ],
+                "sun": [
+                    [
+                        "18:00",
+                        "00:00"
+                    ]
+                ],
+                "thu": [
+                    [
+                        "18:00",
+                        "02:00"
+                    ]
+                ],
+                "tue": [
+                    [
+                        "18:00",
+                        "01:00"
+                    ]
+                ],
+                "wed": [
+                    [
+                        "18:00",
+                        "01:00"
+                    ]
+                ]
+            },
+            "short_desc_en": "Classic cocktails, no theatrics.",
+            "short_desc_fr": "Cocktails classiques, sans esbroufe."
+        }
+    ],
+    "itineraires": [
+        {
+            "id": "d0000000-0000-4000-8000-000000000001",
+            "city": "Paris",
+            "tags": [
+                "demi-journee",
+                "enfants"
+            ],
+            "steps": [
+                {
+                    "order": 1,
+                    "note_en": "Start with a filter coffee to take away — the shop has only four stools.",
+                    "note_fr": "Commencez par un filtre, à emporter : la boutique ne compte que quatre tabourets.",
+                    "place_id": "b0000000-0000-4000-8000-000000000009"
+                },
+                {
+                    "order": 2,
+                    "note_en": "Two hours is plenty. Go straight to the second floor.",
+                    "note_fr": "Deux heures suffisent. Montez directement au deuxième étage.",
+                    "place_id": "b0000000-0000-4000-8000-000000000016"
+                },
+                {
+                    "order": 3,
+                    "note_en": "Lunch standing at the market. Around 11am or after 2pm, never at noon.",
+                    "note_fr": "Déjeuner debout au marché. Vers 11 h ou après 14 h, jamais à midi.",
+                    "place_id": "b0000000-0000-4000-8000-000000000021"
+                },
+                {
+                    "order": 4,
+                    "note_en": "Walk the arcades, then sit on the grass.",
+                    "note_fr": "Faites le tour sous les arcades, puis asseyez-vous sur la pelouse.",
+                    "place_id": "b0000000-0000-4000-8000-000000000022"
+                },
+                {
+                    "order": 5,
+                    "note_en": "Leave through the Sully garden: the passage at the back leads back to the rue Saint-Antoine.",
+                    "note_fr": "Sortez par le jardin de Sully : le passage du fond ramène rue Saint-Antoine.",
+                    "place_id": "b0000000-0000-4000-8000-000000000023"
+                },
+                {
+                    "order": 6,
+                    "note_en": "Finish at the bar. Your perk: second glass half price before 8pm.",
+                    "note_fr": "Terminez au comptoir. Votre avantage : deuxième verre à moitié prix avant 20 h.",
+                    "place_id": "b0000000-0000-4000-8000-000000000006"
+                }
+            ],
+            "status": "published",
+            "hotel_id": null,
+            "title_en": "The Marais in half a day",
+            "title_fr": "Le Marais en une demi-journée",
+            "created_at": "2026-07-29T17:34:57.811396+00:00",
+            "updated_at": "2026-07-29T17:34:57.811396+00:00",
+            "description_en": "A three-kilometre loop that starts with a coffee and ends with a drink, by way of the oldest covered market in Paris.",
+            "description_fr": "Une boucle de trois kilomètres qui part du café du coin et finit devant un verre, en passant par le plus vieux marché couvert de Paris.",
+            "duration_minutes": 240
+        },
+        {
+            "id": "d0000000-0000-4000-8000-000000000002",
+            "city": "Paris",
+            "tags": [
+                "soir",
+                "pluie"
+            ],
+            "steps": [
+                {
+                    "order": 1,
+                    "note_en": "Aperitif at 6.30pm, before the bar fills up.",
+                    "note_fr": "Apéritif à 18 h 30, avant que le comptoir ne se remplisse.",
+                    "place_id": "b0000000-0000-4000-8000-000000000006"
+                },
+                {
+                    "order": 2,
+                    "note_en": "Dinner at 7.30pm. The dessert of the day is on the house with two set menus.",
+                    "note_fr": "Dîner à 19 h 30. Le dessert du jour vous est offert pour deux menus.",
+                    "place_id": "b0000000-0000-4000-8000-000000000005"
+                },
+                {
+                    "order": 3,
+                    "note_en": "Set at 9.30pm, Thursday to Saturday. Reduced entry with your perk.",
+                    "note_fr": "Concert à 21 h 30, du jeudi au samedi. Tarif réduit avec votre avantage.",
+                    "place_id": "b0000000-0000-4000-8000-000000000025"
+                }
+            ],
+            "status": "published",
+            "hotel_id": "a0000000-0000-4000-8000-000000000001",
+            "title_en": "An evening in the upper Marais",
+            "title_fr": "Une soirée dans le Haut-Marais",
+            "created_at": "2026-07-29T17:34:57.811396+00:00",
+            "updated_at": "2026-07-29T17:34:57.811396+00:00",
+            "description_en": "Three stops within forty-five minutes of walking, from aperitif to a midnight set.",
+            "description_fr": "Trois arrêts en trois quarts d'heure de marche, de l'apéritif au concert de minuit.",
+            "duration_minutes": 210
+        }
+    ]
+}

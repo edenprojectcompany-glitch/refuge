@@ -1,5 +1,6 @@
 import { cache } from 'react';
 import { baliseGuide, creerClientPublic } from '@/lib/supabase/public';
+import { hotelDemo, itinerairesDemo, lieuxDemo, modeDemo } from './demo';
 import type { Avantage, Hotel, Itineraire, Lieu, LieuDuGuide } from '@/lib/types';
 
 /**
@@ -27,6 +28,8 @@ interface LigneCuration {
 }
 
 export const chargerHotel = cache(async (slug: string): Promise<Hotel | null> => {
+  if (modeDemo()) return hotelDemo(slug);
+
   const supabase = creerClientPublic(baliseGuide(slug));
   const { data, error } = await supabase
     .from('hotels')
@@ -42,6 +45,8 @@ export const chargerHotel = cache(async (slug: string): Promise<Hotel | null> =>
 export const chargerGuide = cache(async (slug: string): Promise<Guide | null> => {
   const hotel = await chargerHotel(slug);
   if (!hotel) return null;
+
+  if (modeDemo()) return { hotel, lieux: lieuxDemo(slug) };
 
   const supabase = creerClientPublic(baliseGuide(slug));
   const { data, error } = await supabase
@@ -87,6 +92,8 @@ export const chargerGuide = cache(async (slug: string): Promise<Guide | null> =>
 export const chargerItineraires = cache(async (slug: string): Promise<Itineraire[]> => {
   const hotel = await chargerHotel(slug);
   if (!hotel) return [];
+
+  if (modeDemo()) return itinerairesDemo(slug);
 
   const supabase = creerClientPublic(baliseGuide(slug));
   const { data, error } = await supabase

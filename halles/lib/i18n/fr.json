@@ -1,0 +1,53 @@
+{
+  "commun": {
+    "retour": "Retour",
+    "voirLaFiche": "Voir la fiche",
+    "fermer": "Fermer",
+    "chargement": "Chargement…"
+  },
+  "accueil": {
+    "bandeauTitre": "Vos avantages dans le quartier",
+    "bandeauSousTitre_un": "1 établissement partenaire, sur présentation de cet écran",
+    "bandeauSousTitre_autre": "{n} établissements partenaires, sur présentation de cet écran",
+    "voirLesAvantages": "Voir mes avantages",
+    "categoriesTitre": "Explorer le quartier",
+    "incontournablesTitre": "Les incontournables",
+    "incontournablesIntro": "Choisis par l'équipe de l'hôtel.",
+    "infosTitre": "Infos pratiques",
+    "toutesLesInfos": "Toutes les infos pratiques",
+    "voirLaCarte": "Voir la carte"
+  },
+  "categories": {
+    "restaurant": "Restaurants",
+    "bar": "Bars",
+    "cafe": "Cafés",
+    "boulangerie": "Boulangeries",
+    "brunch": "Brunchs",
+    "culture": "Culture",
+    "shopping": "Boutiques",
+    "balade": "Balades",
+    "pratique": "Pratique",
+    "nuit": "Sorties"
+  },
+  "infos": {
+    "wifi": "Wi-Fi",
+    "reseau": "Réseau",
+    "motDePasse": "Mot de passe",
+    "copier": "Copier",
+    "copie": "Copié",
+    "petitDejeuner": "Petit-déjeuner",
+    "arrivee": "Arrivée",
+    "depart": "Départ",
+    "transports": "Transports",
+    "contact": "Contact",
+    "ecrireWhatsapp": "Écrire sur WhatsApp",
+    "appelerHotel": "Appeler la réception"
+  },
+  "lieu": {
+    "leMotDeLHotel": "Le mot de l'hôtel",
+    "minutesAPied": "{n} min à pied",
+    "ouvert": "Ouvert",
+    "ferme": "Fermé",
+    "avantage": "Votre avantage"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "commun": {
+    "retour": "Back",
+    "voirLaFiche": "View details",
+    "fermer": "Close",
+    "chargement": "Loading…"
+  },
+  "accueil": {
+    "bandeauTitre": "Your perks in the neighbourhood",
+    "bandeauSousTitre_un": "1 partner venue — just show this screen",
+    "bandeauSousTitre_autre": "{n} partner venues — just show this screen",
+    "voirLesAvantages": "See my perks",
+    "categoriesTitre": "Explore the neighbourhood",
+    "incontournablesTitre": "Not to be missed",
+    "incontournablesIntro": "Chosen by the hotel team.",
+    "infosTitre": "Practical information",
+    "toutesLesInfos": "All practical information",
+    "voirLaCarte": "Open the map"
+  },
+  "categories": {
+    "restaurant": "Restaurants",
+    "bar": "Bars",
+    "cafe": "Cafés",
+    "boulangerie": "Bakeries",
+    "brunch": "Brunch",
+    "culture": "Culture",
+    "shopping": "Shops",
+    "balade": "Walks",
+    "pratique": "Essentials",
+    "nuit": "Nightlife"
+  },
+  "infos": {
+    "wifi": "Wi-Fi",
+    "reseau": "Network",
+    "motDePasse": "Password",
+    "copier": "Copy",
+    "copie": "Copied",
+    "petitDejeuner": "Breakfast",
+    "arrivee": "Check-in",
+    "depart": "Check-out",
+    "transports": "Getting around",
+    "contact": "Contact",
+    "ecrireWhatsapp": "Message on WhatsApp",
+    "appelerHotel": "Call the front desk"
+  },
+  "lieu": {
+    "leMotDeLHotel": "A word from the hotel",
+    "minutesAPied": "{n} min walk",
+    "ouvert": "Open",
+    "ferme": "Closed",
+    "avantage": "Your perk"
+  }
+}

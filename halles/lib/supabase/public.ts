@@ -38,3 +38,17 @@ export function creerClientPublic(baliseCache?: string) {
 export function baliseGuide(slug: string): string {
   return `guide:${slug}`;
 }
+
+/**
+ * Client d'écriture publique, sans cache.
+ *
+ * Réservé à l'ingestion des événements : y appliquer le `fetch` balisé du
+ * client de lecture n'aurait aucun sens sur une requête POST.
+ */
+export function creerClientEcriture() {
+  verifierEnvPublic();
+  return createClient(envPublic.supabaseUrl, envPublic.supabaseAnonKey, {
+    auth: { persistSession: false, autoRefreshToken: false },
+    global: { headers: { 'x-application-name': 'halles-track' } },
+  });
+}

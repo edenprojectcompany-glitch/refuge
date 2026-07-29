@@ -3,7 +3,17 @@
     "retour": "Back",
     "voirLaFiche": "View details",
     "fermer": "Close",
-    "chargement": "Loading…"
+    "chargement": "Loading…",
+    "accueil": "Home",
+    "carte": "Map",
+    "avantages": "Perks",
+    "infos": "Info",
+    "liste": "List",
+    "tout": "All",
+    "aucunResultat": "No address in this category.",
+    "installer": "Install the guide",
+    "installerTexte": "Add it to your home screen to find it again without the QR code.",
+    "plusTard": "Later"
   },
   "accueil": {
     "bandeauTitre": "Your perks in the neighbourhood",
@@ -15,7 +25,9 @@
     "incontournablesIntro": "Chosen by the hotel team.",
     "infosTitre": "Practical information",
     "toutesLesInfos": "All practical information",
-    "voirLaCarte": "Open the map"
+    "voirLaCarte": "Open the map",
+    "itinerairesTitre": "Take a walk",
+    "itinerairesIntro": "Ready-made routes to follow."
   },
   "categories": {
     "restaurant": "Restaurants",
@@ -41,13 +53,58 @@
     "transports": "Getting around",
     "contact": "Contact",
     "ecrireWhatsapp": "Message on WhatsApp",
-    "appelerHotel": "Call the front desk"
+    "appelerHotel": "Call the front desk",
+    "titre": "Practical information",
+    "adresse": "Address"
   },
   "lieu": {
     "leMotDeLHotel": "A word from the hotel",
     "minutesAPied": "{n} min walk",
     "ouvert": "Open",
     "ferme": "Closed",
-    "avantage": "Your perk"
+    "avantage": "Your perk",
+    "ouvertJusqua": "Open until {h}",
+    "fermeJusqua": "Closed · opens at {h}",
+    "fermeReouvre": "Closed · reopens {j}",
+    "fermeAujourdhui": "Closed today",
+    "horaires": "Opening hours",
+    "ferme_jour": "Closed",
+    "itineraire": "Directions",
+    "appeler": "Call",
+    "siteWeb": "Website",
+    "reserver": "Book",
+    "instagram": "Instagram",
+    "aPropos": "About",
+    "depuisHotel": "From the hotel",
+    "voirAvantage": "See the perk"
+  },
+  "carte": {
+    "titre": "The neighbourhood map",
+    "votreHotel": "Your hotel",
+    "indisponible": "The map is not available yet.",
+    "indisponibleTexte": "Every address is still browsable as a list.",
+    "avecAvantage": "With a perk",
+    "chargement": "Loading the map…"
+  },
+  "avantages": {
+    "titre": "Your perks",
+    "intro": "Negotiated by the hotel for its guests. Just show this screen before ordering.",
+    "aucun": "No active perk at the moment.",
+    "conditions": "Conditions",
+    "valableJusqua": "Valid until {d}",
+    "sansLimite": "No end date",
+    "presentation": "Show this to the staff",
+    "clientDe": "Guest of",
+    "leJour": "{d}",
+    "expire": "This offer has ended.",
+    "voirLeLieu": "See the address"
+  },
+  "itineraires": {
+    "titre": "Walks",
+    "etape": "Stop {n}",
+    "minutesDeMarche": "{n} min walk",
+    "duree": "Duration",
+    "aucun": "No walk available yet.",
+    "depuisHotel": "From the hotel"
   }
 }

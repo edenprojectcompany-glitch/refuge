@@ -22,6 +22,14 @@ export const envPublic = {
   /** Domaine racine, sans protocole ni port : `halles.app`, `localhost` en dev. */
   rootDomain: process.env.NEXT_PUBLIC_ROOT_DOMAIN ?? 'localhost',
   pmtilesUrl: process.env.NEXT_PUBLIC_PMTILES_URL ?? '',
+  /*
+   * Glyphes des libellés de la carte. Fichiers statiques servis par Protomaps,
+   * sans facturation à la vue ; la variable existe pour pouvoir les héberger
+   * soi-même sans toucher au code.
+   */
+  glyphsUrl:
+    process.env.NEXT_PUBLIC_GLYPHS_URL ??
+    'https://protomaps.github.io/basemaps-assets/fonts/{fontstack}/{range}.pbf',
 };
 
 export function verifierEnvPublic() {

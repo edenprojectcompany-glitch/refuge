@@ -1,6 +1,6 @@
 import { cache } from 'react';
 import { baliseGuide, creerClientPublic } from '@/lib/supabase/public';
-import type { Avantage, Hotel, Lieu, LieuDuGuide } from '@/lib/types';
+import type { Avantage, Hotel, Itineraire, Lieu, LieuDuGuide } from '@/lib/types';
 
 /**
  * Accès aux données du guide.
@@ -79,3 +79,34 @@ export const chargerGuide = cache(async (slug: string): Promise<Guide | null> =>
 
   return { hotel, lieux };
 });
+
+/**
+ * Itinéraires proposés dans un guide : ceux de l'hôtel et ceux ouverts à toute
+ * la ville. La RLS filtre déjà les brouillons et les hôtels dépubliés.
+ */
+export const chargerItineraires = cache(async (slug: string): Promise<Itineraire[]> => {
+  const hotel = await chargerHotel(slug);
+  if (!hotel) return [];
+
+  const supabase = creerClientPublic(baliseGuide(slug));
+  const { data, error } = await supabase
+    .from('itineraries')
+    .select('*')
+    .eq('city', hotel.city)
+    .or(`hotel_id.eq.${hotel.id},hotel_id.is.null`)
+    .order('duration_minutes', { ascending: true });
+
+  if (error) {
+    console.error('[guide] lecture des itinéraires impossible', error.message);
+    return [];
+  }
+  return (data ?? []) as Itineraire[];
+});
+
+/** Un itinéraire précis, à condition qu'il appartienne bien à ce guide. */
+export const chargerItineraire = cache(
+  async (slug: string, id: string): Promise<Itineraire | null> => {
+    const itineraires = await chargerItineraires(slug);
+    return itineraires.find((itineraire) => itineraire.id === id) ?? null;
+  },
+);

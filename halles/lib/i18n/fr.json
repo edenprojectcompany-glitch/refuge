@@ -3,7 +3,17 @@
     "retour": "Retour",
     "voirLaFiche": "Voir la fiche",
     "fermer": "Fermer",
-    "chargement": "Chargement…"
+    "chargement": "Chargement…",
+    "accueil": "Accueil",
+    "carte": "Carte",
+    "avantages": "Avantages",
+    "infos": "Infos",
+    "liste": "Liste",
+    "tout": "Tout",
+    "aucunResultat": "Aucune adresse dans cette catégorie.",
+    "installer": "Installer le guide",
+    "installerTexte": "Ajoutez-le à votre écran d'accueil pour le retrouver sans QR code.",
+    "plusTard": "Plus tard"
   },
   "accueil": {
     "bandeauTitre": "Vos avantages dans le quartier",
@@ -15,7 +25,9 @@
     "incontournablesIntro": "Choisis par l'équipe de l'hôtel.",
     "infosTitre": "Infos pratiques",
     "toutesLesInfos": "Toutes les infos pratiques",
-    "voirLaCarte": "Voir la carte"
+    "voirLaCarte": "Voir la carte",
+    "itinerairesTitre": "Se promener",
+    "itinerairesIntro": "Des parcours prêts à suivre."
   },
   "categories": {
     "restaurant": "Restaurants",
@@ -41,13 +53,58 @@
     "transports": "Transports",
     "contact": "Contact",
     "ecrireWhatsapp": "Écrire sur WhatsApp",
-    "appelerHotel": "Appeler la réception"
+    "appelerHotel": "Appeler la réception",
+    "titre": "Infos pratiques",
+    "adresse": "Adresse"
   },
   "lieu": {
     "leMotDeLHotel": "Le mot de l'hôtel",
     "minutesAPied": "{n} min à pied",
     "ouvert": "Ouvert",
     "ferme": "Fermé",
-    "avantage": "Votre avantage"
+    "avantage": "Votre avantage",
+    "ouvertJusqua": "Ouvert jusqu'à {h}",
+    "fermeJusqua": "Fermé · ouvre à {h}",
+    "fermeReouvre": "Fermé · rouvre {j}",
+    "fermeAujourdhui": "Fermé aujourd'hui",
+    "horaires": "Horaires",
+    "ferme_jour": "Fermé",
+    "itineraire": "Itinéraire",
+    "appeler": "Appeler",
+    "siteWeb": "Site web",
+    "reserver": "Réserver",
+    "instagram": "Instagram",
+    "aPropos": "À propos",
+    "depuisHotel": "Depuis l'hôtel",
+    "voirAvantage": "Voir l'avantage"
+  },
+  "carte": {
+    "titre": "La carte du quartier",
+    "votreHotel": "Votre hôtel",
+    "indisponible": "La carte n'est pas encore disponible.",
+    "indisponibleTexte": "Toutes les adresses restent consultables en liste.",
+    "avecAvantage": "Avec avantage",
+    "chargement": "Chargement de la carte…"
+  },
+  "avantages": {
+    "titre": "Vos avantages",
+    "intro": "Négociés par l'hôtel pour ses clients. Montrez simplement cet écran avant de commander.",
+    "aucun": "Aucun avantage actif pour le moment.",
+    "conditions": "Conditions",
+    "valableJusqua": "Valable jusqu'au {d}",
+    "sansLimite": "Sans date de fin",
+    "presentation": "À présenter au commerçant",
+    "clientDe": "Client de",
+    "leJour": "Le {d}",
+    "expire": "Cette offre est terminée.",
+    "voirLeLieu": "Voir l'adresse"
+  },
+  "itineraires": {
+    "titre": "Itinéraires",
+    "etape": "Étape {n}",
+    "minutesDeMarche": "{n} min de marche",
+    "duree": "Durée",
+    "aucun": "Aucun itinéraire pour le moment.",
+    "depuisHotel": "Depuis l'hôtel"
   }
 }

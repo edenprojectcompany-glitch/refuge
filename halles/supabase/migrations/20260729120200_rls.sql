@@ -195,3 +195,14 @@ grant update on profiles to authenticated;
 
 -- Rien n'est accordé par défaut sur les objets créés plus tard.
 alter default privileges in schema public revoke all on tables from anon, authenticated;
+
+/*
+ * Le service role, lui, doit tout pouvoir : c'est par lui que passe le
+ * back-office. Supabase le lui accorde par défaut sur les nouvelles tables du
+ * schéma public, mais s'appuyer sur ce réglage implicite rend le déploiement
+ * fragile — un projet configuré autrement ferait échouer l'administration sur
+ * un « permission denied » incompréhensible. On l'écrit donc noir sur blanc.
+ */
+grant all on hotels, places, perks, hotel_places, itineraries, profiles, hotel_users, events
+  to service_role;
+grant all on sequence events_id_seq to service_role;

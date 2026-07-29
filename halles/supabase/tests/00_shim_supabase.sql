@@ -23,6 +23,12 @@ $$;
 
 grant usage on schema public to anon, authenticated, service_role;
 
+-- Supabase accorde par défaut tous les droits au service role sur les tables du
+-- schéma public : on reproduit ce réglage, sans quoi les tests passeraient dans
+-- un environnement moins permissif que la production.
+alter default privileges in schema public grant all on tables to service_role;
+alter default privileges in schema public grant all on sequences to service_role;
+
 create schema if not exists auth;
 
 create table if not exists auth.users (

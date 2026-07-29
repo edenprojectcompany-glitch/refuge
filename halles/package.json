@@ -12,8 +12,12 @@
     "test:sql": "./scripts/test-sql.sh"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.23",
+    "@radix-ui/react-label": "^2.1.15",
     "@supabase/ssr": "^0.12.4",
     "@supabase/supabase-js": "^2.111.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "lucide-react": "^1.27.0",
     "maplibre-gl": "^6.0.0",
     "next": "15.5.22",
@@ -21,6 +25,7 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "server-only": "^0.0.1",
+    "tailwind-merge": "^3.6.0",
     "zod": "^4.4.3"
   },
   "devDependencies": {

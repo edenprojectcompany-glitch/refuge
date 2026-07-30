@@ -50,9 +50,17 @@ Node 20 ou plus récent.
 cp .env.example .env.local
 ```
 
-### 3. Migrations
+### 3. Base de données, en un seul copier-coller
 
-Dans l'ordre, via le *SQL Editor* du tableau de bord Supabase ou via `psql` :
+Dans Supabase : **SQL Editor** → *New query* → coller le contenu de
+`supabase/installation.sql` → *Run*.
+
+Ce fichier assemble les six migrations et le jeu de démonstration. Il ne se
+lance **qu'une seule fois** : un second passage échouerait sur des types déjà
+créés. Il est régénéré par `./scripts/generer-installation.sh` — la source de
+vérité reste `supabase/migrations/`.
+
+Pour appliquer les migrations une par une (mise à jour d'une base existante) :
 
 ```bash
 psql "$DATABASE_URL" -f supabase/migrations/20260729120000_schema.sql
@@ -60,25 +68,27 @@ psql "$DATABASE_URL" -f supabase/migrations/20260729120100_fonctions.sql
 psql "$DATABASE_URL" -f supabase/migrations/20260729120200_rls.sql
 psql "$DATABASE_URL" -f supabase/migrations/20260729130000_stockage.sql
 psql "$DATABASE_URL" -f supabase/migrations/20260729130100_stats_globales.sql
+psql "$DATABASE_URL" -f supabase/migrations/20260729140000_duplication_curation.sql
 ```
 
 Chaque migration a son inverse dans `supabase/rollback/`, à rejouer dans l'ordre
 décroissant.
 
-### 4. Jeu de démonstration
+### 4. Authentification
 
-```bash
-psql "$DATABASE_URL" -f supabase/seed.sql
-```
+Le lien magique a besoin de savoir vers où renvoyer. Dans **Authentication →
+URL Configuration** :
 
-Un hôtel publié (`lemarais`), 25 adresses du Marais, 8 avantages, 2 itinéraires.
-Le seed est idempotent : le rejouer ne crée pas de doublons.
+- *Site URL* : l'adresse de votre déploiement (`https://halles.app`, ou l'URL
+  Vercel en attendant le domaine)
+- *Redirect URLs* : ajouter `https://votre-domaine/auth/callback` et, pour le
+  développement, `http://localhost:3000/auth/callback`
 
-Les établissements du seed sont **fictifs**, à des adresses réelles. Ne pas y
-substituer d'enseignes existantes tant qu'un accord n'est pas signé : afficher
-un avantage au nom d'un commerçant qui ne l'a pas accordé l'engagerait à tort.
+Les courriels partent par le service intégré de Supabase, limité à quelques
+envois par heure — suffisant pour tester, à remplacer par un vrai expéditeur
+(Resend) avant les premiers hôteliers.
 
-### 5. Premier compte administrateur
+### 5. Premier compte administrateur### 5. Premier compte administrateur
 
 Le back-office exige un compte de rôle `admin`. Le rôle ne s'auto-attribue pas :
 il faut le poser une fois à la main.
@@ -104,7 +114,23 @@ npm run dev
 - Même guide en mode chemin : http://localhost:3000/h/lemarais
 - Vitrine : http://localhost:3000
 
-### 7. Tuiles cartographiques
+### 7. Retirer le jeu de démonstration
+
+Une fois vos vrais hôtels créés, l'hôtel de démonstration et ses 25 adresses
+fictives n'ont plus rien à faire en base :
+
+```sql
+-- Supprime l'hôtel démo, sa curation et ses événements (cascade),
+-- puis les lieux fictifs et leurs avantages.
+delete from hotels where slug = 'lemarais';
+delete from places where id::text like 'b0000000-0000-4000-8000-%';
+delete from itineraries where id::text like 'd0000000-0000-4000-8000-%';
+```
+
+À ne pas faire tant que vous voulez pouvoir montrer le produit : c'est ce jeu
+qui alimente la démonstration.
+
+### 8. Tuiles cartographiques
 
 **Nécessaire pour que l'écran carte affiche un fond.** Sans
 `NEXT_PUBLIC_PMTILES_URL`, l'application le détecte et sert la liste des
@@ -142,6 +168,9 @@ mais c'est le premier point à vérifier une fois le `.pmtiles` en place.
 | `npm run typecheck` | vérification TypeScript |
 | `npm run lint` | ESLint |
 | `npm run test:sql` | schéma, seed, RLS et rollbacks sur un Postgres jetable |
+| `./scripts/base-locale.sh` | (re)construit la base de développement locale |
+| `./scripts/generer-installation.sh` | réassemble `supabase/installation.sql` |
+| `./scripts/generer-demo.sh` | régénère le jeu de démonstration embarqué |
 
 ### Vérifier la base sans projet Supabase
 

@@ -9,7 +9,8 @@
     "lint": "eslint",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "test:sql": "./scripts/test-sql.sh"
+    "test:sql": "./scripts/test-sql.sh",
+    "installation": "./scripts/generer-installation.sh"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.23",

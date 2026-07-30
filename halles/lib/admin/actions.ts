@@ -293,3 +293,210 @@ function messageErreur(brut: string): string {
   if (brut.includes('price_range')) return 'Gamme de prix entre 1 et 4.';
   return `Enregistrement refusé par la base : ${brut}`;
 }
+
+// -----------------------------------------------------------------------------
+// CURATION
+// -----------------------------------------------------------------------------
+// Quels lieux, dans quel ordre, avec quel mot. C'est ici que se fabrique la
+// valeur perçue du guide, et le seul endroit où l'hôtelier n'écrit jamais.
+
+const schemaCuration = z.object({
+  hotel_id: z.string().uuid(),
+  place_id: z.string().uuid(),
+});
+
+async function slugDeLHotel(hotelId: string): Promise<string[]> {
+  const supabase = creerClientAdmin();
+  const { data } = await supabase.from('hotels').select('slug').eq('id', hotelId).maybeSingle();
+  return data?.slug ? [data.slug as string] : [];
+}
+
+export async function attacherLieu(donnees: FormData): Promise<Retour> {
+  await exigerAdmin();
+
+  const analyse = schemaCuration.safeParse(lire(donnees));
+  if (!analyse.success) return { ok: false, message: 'Requête invalide.' };
+
+  const supabase = creerClientAdmin();
+  // Position volontairement haute : le lieu arrive en fin de liste, à l'admin
+  // de le remonter s'il compte.
+  const { error } = await supabase
+    .from('hotel_places')
+    .insert({ ...analyse.data, position: 900 });
+
+  if (error) {
+    if (error.message.includes('duplicate key')) {
+      return { ok: false, message: 'Ce lieu est déjà dans le guide.' };
+    }
+    return { ok: false, message: messageErreur(error.message) };
+  }
+
+  await revaliderGuides(await slugDeLHotel(analyse.data.hotel_id));
+  return { ok: true };
+}
+
+export async function detacherLieu(donnees: FormData): Promise<Retour> {
+  await exigerAdmin();
+
+  const analyse = schemaCuration.safeParse(lire(donnees));
+  if (!analyse.success) return { ok: false, message: 'Requête invalide.' };
+
+  const supabase = creerClientAdmin();
+  const { error } = await supabase
+    .from('hotel_places')
+    .delete()
+    .eq('hotel_id', analyse.data.hotel_id)
+    .eq('place_id', analyse.data.place_id);
+
+  if (error) return { ok: false, message: messageErreur(error.message) };
+
+  await revaliderGuides(await slugDeLHotel(analyse.data.hotel_id));
+  return { ok: true };
+}
+
+const schemaOrdre = z.object({
+  hotel_id: z.string().uuid(),
+  /** Identifiants de lieux dans l'ordre voulu, séparés par des virgules. */
+  ordre: z.string().transform((v) => v.split(',').filter(Boolean)),
+});
+
+export async function reordonnerCuration(donnees: FormData): Promise<Retour> {
+  await exigerAdmin();
+
+  const analyse = schemaOrdre.safeParse(lire(donnees));
+  if (!analyse.success) return { ok: false, message: 'Requête invalide.' };
+
+  const { hotel_id, ordre } = analyse.data;
+  if (ordre.some((id) => !z.string().uuid().safeParse(id).success)) {
+    return { ok: false, message: 'Requête invalide.' };
+  }
+
+  const supabase = creerClientAdmin();
+
+  /*
+   * Positions espacées de dix : une insertion manuelle ultérieure peut se
+   * glisser entre deux lieux sans avoir à tout renuméroter.
+   */
+  const resultats = await Promise.all(
+    ordre.map((placeId, index) =>
+      supabase
+        .from('hotel_places')
+        .update({ position: (index + 1) * 10 })
+        .eq('hotel_id', hotel_id)
+        .eq('place_id', placeId),
+    ),
+  );
+
+  const echec = resultats.find((resultat) => resultat.error);
+  if (echec?.error) return { ok: false, message: messageErreur(echec.error.message) };
+
+  await revaliderGuides(await slugDeLHotel(hotel_id));
+  return { ok: true };
+}
+
+const schemaFeatured = schemaCuration.extend({ is_featured: z.enum(['0', '1']) });
+
+export async function basculerFeatured(donnees: FormData): Promise<Retour> {
+  await exigerAdmin();
+
+  const analyse = schemaFeatured.safeParse(lire(donnees));
+  if (!analyse.success) return { ok: false, message: 'Requête invalide.' };
+
+  const { hotel_id, place_id, is_featured } = analyse.data;
+  const supabase = creerClientAdmin();
+
+  // L'accueil n'affiche que quatre incontournables : au-delà, on prévient
+  // plutôt que de laisser l'admin croire que le cinquième apparaîtra.
+  if (is_featured === '1') {
+    const { count } = await supabase
+      .from('hotel_places')
+      .select('place_id', { count: 'exact', head: true })
+      .eq('hotel_id', hotel_id)
+      .eq('is_featured', true);
+
+    if ((count ?? 0) >= 4) {
+      return {
+        ok: false,
+        message: "Quatre incontournables au maximum : l'accueil n'en affiche pas plus.",
+      };
+    }
+  }
+
+  const { error } = await supabase
+    .from('hotel_places')
+    .update({ is_featured: is_featured === '1' })
+    .eq('hotel_id', hotel_id)
+    .eq('place_id', place_id);
+
+  if (error) return { ok: false, message: messageErreur(error.message) };
+
+  await revaliderGuides(await slugDeLHotel(hotel_id));
+  return { ok: true };
+}
+
+const schemaNote = schemaCuration.extend({
+  hotel_note_fr: texte,
+  hotel_note_en: texte,
+});
+
+export async function enregistrerNote(donnees: FormData): Promise<Retour> {
+  await exigerAdmin();
+
+  const analyse = schemaNote.safeParse(lire(donnees));
+  if (!analyse.success) return { ok: false, message: 'Requête invalide.' };
+
+  const { hotel_id, place_id, ...notes } = analyse.data;
+  const supabase = creerClientAdmin();
+
+  const { error } = await supabase
+    .from('hotel_places')
+    .update(notes)
+    .eq('hotel_id', hotel_id)
+    .eq('place_id', place_id);
+
+  if (error) return { ok: false, message: messageErreur(error.message) };
+
+  await revaliderGuides(await slugDeLHotel(hotel_id));
+  return { ok: true };
+}
+
+const schemaDuplication = z.object({
+  source: z.string().uuid(),
+  cible: z.string().uuid(),
+  avec_notes: z.enum(['0', '1']).default('0'),
+});
+
+export async function dupliquerCuration(donnees: FormData): Promise<Retour> {
+  await exigerAdmin();
+
+  const analyse = schemaDuplication.safeParse(lire(donnees));
+  if (!analyse.success) return { ok: false, message: 'Requête invalide.' };
+
+  const supabase = creerClientAdmin();
+  const { data, error } = await supabase.rpc('dupliquer_curation', {
+    p_source: analyse.data.source,
+    p_cible: analyse.data.cible,
+    p_avec_notes: analyse.data.avec_notes === '1',
+  });
+
+  if (error) {
+    if (error.message.includes('villes_differentes')) {
+      return { ok: false, message: 'Les deux hôtels ne sont pas dans la même ville.' };
+    }
+    if (error.message.includes('source_et_cible_identiques')) {
+      return { ok: false, message: 'Choisissez un autre hôtel que celui-ci.' };
+    }
+    return { ok: false, message: messageErreur(error.message) };
+  }
+
+  const ajoutes = Number(data ?? 0);
+  await revaliderGuides(await slugDeLHotel(analyse.data.cible));
+
+  return {
+    ok: true,
+    message:
+      ajoutes === 0
+        ? 'Aucun lieu ajouté : ils étaient déjà tous dans ce guide.'
+        : `${ajoutes} lieu${ajoutes > 1 ? 'x' : ''} ajouté${ajoutes > 1 ? 's' : ''}. À réordonner, et à commenter.`,
+  };
+}

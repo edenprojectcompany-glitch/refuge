@@ -62,6 +62,20 @@ style de MapLibre déclare une position relative sur `.maplibregl-map` et,
 chargée après Tailwind, écrase les classes utilitaires de position. Ne pas
 repasser en classes.
 
+**La duplication de curation ne recopie pas les notes.** Le brief demandait de
+dupliquer la curation d'un hôtel voisin ; recopier aussi les notes ferait dire à
+un hôtelier ce qu'un autre a écrit, et rendrait deux guides interchangeables —
+en détruisant exactement ce qui distingue le produit d'une carte. Positions et
+mises en avant suivent, les notes restent à écrire. La copie explicite reste
+possible (case à cocher) pour repartir d'une base à réécrire.
+
+**Quatre incontournables au maximum.** L'accueil n'en affiche pas plus : au-delà,
+l'admin serait fondé à croire que le cinquième apparaît. Le refus est explicite.
+
+**Le QR est tracé en vectoriel, pas en image.** 4 ko par chevalet, net à
+n'importe quelle taille d'impression, et l'URL en clair en pied de page comme
+repli si le code est abîmé.
+
 ## Écarts de planning assumés
 
 **`/api/track` a été livré en phase 2** alors qu'il relève de la phase 3 : sans

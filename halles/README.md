@@ -250,6 +250,26 @@ vérification du rôle, et invalident le cache des guides concernés : une
 publication est visible immédiatement, sans attendre les cinq minutes de
 revalidation.
 
+### Curation et QR codes
+
+`/admin/hotels/<id>/curation` réunit les trois gestes qui fabriquent la valeur
+perçue d'un guide : l'ordre (glisser-déposer, API HTML5 native, aucune
+bibliothèque), les quatre mises en avant (plafonnées, parce que l'accueil n'en
+affiche pas plus), et le mot de l'hôtel.
+
+**Reprendre la curation d'un hôtel voisin** est la fonction qui conditionne la
+rentabilité : elle fait passer l'onboarding de dix heures à trois. Deux
+garde-fous côté base (`dupliquer_curation()`) : même ville obligatoire, et les
+notes ne sont pas recopiées par défaut — ce sont les mots d'un autre hôtelier,
+et deux guides identiques n'auraient plus d'intérêt. Les lieux déjà présents
+sont conservés : la duplication ajoute, elle n'écrase jamais.
+
+**Chevalets A5** : un PDF par emplacement (chambre, réception, carte-clé),
+chacun avec son `?source=`, donc mesurable séparément. Le QR est tracé en
+carrés vectoriels — le fichier pèse 4 ko et reste net agrandi en affiche.
+Correction d'erreur au niveau Q, marge de quatre modules, et l'URL en clair en
+pied de page pour qu'un code abîmé ne condamne pas le guide.
+
 ### Mode démonstration
 
 Sans `NEXT_PUBLIC_SUPABASE_URL`, l'application sert le jeu de démonstration
@@ -276,6 +296,6 @@ son appartenance à l'hôtel.
 - [x] **Phase 1** — schéma, RLS, seed, middleware multi-tenant, accueil guest
 - [x] **Phase 2** — carte, fiches, avantages, itinéraires, infos, i18n, PWA
 - [x] **Phase 3** — analytics et back-office CRUD
-- [ ] **Phase 4** — curation, duplication, QR codes en PDF
+- [x] **Phase 4** — curation, duplication, QR codes en PDF
 - [ ] **Phase 5** — dashboard hôtelier et magic link
 - [ ] **Phase 6** — performance, accessibilité, SEO, crons, déploiement

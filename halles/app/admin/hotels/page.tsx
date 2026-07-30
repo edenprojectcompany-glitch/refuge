@@ -54,6 +54,12 @@ export default async function PageHotels() {
                 <td className="px-3 py-2 text-encre-doux">{hotel.plan}</td>
                 <td className="px-3 py-2 text-right">
                   <a
+                    href={`/admin/hotels/${hotel.id}/curation`}
+                    className="inline-flex h-8 items-center px-2 text-[0.82rem] font-medium hover:underline"
+                  >
+                    Curation
+                  </a>
+                  <a
                     href={`/h/${hotel.slug}`}
                     target="_blank"
                     rel="noopener noreferrer"

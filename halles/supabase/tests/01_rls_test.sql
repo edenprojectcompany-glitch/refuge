@@ -229,5 +229,71 @@ select pg_temp.verifie('la vue agrégée contient la session enregistrée par an
 
 select pg_temp.verifie('la purge ne supprime rien de récent', purge_old_events() = 0);
 
+-- =============================================================================
+-- Duplication de curation
+-- =============================================================================
+insert into hotels (id, slug, name, city, lat, lng, status)
+values ('a0000000-0000-4000-8000-0000000000aa','hotel-voisin','Hôtel Voisin','Paris',48.86,2.36,'published')
+on conflict (id) do nothing;
+
+insert into hotels (id, slug, name, city, lat, lng, status)
+values ('a0000000-0000-4000-8000-0000000000bb','hotel-lyon','Hôtel Lyon','Lyon',45.76,4.84,'published')
+on conflict (id) do nothing;
+
+select pg_temp.verifie(
+  'la duplication recopie les 25 lieux publiés',
+  dupliquer_curation('a0000000-0000-4000-8000-000000000001','a0000000-0000-4000-8000-0000000000aa') = 25
+);
+
+select pg_temp.verifie(
+  'les notes de l''hôtelier ne sont pas recopiées par défaut',
+  (select count(*) = 0 from hotel_places
+    where hotel_id = 'a0000000-0000-4000-8000-0000000000aa' and hotel_note_fr is not null)
+);
+
+select pg_temp.verifie(
+  'l''ordre et les mises en avant suivent',
+  (select count(*) = 4 from hotel_places
+    where hotel_id = 'a0000000-0000-4000-8000-0000000000aa' and is_featured)
+);
+
+select pg_temp.verifie(
+  'une deuxième duplication n''ajoute aucun doublon',
+  dupliquer_curation('a0000000-0000-4000-8000-000000000001','a0000000-0000-4000-8000-0000000000aa') = 0
+);
+
+do $$
+begin
+  begin
+    perform dupliquer_curation('a0000000-0000-4000-8000-000000000001','a0000000-0000-4000-8000-0000000000bb');
+    raise exception 'ECHEC la duplication a franchi les villes';
+  exception when sqlstate '22023' then
+    raise notice 'OK   la duplication refuse deux villes différentes';
+  end;
+
+  begin
+    perform dupliquer_curation('a0000000-0000-4000-8000-000000000001','a0000000-0000-4000-8000-000000000001');
+    raise exception 'ECHEC la duplication a accepté source = cible';
+  exception when sqlstate '22023' then
+    raise notice 'OK   la duplication refuse source = cible';
+  end;
+end
+$$;
+
+-- Avec notes, sur un hôtel neuf : la copie explicite fonctionne.
+insert into hotels (id, slug, name, city, lat, lng, status)
+values ('a0000000-0000-4000-8000-0000000000cc','hotel-avec-notes','Hôtel Notes','Paris',48.86,2.36,'draft')
+on conflict (id) do nothing;
+
+select pg_temp.verifie(
+  'la copie des notes reste possible sur demande',
+  (select dupliquer_curation('a0000000-0000-4000-8000-000000000001','a0000000-0000-4000-8000-0000000000cc', true) = 25)
+);
+select pg_temp.verifie(
+  'les notes sont bien présentes quand on les demande',
+  (select count(*) = 25 from hotel_places
+    where hotel_id = 'a0000000-0000-4000-8000-0000000000cc' and hotel_note_fr is not null)
+);
+
 \echo ''
 \echo '--- Toutes les vérifications RLS sont passées ---'

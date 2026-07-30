@@ -158,3 +158,83 @@ export async function chargerStatsGlobales(): Promise<StatsGlobales> {
     agregationIndisponible: Boolean(erreurAgregats),
   };
 }
+
+export interface CurationAdmin {
+  place_id: string;
+  nom: string;
+  categorie: string;
+  position: number;
+  is_featured: boolean;
+  hotel_note_fr: string | null;
+  hotel_note_en: string | null;
+}
+
+/** Curation d'un hôtel, dans l'ordre du guide. */
+export async function chargerCuration(hotelId: string): Promise<CurationAdmin[]> {
+  const supabase = creerClientAdmin();
+  const { data, error } = await supabase
+    .from('hotel_places')
+    .select('place_id, position, is_featured, hotel_note_fr, hotel_note_en, places(name, category)')
+    .eq('hotel_id', hotelId)
+    .order('position');
+
+  if (error) {
+    console.error('[admin] lecture de la curation impossible', error.message);
+    return [];
+  }
+
+  return ((data ?? []) as unknown as Array<{
+    place_id: string;
+    position: number;
+    is_featured: boolean;
+    hotel_note_fr: string | null;
+    hotel_note_en: string | null;
+    places: { name: string; category: string } | null;
+  }>).map((ligne) => ({
+    place_id: ligne.place_id,
+    nom: ligne.places?.name ?? '(lieu supprimé)',
+    categorie: ligne.places?.category ?? '—',
+    position: ligne.position,
+    is_featured: ligne.is_featured,
+    hotel_note_fr: ligne.hotel_note_fr,
+    hotel_note_en: ligne.hotel_note_en,
+  }));
+}
+
+/** Lieux publiés de la ville qui ne sont pas encore dans ce guide. */
+export async function lieuxDisponibles(
+  hotelId: string,
+  ville: string,
+): Promise<Array<{ id: string; name: string; category: string }>> {
+  const supabase = creerClientAdmin();
+
+  const [tous, deja] = await Promise.all([
+    supabase
+      .from('places')
+      .select('id, name, category')
+      .eq('city', ville)
+      .eq('status', 'published')
+      .order('name'),
+    supabase.from('hotel_places').select('place_id').eq('hotel_id', hotelId),
+  ]);
+
+  const presents = new Set((deja.data ?? []).map((ligne) => ligne.place_id as string));
+  return ((tous.data ?? []) as Array<{ id: string; name: string; category: string }>).filter(
+    (lieu) => !presents.has(lieu.id),
+  );
+}
+
+/** Autres hôtels de la même ville : sources possibles d'une duplication. */
+export async function hotelsVoisins(
+  hotelId: string,
+  ville: string,
+): Promise<Array<{ id: string; name: string }>> {
+  const supabase = creerClientAdmin();
+  const { data } = await supabase
+    .from('hotels')
+    .select('id, name')
+    .eq('city', ville)
+    .neq('id', hotelId)
+    .order('name');
+  return (data ?? []) as Array<{ id: string; name: string }>;
+}

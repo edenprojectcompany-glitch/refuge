@@ -183,9 +183,10 @@ mais c'est le premier point à vérifier une fois le `.pmtiles` en place.
 
 ### Vérifier la base sans projet Supabase
 
-`npm run test:sql` rejoue les migrations, le seed et vingt-six assertions de
+`npm run test:sql` rejoue les migrations, le seed et quarante assertions de
 sécurité (ce que voit un visiteur anonyme, ce qu'un hôtelier peut écrire, ce
-qu'un intrus ne peut pas lire) sur une base Postgres locale. Le simulacre
+qu'un intrus ne peut pas lire, ce qu'un jeton de statistiques ouvre et
+n'ouvre pas) sur une base Postgres locale. Le simulacre
 `supabase/tests/00_shim_supabase.sql` recrée les rôles `anon`, `authenticated`,
 `service_role` et le schéma `auth` — il ne doit **jamais** être appliqué à un
 vrai projet Supabase.
@@ -343,11 +344,12 @@ back-office, lui, exige une vraie base.
 
 ### Sécurité
 
-La RLS est active sur les huit tables. Le contenu publié est lisible
-anonymement ; `events` est en écriture seule ; aucune écriture directe n'est
-possible sur `hotels` — un hôtelier passe par la fonction `update_hotel_info()`,
-dont la liste blanche interdit de toucher au slug, au statut ou au plan.
-L'administration passe par la clé `service_role`, côté serveur exclusivement.
+La RLS est active sur les neuf tables. Le contenu publié est lisible
+anonymement ; `events` est en écriture seule ; `hotel_stats_tokens` n'a ni
+policy ni grant public ; aucune écriture directe n'est possible sur `hotels` —
+le seul chemin est `update_hotel_info()`, dont la liste blanche interdit de
+toucher au slug, au statut ou au plan. L'administration passe par la clé
+`service_role`, côté serveur exclusivement.
 
 Les statistiques agrégées vivent dans le schéma `analytics`, hors de portée de
 PostgREST : une vue matérialisée ignore la RLS, elle ne doit donc jamais être

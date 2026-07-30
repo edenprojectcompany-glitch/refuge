@@ -44,8 +44,8 @@ strict nécessaire, et durée de conservation bornée.
 
 La conception ci-dessus vise chacun de ces points :
 
-- **Finalité unique.** Les chiffres servent au tableau de bord de l'hôtelier et
-  à la curation. Aucun usage publicitaire, aucun profilage, aucune segmentation
+- **Finalité unique.** Les chiffres servent au lien de statistiques de
+  l'hôtelier et à la curation. Aucun usage publicitaire, aucun profilage, aucune segmentation
   d'audience.
 - **Pas de recoupement.** `session_id` n'est rapproché d'aucune autre source :
   il n'existe nulle part ailleurs.
@@ -70,9 +70,11 @@ consentement au sens de l'article 82 de la loi Informatique et Libertés.
 - L'endpoint `/api/track` écrit avec la clé anonyme, donc sous le contrôle de la
   RLS : il refuse un `hotel_id` inconnu ou non publié.
 - Les agrégats vivent dans le schéma privé `analytics`, que PostgREST n'expose
-  pas. Un hôtelier les lit via `hotel_daily_stats()`, qui vérifie son
-  appartenance à l'hôtel ; les chiffres consolidés tous hôtels passent par
-  `stats_globales()`, réservée au service role.
+  pas. L'hôtelier les lit via `stats_par_jeton()`, qui filtre sur son seul hôtel
+  et ne renvoie que des totaux par jour — aucune ligne d'événement, aucun
+  `session_id`, donc aucune donnée personnelle même si le lien fuite. Les
+  chiffres consolidés tous hôtels passent par `stats_globales()`, réservée au
+  service role.
 - `meta` est borné par un schéma Zod (clés courtes, valeurs courtes) pour qu'il
   ne devienne pas un fourre-tout où finiraient des données personnelles.
 

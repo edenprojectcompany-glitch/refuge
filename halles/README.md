@@ -12,9 +12,13 @@ Trois surfaces sur un seul déploiement :
 | Surface | URL | Public |
 |---|---|---|
 | Guide | `lemarais.halles.app` | client de l'hôtel, sans compte |
-| Dashboard | `halles.app/dashboard` | hôtelier, magic link |
+| Statistiques | `halles.app/s/{jeton}` | hôtelier, lien privé, sans compte |
 | Back-office | `halles.app/admin` | administration |
 | Vitrine | `halles.app` | prospects |
+
+L'hôtelier ne gère rien : il colle le QR code en chambre. Ses chiffres lui
+arrivent par un lien privé qu'on lui transmet une fois, et ses infos pratiques
+(wifi, petit-déjeuner, horaires) sont saisies depuis le back-office.
 
 ## Pile technique
 
@@ -55,7 +59,7 @@ cp .env.example .env.local
 Dans Supabase : **SQL Editor** → *New query* → coller le contenu de
 `supabase/installation.sql` → *Run*.
 
-Ce fichier assemble les six migrations et le jeu de démonstration. Il ne se
+Ce fichier assemble les sept migrations et le jeu de démonstration. Il ne se
 lance **qu'une seule fois** : un second passage échouerait sur des types déjà
 créés. Il est régénéré par `./scripts/generer-installation.sh` — la source de
 vérité reste `supabase/migrations/`.
@@ -69,12 +73,17 @@ psql "$DATABASE_URL" -f supabase/migrations/20260729120200_rls.sql
 psql "$DATABASE_URL" -f supabase/migrations/20260729130000_stockage.sql
 psql "$DATABASE_URL" -f supabase/migrations/20260729130100_stats_globales.sql
 psql "$DATABASE_URL" -f supabase/migrations/20260729140000_duplication_curation.sql
+psql "$DATABASE_URL" -f supabase/migrations/20260730100000_lien_statistiques.sql
 ```
 
 Chaque migration a son inverse dans `supabase/rollback/`, à rejouer dans l'ordre
 décroissant.
 
 ### 4. Authentification
+
+Une seule surface est authentifiée : le back-office. Le guide est public et le
+lien de statistiques de l'hôtelier n'a pas de compte — c'est le jeton qui fait
+la clé.
 
 Le lien magique a besoin de savoir vers où renvoyer. Dans **Authentication →
 URL Configuration** :
@@ -85,10 +94,10 @@ URL Configuration** :
   développement, `http://localhost:3000/auth/callback`
 
 Les courriels partent par le service intégré de Supabase, limité à quelques
-envois par heure — suffisant pour tester, à remplacer par un vrai expéditeur
-(Resend) avant les premiers hôteliers.
+envois par heure — largement suffisant : seuls les administrateurs se
+connectent.
 
-### 5. Premier compte administrateur### 5. Premier compte administrateur
+### 5. Premier compte administrateur
 
 Le back-office exige un compte de rôle `admin`. Le rôle ne s'auto-attribue pas :
 il faut le poser une fois à la main.
@@ -195,11 +204,14 @@ app/
   h/[slug]/                le guide d'un hôtel
     layout.tsx             charge le tenant, injecte son thème
     page.tsx               accueil
+  s/[jeton]/               statistiques de l'hôtelier, sans compte
+  admin/                   back-office
 lib/
   tenant.ts                résolution du sous-domaine, cache 60 s
   auth.ts                  identité et garde-fous (rôle relu en base)
   admin/                   lectures, actions serveur, import Maps, photos
   stats.ts                 totaux, évolutions, taux de scan
+  data/stats-publiques.ts  statistiques ouvertes par jeton
   data/demo.ts             jeu de démonstration sans Supabase
   data/guide.ts            lectures du guide, cache balisé
   i18n/                    dictionnaires FR/EN et traducteur
@@ -299,6 +311,26 @@ carrés vectoriels — le fichier pèse 4 ko et reste net agrandi en affiche.
 Correction d'erreur au niveau Q, marge de quatre modules, et l'URL en clair en
 pied de page pour qu'un code abîmé ne condamne pas le guide.
 
+### Le lien de statistiques de l'hôtelier
+
+L'hôtelier n'a ni compte, ni mot de passe, ni adresse enregistrée : il reçoit
+une fois `halles.app/s/{jeton}` et l'ouvre depuis son téléphone à la réception.
+La page est rendue côté serveur, revalidée toutes les 60 secondes, et ne charge
+aucun JavaScript — un histogramme SVG de trente barres, les totaux du mois, la
+comparaison avec le mois précédent, le nombre de scans par chambre, les adresses
+et les avantages les plus consultés.
+
+Le jeton (`hotels.stats_token`) est la clé. Deux fonctions `security definer`
+l'acceptent depuis le rôle anonyme — `stats_par_jeton()` et
+`classements_par_jeton()` — et ne renvoient que des agrégats d'un seul hôtel
+publié : jamais un événement, jamais une session, jamais les chiffres d'un
+voisin. Un jeton inconnu donne un 404, sans distinguer « inexistant » de
+« dépublié ».
+
+Un lien qui a fuité se révoque depuis l'écran de curation, bouton *Régénérer* :
+l'ancien cesse de fonctionner immédiatement, et il faut retransmettre le
+nouveau.
+
 ### Mode démonstration
 
 Sans `NEXT_PUBLIC_SUPABASE_URL`, l'application sert le jeu de démonstration
@@ -317,8 +349,10 @@ L'administration passe par la clé `service_role`, côté serveur exclusivement.
 
 Les statistiques agrégées vivent dans le schéma `analytics`, hors de portée de
 PostgREST : une vue matérialisée ignore la RLS, elle ne doit donc jamais être
-exposée directement. L'hôtelier les lit via `hotel_daily_stats()`, qui vérifie
-son appartenance à l'hôtel.
+exposée directement. On n'y accède que par des fonctions `security definer` qui
+filtrent sur un seul hôtel — `stats_par_jeton()` pour le lien de l'hôtelier,
+`hotel_daily_stats()` pour un compte rattaché, `stats_globales()` réservée au
+service role.
 
 ## État d'avancement
 
@@ -326,5 +360,6 @@ son appartenance à l'hôtel.
 - [x] **Phase 2** — carte, fiches, avantages, itinéraires, infos, i18n, PWA
 - [x] **Phase 3** — analytics et back-office CRUD
 - [x] **Phase 4** — curation, duplication, QR codes en PDF
-- [ ] **Phase 5** — dashboard hôtelier et magic link
+- [x] **Phase 5** — lien de statistiques de l'hôtelier, infos pratiques au
+      back-office (écart au brief assumé, voir `docs/decisions.md`)
 - [ ] **Phase 6** — performance, accessibilité, SEO, crons, déploiement

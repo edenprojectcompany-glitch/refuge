@@ -39,9 +39,18 @@ ignore la RLS : laissée dans `public`, un hôtelier aurait pu lire les
 statistiques de ses concurrents. L'accès passe par `hotel_daily_stats()`, qui
 vérifie l'appartenance à l'hôtel.
 
-**Aucun UPDATE direct sur `hotels`.** L'hôtelier passe par
-`update_hotel_info()`, dont la liste blanche interdit de toucher au slug, au
-statut ou au plan. Une policy UPDATE colonne par colonne se contrôle mal.
+**Aucun UPDATE direct sur `hotels`.** `update_hotel_info()` reste en base avec
+sa liste blanche, qui interdit de toucher au slug, au statut ou au plan. Elle
+n'est plus appelée depuis l'application (voir « L'hôtelier n'a pas de compte »)
+mais reste le seul chemin correct si un jour il reprend la main.
+
+**Le lien de statistiques n'est pas authentifié.** `stats_par_jeton()` et
+`classements_par_jeton()` sont exécutables par le rôle anonyme, en `security
+definer`, et ne renvoient que des agrégats d'un seul hôtel publié. Le jeton
+tient lieu de mot de passe : 122 bits d'aléa, indevinable, révocable en un clic.
+Ce que fuite un lien perdu, c'est un histogramme de scans — pas une donnée
+personnelle, pas un droit d'écriture. La fonction ne distingue pas un jeton
+inconnu d'un hôtel dépublié : dans les deux cas, aucune ligne.
 
 **`POST /api/track` écrit avec la clé anonyme.** Un endpoint public qui
 écrirait avec le service role serait une porte ouverte ; ici la RLS reste le
@@ -75,6 +84,33 @@ l'admin serait fondé à croire que le cinquième apparaît. Le refus est explic
 **Le QR est tracé en vectoriel, pas en image.** 4 ko par chevalet, net à
 n'importe quelle taille d'impression, et l'URL en clair en pied de page comme
 repli si le code est abîmé.
+
+## Écarts au brief assumés
+
+**L'hôtelier n'a pas de compte.** Le brief prévoyait une surface hôtelier
+authentifiée par lien magique : statistiques en lecture, QR à télécharger,
+infos pratiques éditables. Il n'a finalement rien à gérer — il colle le QR code
+en chambre, le client scanne. Créer un compte pour ça, c'était demander une
+adresse, envoyer un courriel, encaisser les liens expirés, les boîtes qui
+filtrent, les réceptionnistes qui changent, et une table `hotel_users` à tenir à
+jour pour un usage mensuel.
+
+Ce qui reste utile est devenu `/s/{jeton}` : un lien privé transmis une fois,
+qui montre ses chiffres et rien d'autre. Le QR est imprimé par nos soins (les
+chevalets A5 de la phase 4), et les infos pratiques sont saisies au back-office
+— à l'installation, puis au téléphone quand le mot de passe wifi change. Un
+appel par an contre une brique d'authentification à maintenir : le calcul est
+vite fait tant qu'on parle de dizaines d'hôtels. À revoir à partir de quelques
+centaines, où l'appel devient le coût dominant.
+
+La conséquence : `hotel_users`, `is_hotel_member()`, `update_hotel_info()` et
+`hotel_daily_stats()` restent en base, testés, inutilisés. Ils ne coûtent rien
+et évitent une migration si la décision s'inverse.
+
+**Les statistiques sont rendues sans JavaScript.** Pas de bibliothèque de
+graphiques : trente barres se dessinent en vingt lignes de SVG côté serveur. La
+page s'ouvre sur un téléphone de réception, en 4G, une fois par mois — c'est le
+seul critère qui compte.
 
 ## Écarts de planning assumés
 

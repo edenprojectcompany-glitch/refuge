@@ -50,6 +50,33 @@ export function modeDemo(): boolean {
 /** Slug servi en mode démonstration. */
 export const SLUG_DEMO = 'lemarais';
 
+/**
+ * Domaine à écrire dans les URL canoniques, le sitemap et Open Graph.
+ *
+ * Distinct de `envPublic.rootDomain`, qui sert à découper les sous-domaines et
+ * ne doit rien inventer. Ici on cherche seulement une adresse absolue correcte :
+ * si le domaine n'est pas encore renseigné, celui du déploiement Vercel vaut
+ * infiniment mieux qu'un sitemap en ligne qui annonce `https://localhost`.
+ */
+export function domaineCanonique(): string {
+  const explicite = process.env.NEXT_PUBLIC_ROOT_DOMAIN?.trim();
+  if (explicite) return explicite;
+
+  const vercel = process.env.VERCEL_PROJECT_PRODUCTION_URL?.trim();
+  if (vercel) return vercel;
+
+  return 'localhost';
+}
+
+/** URL absolue de la racine publique, protocole compris. */
+export function urlCanonique(): string {
+  const domaine = domaineCanonique();
+  // En développement, le port compte : sans lui, `metadataBase` fabrique des
+  // URL absolues qui ne mènent nulle part.
+  if (domaine === 'localhost') return 'http://localhost:3000';
+  return `https://${domaine}`;
+}
+
 export function verifierEnvPublic() {
   requise('NEXT_PUBLIC_SUPABASE_URL', envPublic.supabaseUrl);
   requise('NEXT_PUBLIC_SUPABASE_ANON_KEY', envPublic.supabaseAnonKey);

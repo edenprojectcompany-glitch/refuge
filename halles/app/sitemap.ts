@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { envPublic } from '@/lib/env';
+import { urlCanonique } from '@/lib/env';
 
 /**
  * Une seule page à indexer : la vitrine.
@@ -11,7 +11,7 @@ import { envPublic } from '@/lib/env';
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: `https://${envPublic.rootDomain}`,
+      url: urlCanonique(),
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 1,

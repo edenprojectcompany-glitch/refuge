@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { envPublic } from '@/lib/env';
+import { urlCanonique } from '@/lib/env';
 
 /**
  * Ce qui doit être exploré, et ce qui n'a aucune raison de l'être.
@@ -16,14 +16,12 @@ import { envPublic } from '@/lib/env';
  * contente d'écarter ce qui n'a rien à donner à un moteur.
  */
 export default function robots(): MetadataRoute.Robots {
-  const base = `https://${envPublic.rootDomain}`;
-
   return {
     rules: {
       userAgent: '*',
       allow: '/',
       disallow: ['/admin', '/api/', '/connexion', '/auth/'],
     },
-    sitemap: `${base}/sitemap.xml`,
+    sitemap: `${urlCanonique()}/sitemap.xml`,
   };
 }

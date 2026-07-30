@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { envPublic } from '@/lib/env';
+import { domaineCanonique } from '@/lib/env';
 
 const TITRE = 'Halles — le quartier de votre hôtel, avantages compris';
 const DESCRIPTION =
@@ -61,7 +61,7 @@ const QUESTIONS = [
 ];
 
 export default function PageVitrine() {
-  const domaine = envPublic.rootDomain;
+  const domaine = domaineCanonique();
 
   // Données structurées : la FAQ est la partie de cette page qui a une chance
   // d'apparaître seule dans un résultat de recherche.

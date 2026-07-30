@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Instrument_Serif, Inter } from 'next/font/google';
+import { envPublic } from '@/lib/env';
 import './globals.css';
 
 /*
@@ -21,6 +22,15 @@ const sans = Inter({
 });
 
 export const metadata: Metadata = {
+  /*
+   * Sans base, Next émet des URL relatives dans les balises Open Graph et
+   * canoniques, que les robots et les aperçus de messagerie ignorent.
+   */
+  metadataBase: new URL(
+    envPublic.rootDomain === 'localhost'
+      ? 'http://localhost:3000'
+      : `https://${envPublic.rootDomain}`,
+  ),
   title: 'Halles',
   description:
     'Le guide de quartier de votre hôtel : adresses choisies et avantages négociés.',

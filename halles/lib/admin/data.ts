@@ -22,6 +22,23 @@ export async function chargerHotelAdmin(id: string): Promise<Hotel | null> {
   return (data as Hotel) ?? null;
 }
 
+/**
+ * Le jeton du lien de statistiques, lu à part.
+ *
+ * Il n'est pas dans `hotels` — cette table est lisible par le rôle anonyme, un
+ * `select` suffirait à moissonner tous les jetons. Il vit dans une table sans
+ * grant public, d'où cette seconde requête.
+ */
+export async function chargerJetonStats(hotelId: string): Promise<string | null> {
+  const supabase = creerClientAdmin();
+  const { data } = await supabase
+    .from('hotel_stats_tokens')
+    .select('token')
+    .eq('hotel_id', hotelId)
+    .maybeSingle();
+  return (data?.token as string) ?? null;
+}
+
 export interface FiltresLieux {
   ville?: string;
   categorie?: CategorieLieu;

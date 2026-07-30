@@ -295,5 +295,64 @@ select pg_temp.verifie(
     where hotel_id = 'a0000000-0000-4000-8000-0000000000cc' and hotel_note_fr is not null)
 );
 
+
+-- =============================================================================
+-- Lien de statistiques par jeton
+-- =============================================================================
+-- Le jeton tient lieu de mot de passe : tout le raisonnement s'effondre si le
+-- rôle anonyme peut le lire quelque part. `hotels` lui est ouverte en lecture,
+-- d'où une table séparée — et d'où ces assertions.
+
+select pg_temp.verifie(
+  'chaque hôtel reçoit un jeton à la création',
+  (select count(*) = 0 from hotels h
+    where not exists (select 1 from hotel_stats_tokens t where t.hotel_id = h.id))
+);
+
+-- Les jetons sont relevés avant de descendre en anon : une fois le rôle
+-- changé, la table n'est plus lisible — c'est tout l'objet du test suivant.
+select token as jeton_publie from hotel_stats_tokens
+  where hotel_id = 'a0000000-0000-4000-8000-000000000001' \gset
+select token as jeton_brouillon from hotel_stats_tokens
+  where hotel_id = 'a0000000-0000-4000-8000-0000000000ff' \gset
+
+set role anon;
+select set_config('request.jwt.claim.sub', '', false);
+
+do $$
+begin
+  begin
+    perform 1 from hotel_stats_tokens;
+    raise exception 'ECHEC anon a lu la table des jetons';
+  exception when insufficient_privilege then
+    raise notice 'OK   anon ne peut pas lire hotel_stats_tokens';
+  end;
+end
+$$;
+
+select pg_temp.verifie(
+  'un jeton valide ouvre les statistiques de son hôtel',
+  (select count(*) >= 1 from stats_par_jeton(:'jeton_publie', 30))
+);
+
+select pg_temp.verifie(
+  'un jeton inconnu ne renvoie rien',
+  (select count(*) = 0 from stats_par_jeton('00000000-0000-4000-8000-000000000000', 30))
+);
+
+-- Un hôtel dépublié doit se comporter comme un hôtel inexistant : même réponse
+-- vide, sans laisser deviner qu'il a existé.
+select pg_temp.verifie(
+  'le jeton d''un hôtel non publié ne renvoie rien',
+  (select count(*) = 0 from stats_par_jeton(:'jeton_brouillon', 30))
+);
+
+select pg_temp.verifie(
+  'les classements suivent la même règle',
+  (select count(*) = 0 from classements_par_jeton('00000000-0000-4000-8000-000000000000', 30, 10))
+);
+
+reset role;
+
 \echo ''
 \echo '--- Toutes les vérifications RLS sont passées ---'

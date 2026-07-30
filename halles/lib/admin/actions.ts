@@ -534,11 +534,12 @@ export async function regenererJetonStats(donnees: FormData): Promise<Retour> {
   if (!id.success) return { ok: false, message: 'Requête invalide.' };
 
   const supabase = creerClientAdmin();
+  // `upsert` plutôt qu'`update` : un hôtel créé avant la migration, ou par un
+  // chemin qui aurait contourné le trigger, n'a pas de ligne à mettre à jour.
   const { data, error } = await supabase
-    .from('hotels')
-    .update({ stats_token: crypto.randomUUID() })
-    .eq('id', id.data)
-    .select('stats_token')
+    .from('hotel_stats_tokens')
+    .upsert({ hotel_id: id.data, token: crypto.randomUUID() }, { onConflict: 'hotel_id' })
+    .select('token')
     .single();
 
   if (error) return { ok: false, message: messageErreur(error.message) };
@@ -547,6 +548,6 @@ export async function regenererJetonStats(donnees: FormData): Promise<Retour> {
   return {
     ok: true,
     message: `Nouveau lien généré. L'ancien ne fonctionne plus : pensez à transmettre le nouveau.`,
-    id: data.stats_token as string,
+    id: data.token as string,
   };
 }

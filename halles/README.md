@@ -320,12 +320,14 @@ aucun JavaScript — un histogramme SVG de trente barres, les totaux du mois, la
 comparaison avec le mois précédent, le nombre de scans par chambre, les adresses
 et les avantages les plus consultés.
 
-Le jeton (`hotels.stats_token`) est la clé. Deux fonctions `security definer`
-l'acceptent depuis le rôle anonyme — `stats_par_jeton()` et
-`classements_par_jeton()` — et ne renvoient que des agrégats d'un seul hôtel
-publié : jamais un événement, jamais une session, jamais les chiffres d'un
-voisin. Un jeton inconnu donne un 404, sans distinguer « inexistant » de
-« dépublié ».
+Le jeton est la clé, et il vit dans sa propre table `hotel_stats_tokens` — pas
+dans `hotels`, que le rôle anonyme lit pour afficher le guide : un
+`select=stats_token` aurait suffi à moissonner tous les jetons. Cette table n'a
+ni policy ni grant public. Deux fonctions `security definer` l'acceptent depuis
+le rôle anonyme — `stats_par_jeton()` et `classements_par_jeton()` — et ne
+renvoient que des agrégats d'un seul hôtel publié : jamais un événement, jamais
+une session, jamais les chiffres d'un voisin. Un jeton inconnu donne un 404,
+sans distinguer « inexistant » de « dépublié ».
 
 Un lien qui a fuité se révoque depuis l'écran de curation, bouton *Régénérer* :
 l'ancien cesse de fonctionner immédiatement, et il faut retransmettre le

@@ -1,5 +1,11 @@
 import { notFound } from 'next/navigation';
-import { chargerCuration, chargerHotelAdmin, hotelsVoisins, lieuxDisponibles } from '@/lib/admin/data';
+import {
+  chargerCuration,
+  chargerHotelAdmin,
+  chargerJetonStats,
+  hotelsVoisins,
+  lieuxDisponibles,
+} from '@/lib/admin/data';
 import { EcranCuration } from '@/components/admin/EcranCuration';
 import { LienStatistiques } from '@/components/admin/LienStatistiques';
 
@@ -10,10 +16,11 @@ export default async function PageCuration({ params }: { params: Promise<{ id: s
   const hotel = await chargerHotelAdmin(id);
   if (!hotel) notFound();
 
-  const [lignes, disponibles, voisins] = await Promise.all([
+  const [lignes, disponibles, voisins, jeton] = await Promise.all([
     chargerCuration(hotel.id),
     lieuxDisponibles(hotel.id, hotel.city),
     hotelsVoisins(hotel.id, hotel.city),
+    chargerJetonStats(hotel.id),
   ]);
 
   return (
@@ -32,9 +39,7 @@ export default async function PageCuration({ params }: { params: Promise<{ id: s
 
       <EcranCuration hotel={hotel} lignes={lignes} disponibles={disponibles} voisins={voisins} />
 
-      {hotel.stats_token ? (
-        <LienStatistiques hotelId={hotel.id} jeton={hotel.stats_token} />
-      ) : null}
+      {jeton ? <LienStatistiques hotelId={hotel.id} jeton={jeton} /> : null}
     </div>
   );
 }

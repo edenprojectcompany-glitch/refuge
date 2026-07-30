@@ -960,13 +960,52 @@ comment on function public.dupliquer_curation(uuid, uuid, boolean) is
 -- depuis le back-office si un employé part avec.
 -- =============================================================================
 
-alter table hotels
-  add column if not exists stats_token uuid not null default gen_random_uuid();
+-- Le jeton vit dans sa propre table, et surtout pas dans `hotels` : cette
+-- dernière est lisible par le rôle anonyme (c'est ce qui fait marcher le
+-- guide), et un `select=stats_token` aurait suffi à récupérer les jetons de
+-- tous les hôtels publiés. Une colonne se protège par privilège de colonne,
+-- ce qui casse le `select *` du guide et se re-perce à la première colonne
+-- ajoutée. Une table sans grant ni policy ne se perce pas par distraction.
+create table if not exists hotel_stats_tokens (
+  hotel_id uuid primary key references hotels (id) on delete cascade,
+  token uuid not null unique default gen_random_uuid(),
+  created_at timestamptz not null default now()
+);
 
-create unique index if not exists hotels_stats_token_idx on hotels (stats_token);
+comment on table hotel_stats_tokens is
+  'Secret du lien /s/{token}, hors de hotels pour rester illisible par anon. À régénérer pour révoquer un accès.';
 
-comment on column hotels.stats_token is
-  'Secret du lien /s/{token}. À régénérer pour révoquer un accès.';
+alter table hotel_stats_tokens enable row level security;
+
+-- Aucune policy, aucun grant à anon ni authenticated : la table n'est jamais
+-- lue par PostgREST. Seuls le service role et les fonctions `security definer`
+-- ci-dessous y touchent.
+grant all on hotel_stats_tokens to service_role;
+
+-- Un hôtel sans jeton serait un hôtel dont l'hôtelier ne voit rien : on ne
+-- laisse pas ça dépendre du chemin d'écriture emprunté par le back-office.
+create or replace function public.creer_jeton_stats()
+returns trigger
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+  insert into hotel_stats_tokens (hotel_id) values (new.id)
+  on conflict (hotel_id) do nothing;
+  return new;
+end;
+$$;
+
+drop trigger if exists hotels_jeton_stats on hotels;
+create trigger hotels_jeton_stats
+  after insert on hotels
+  for each row execute function public.creer_jeton_stats();
+
+-- Hôtels déjà en base au moment de la migration.
+insert into hotel_stats_tokens (hotel_id)
+select id from hotels
+on conflict (hotel_id) do nothing;
 
 -- -----------------------------------------------------------------------------
 -- Lecture des statistiques par jeton, sans authentification.
@@ -1002,11 +1041,12 @@ as $$
          d.sessions,
          d.outbound_clicks,
          d.perk_opens
-  from hotels h
+  from hotel_stats_tokens t
+  join hotels h on h.id = t.hotel_id
   left join analytics.daily_stats d
     on d.hotel_id = h.id
    and d.day >= (current_date - make_interval(days => greatest(p_jours, 1)))
-  where h.stats_token = p_jeton
+  where t.token = p_jeton
     and h.status = 'published'
   order by d.day;
 $$;
@@ -1034,7 +1074,10 @@ security definer
 set search_path = public
 as $$
   with hotel as (
-    select id from hotels where stats_token = p_jeton and status = 'published'
+    select h.id
+    from hotel_stats_tokens t
+    join hotels h on h.id = t.hotel_id
+    where t.token = p_jeton and h.status = 'published'
   ),
   fenetre as (
     select e.*

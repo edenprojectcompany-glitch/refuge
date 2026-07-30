@@ -44,6 +44,15 @@ sa liste blanche, qui interdit de toucher au slug, au statut ou au plan. Elle
 n'est plus appelée depuis l'application (voir « L'hôtelier n'a pas de compte »)
 mais reste le seul chemin correct si un jour il reprend la main.
 
+**Le jeton de statistiques n'est pas une colonne de `hotels`.** Il l'a été
+pendant une heure, et c'était une fuite : `hotels` est en lecture anonyme — le
+guide en dépend — donc un `select=stats_token` rendait publics les jetons de
+tous les hôtels publiés. Un privilège de colonne aurait corrigé le symptôme,
+au prix de casser le `select *` du guide et de se re-percer à la première
+colonne ajoutée. `hotel_stats_tokens`, sans policy ni grant public, ne se perce
+pas par distraction. Un trigger sur `hotels` garantit qu'aucun hôtel n'existe
+sans jeton.
+
 **Le lien de statistiques n'est pas authentifié.** `stats_par_jeton()` et
 `classements_par_jeton()` sont exécutables par le rôle anonyme, en `security
 definer`, et ne renvoient que des agrégats d'un seul hôtel publié. Le jeton

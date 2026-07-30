@@ -356,6 +356,57 @@ filtrent sur un seul hôtel — `stats_par_jeton()` pour le lien de l'hôtelier,
 `hotel_daily_stats()` pour un compte rattaché, `stats_globales()` réservée au
 service role.
 
+### Référencement
+
+Une seule page est destinée à un moteur : la vitrine. Elle est statique, sans
+appel à la base et sans JavaScript, porte ses métadonnées Open Graph et une FAQ
+en données structurées `schema.org` — la partie qui a une chance d'apparaître
+seule dans un résultat de recherche.
+
+Les guides `/h/*` et les liens de statistiques `/s/*` sont en `noindex`. Les
+avantages ont été négociés pour les clients d'un hôtel : les voir remonter sur
+« apéritif offert Marais » en ferait une promotion ouverte à tous, et le
+commerçant aurait raison de les retirer. Le `noindex` est posé dans les
+métadonnées, **pas** en `Disallow` dans `robots.txt` : une URL interdite
+d'exploration peut être indexée à l'aveugle, et le robot ne verra jamais le
+`noindex` d'une page qu'il n'a pas le droit de lire.
+
+### Performance et accessibilité
+
+Mesuré sur les six écrans publics en émulation iPhone 13 (`next start`, base
+locale) : LCP entre 90 et 350 ms, CLS à 0, aucun JavaScript sur la vitrine, la
+page infos, les avantages et les statistiques. Le seul écran qui charge du
+JavaScript est la carte, et MapLibre y est importé dynamiquement.
+
+Vérifié au même passage : attribut `lang`, un seul `h1` par page, hiérarchie de
+titres sans saut, `<main>` sur chaque écran, nom accessible sur chaque cible,
+et 44 px de côté minimum pour tout ce qui se tapote. Le contraste des couleurs
+d'hôtel est garanti à 4,5:1 par `lib/theme.ts`, testé unitairement.
+
+### Déploiement
+
+Le projet Vercel doit pointer sa *Root Directory* sur `halles/`, le dépôt
+contenant aussi un autre site à sa racine.
+
+Variables à renseigner dans *Settings → Environment Variables* :
+
+| Variable | Rôle | Sans elle |
+|---|---|---|
+| `NEXT_PUBLIC_SUPABASE_URL` | projet Supabase | mode démonstration |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | clé publique | mode démonstration |
+| `SUPABASE_SERVICE_ROLE_KEY` | écritures du back-office | back-office en erreur |
+| `NEXT_PUBLIC_ROOT_DOMAIN` | domaine racine, sans protocole | sous-domaines non résolus |
+| `NEXT_PUBLIC_PMTILES_URL` | tuiles de la carte | carte remplacée par la liste |
+| `CRON_SECRET` | authentifie les crons | crons en 401 |
+
+Les deux crons sont déclarés dans `vercel.json` et ne demandent aucune
+configuration côté Vercel. Ils répondent 401 sans `Authorization: Bearer
+$CRON_SECRET`.
+
+Tant que les variables Supabase sont absentes, le déploiement sert le guide de
+démonstration au lieu d'échouer : c'est voulu, un lien reste montrable avant
+que la base existe.
+
 ## État d'avancement
 
 - [x] **Phase 1** — schéma, RLS, seed, middleware multi-tenant, accueil guest
@@ -364,4 +415,5 @@ service role.
 - [x] **Phase 4** — curation, duplication, QR codes en PDF
 - [x] **Phase 5** — lien de statistiques de l'hôtelier, infos pratiques au
       back-office (écart au brief assumé, voir `docs/decisions.md`)
-- [ ] **Phase 6** — performance, accessibilité, SEO, crons, déploiement
+- [x] **Phase 6** — vitrine et référencement, performance, accessibilité,
+      vérification des crons, notes de déploiement

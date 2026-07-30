@@ -94,6 +94,24 @@ l'admin serait fondé à croire que le cinquième apparaît. Le refus est explic
 n'importe quelle taille d'impression, et l'URL en clair en pied de page comme
 repli si le code est abîmé.
 
+## Référencement
+
+**Les guides ne sont pas indexés.** Ils sont publics par leur URL, mais un
+avantage négocié pour les clients d'un hôtel qui remonte sur « apéritif offert
+Marais » devient une promotion ouverte à tous — le commerçant serait fondé à le
+retirer, et c'est le réseau qui se déliterait. La vitrine seule est indexée.
+
+**Le `noindex` est dans les métadonnées, pas dans `robots.txt`.** Interdire
+l'exploration paraît plus fort et fait l'inverse : Google peut indexer une URL
+interdite sur la seule foi des liens entrants, et surtout ne lira jamais le
+`noindex` d'une page qu'il n'a pas le droit de charger. `robots.txt` n'écarte
+donc que ce qui n'a rien à donner à un moteur : `/admin`, `/api`, `/connexion`.
+
+**La vitrine est `force-static` et sans JavaScript.** C'est la seule page qu'un
+hôtelier ouvre depuis un ordinateur, et la seule qu'un moteur lit. La FAQ est
+dupliquée en `schema.org` : c'est la partie qui peut apparaître seule dans un
+résultat de recherche.
+
 ## Écarts au brief assumés
 
 **L'hôtelier n'a pas de compte.** Le brief prévoyait une surface hôtelier

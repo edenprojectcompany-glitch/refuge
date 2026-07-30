@@ -66,7 +66,11 @@ export function VueCarte({
     <div className="flex flex-1 flex-col overflow-hidden">
       {/* Filtres : défilement horizontal, une seule ligne, pouce en bas d'écran */}
       <div className="shrink-0 border-b border-trait bg-creme">
-        <div className="flex gap-2 overflow-x-auto px-3 py-2.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div
+          role="group"
+          aria-label={t('carte.filtres')}
+          className="flex gap-2 overflow-x-auto px-3 py-2.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
           <Puce active={categorie === null} onClick={() => changerCategorie(null)}>
             {t('commun.tout')}
           </Puce>
@@ -170,12 +174,14 @@ function Puce({
   onClick: () => void;
   children: React.ReactNode;
 }) {
+  // min-h-11 : 44 px, la cible tactile minimale. Les filtres se tapotent en
+  // marchant, souvent d'une main.
   return (
     <button
       type="button"
       onClick={onClick}
       aria-pressed={active}
-      className="flex min-h-9 shrink-0 items-center gap-1.5 whitespace-nowrap border px-3 text-[0.85rem] rounded-full"
+      className="flex min-h-11 shrink-0 items-center gap-1.5 whitespace-nowrap border px-3.5 text-[0.85rem] rounded-full"
       style={{
         borderColor: active ? 'var(--couleur-hotel-accent)' : 'var(--color-trait-fort)',
         backgroundColor: active ? 'var(--couleur-hotel-accent)' : 'transparent',

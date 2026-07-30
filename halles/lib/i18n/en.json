@@ -84,7 +84,8 @@
     "indisponible": "The map is not available yet.",
     "indisponibleTexte": "Every address is still browsable as a list.",
     "avecAvantage": "With a perk",
-    "chargement": "Loading the map…"
+    "chargement": "Loading the map…",
+    "filtres": "Filter by category"
   },
   "avantages": {
     "titre": "Your perks",

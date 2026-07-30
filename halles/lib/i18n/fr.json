@@ -84,7 +84,8 @@
     "indisponible": "La carte n'est pas encore disponible.",
     "indisponibleTexte": "Toutes les adresses restent consultables en liste.",
     "avecAvantage": "Avec avantage",
-    "chargement": "Chargement de la carte…"
+    "chargement": "Chargement de la carte…",
+    "filtres": "Filtrer par catégorie"
   },
   "avantages": {
     "titre": "Vos avantages",

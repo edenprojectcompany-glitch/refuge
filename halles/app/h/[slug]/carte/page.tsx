@@ -36,15 +36,18 @@ export default async function PageCarte({ params, searchParams }: Props) {
     <div lang={locale} className="flex h-dvh flex-col">
       <EnTeteEcran titre={t('carte.titre')} retourHref={base} locale={locale} compact />
 
-      <VueCarte
-        hotel={hotel}
-        lieux={lieux}
-        locale={locale}
-        base={base}
-        categorieInitiale={categorie}
-      >
-        <ListeLieux lieux={lieux} hotel={hotel} locale={locale} base={base} />
-      </VueCarte>
+      {/* Le repère principal manquait : sur cet écran, tout est dans VueCarte. */}
+      <main className="flex flex-1 flex-col overflow-hidden">
+        <VueCarte
+          hotel={hotel}
+          lieux={lieux}
+          locale={locale}
+          base={base}
+          categorieInitiale={categorie}
+        >
+          <ListeLieux lieux={lieux} hotel={hotel} locale={locale} base={base} />
+        </VueCarte>
+      </main>
 
       <BarreNavigation base={base} locale={locale} actif="carte" />
       <SuiviEcran hotelId={hotel.id} locale={locale} />

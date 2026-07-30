@@ -518,3 +518,35 @@ export async function dupliquerCuration(donnees: FormData): Promise<Retour> {
         : `${ajoutes} lieu${ajoutes > 1 ? 'x' : ''} ajouté${ajoutes > 1 ? 's' : ''}. À réordonner, et à commenter.`,
   };
 }
+
+
+/**
+ * Régénère le lien de statistiques d'un hôtel.
+ *
+ * Le lien est la seule clé : un employé qui part avec, un lien collé dans un
+ * groupe de messagerie, et n'importe qui voit les chiffres. Régénérer coupe
+ * l'ancien immédiatement — au prix de devoir retransmettre le nouveau.
+ */
+export async function regenererJetonStats(donnees: FormData): Promise<Retour> {
+  await exigerAdmin();
+
+  const id = z.string().uuid().safeParse(donnees.get('id'));
+  if (!id.success) return { ok: false, message: 'Requête invalide.' };
+
+  const supabase = creerClientAdmin();
+  const { data, error } = await supabase
+    .from('hotels')
+    .update({ stats_token: crypto.randomUUID() })
+    .eq('id', id.data)
+    .select('stats_token')
+    .single();
+
+  if (error) return { ok: false, message: messageErreur(error.message) };
+
+  revalidatePath('/admin', 'layout');
+  return {
+    ok: true,
+    message: `Nouveau lien généré. L'ancien ne fonctionne plus : pensez à transmettre le nouveau.`,
+    id: data.stats_token as string,
+  };
+}

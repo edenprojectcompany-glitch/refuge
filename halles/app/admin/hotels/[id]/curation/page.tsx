@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { chargerCuration, chargerHotelAdmin, hotelsVoisins, lieuxDisponibles } from '@/lib/admin/data';
 import { EcranCuration } from '@/components/admin/EcranCuration';
+import { LienStatistiques } from '@/components/admin/LienStatistiques';
 
 export const dynamic = 'force-dynamic';
 
@@ -30,6 +31,10 @@ export default async function PageCuration({ params }: { params: Promise<{ id: s
       </div>
 
       <EcranCuration hotel={hotel} lignes={lignes} disponibles={disponibles} voisins={voisins} />
+
+      {hotel.stats_token ? (
+        <LienStatistiques hotelId={hotel.id} jeton={hotel.stats_token} />
+      ) : null}
     </div>
   );
 }

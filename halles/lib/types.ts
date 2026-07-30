@@ -77,6 +77,8 @@ export interface Hotel {
   custom_blocks: BlocPersonnalise[];
   status: StatutContenu;
   plan: string;
+  /** Secret du lien /s/{jeton} remis à l'hôtelier. */
+  stats_token?: string;
 }
 
 export interface Lieu {

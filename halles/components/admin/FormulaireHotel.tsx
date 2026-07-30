@@ -2,16 +2,15 @@
 
 import type { Hotel } from '@/lib/types';
 import { enregistrerHotel } from '@/lib/admin/actions';
-import { Champ, Selecteur } from '@/components/ui/Champ';
+import { Champ, Selecteur, ZoneTexte } from '@/components/ui/Champ';
 import { FormulaireAdmin, Ligne, Section } from './FormulaireAdmin';
 
 /**
  * Fiche hôtel côté back-office.
  *
- * Les infos pratiques (wifi, petit-déjeuner, blocs libres) n'y sont pas :
- * elles appartiennent à l'hôtelier et se modifient depuis son tableau de bord,
- * via une fonction à liste blanche. Deux chemins d'écriture sur les mêmes
- * champs finiraient par se contredire.
+ * Les infos pratiques sont ici : l'hôtelier n'a pas de surface d'édition, il
+ * donne le QR code et c'est tout. On les saisit à l'installation, puis au
+ * téléphone quand un mot de passe wifi change.
  */
 export function FormulaireHotel({ hotel }: { hotel: Hotel | null }) {
   return (
@@ -77,6 +76,39 @@ export function FormulaireHotel({ hotel }: { hotel: Hotel | null }) {
             <option value="fr">Français</option>
             <option value="en">Anglais</option>
           </Selecteur>
+        </Ligne>
+      </Section>
+
+      <Section
+        titre="Infos pratiques"
+        aide="Affichées dans le guide, sur l'accueil et l'écran Infos. Ce que le client cherche en arrivant."
+      >
+        <Ligne etiquette="Nom du réseau wifi">
+          <Champ name="wifi_name" defaultValue={hotel?.wifi_name ?? ''} />
+        </Ligne>
+        <Ligne etiquette="Mot de passe wifi" aide="Affiché en clair, avec un bouton copier">
+          <Champ name="wifi_password" defaultValue={hotel?.wifi_password ?? ''} />
+        </Ligne>
+        <Ligne etiquette="Petit-déjeuner" large>
+          <ZoneTexte name="breakfast_info" rows={2} defaultValue={hotel?.breakfast_info ?? ''} />
+        </Ligne>
+        <Ligne etiquette="Arrivée" large>
+          <ZoneTexte name="checkin_info" rows={2} defaultValue={hotel?.checkin_info ?? ''} />
+        </Ligne>
+        <Ligne etiquette="Départ" large>
+          <ZoneTexte name="checkout_info" rows={2} defaultValue={hotel?.checkout_info ?? ''} />
+        </Ligne>
+        <Ligne etiquette="Transports" large>
+          <ZoneTexte name="transport_info" rows={2} defaultValue={hotel?.transport_info ?? ''} />
+        </Ligne>
+        <Ligne etiquette="WhatsApp" aide="Format international : +33612345678">
+          <Champ name="contact_whatsapp" defaultValue={hotel?.contact_whatsapp ?? ''} />
+        </Ligne>
+        <Ligne etiquette="Téléphone de la réception">
+          <Champ name="contact_phone" type="tel" defaultValue={hotel?.contact_phone ?? ''} />
+        </Ligne>
+        <Ligne etiquette="Logo" aide="URL d'une image carrée, affichée dans l'en-tête et sur l'écran d'avantage" large>
+          <Champ name="logo_url" type="url" defaultValue={hotel?.logo_url ?? ''} />
         </Ligne>
       </Section>
 

@@ -83,6 +83,24 @@ const schemaHotel = z.object({
   default_locale: z.enum(['fr', 'en']),
   status: z.enum(STATUTS),
   plan: z.string().trim().min(1),
+
+  /*
+   * Infos pratiques. Le brief les confiait à l'hôtelier via une RPC à liste
+   * blanche ; il n'a finalement ni compte ni surface d'édition — il donne le QR
+   * code, c'est tout. C'est donc le back-office qui les saisit, à
+   * l'installation puis au téléphone quand le mot de passe wifi change.
+   * La fonction update_hotel_info() reste en base, inutilisée mais prête si un
+   * jour l'hôtelier reprend la main.
+   */
+  wifi_name: texte,
+  wifi_password: texte,
+  breakfast_info: texte,
+  checkin_info: texte,
+  checkout_info: texte,
+  transport_info: texte,
+  contact_whatsapp: texte,
+  contact_phone: texte,
+  logo_url: texte,
 });
 
 export async function enregistrerHotel(donnees: FormData): Promise<Retour> {

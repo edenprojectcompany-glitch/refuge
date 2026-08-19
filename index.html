@@ -35,12 +35,42 @@
   --color-sage:#5f7059;--color-sage-deep:#46523f;--color-gold:#b08a4f;--color-card:#fbf9f3;
   --color-line:#e0d8c7;--color-alert:#8a4a3c;--radius:22px;
   --shadow:0 24px 60px -28px rgba(60,52,38,.45);--ease:cubic-bezier(.22,.61,.36,1);
+  --color-halo-1:#fbf8f0;--color-halo-2:#f4f0e7;--color-halo-3:#ece6d8;
+  --color-doux:#f6efe1;--color-soft-hover:#f4efe4;--color-gold-text:#8a6a34;
+  --color-safe-bg:#fbf4f1;--color-safe-line:#e7cfc6;
+  --color-nav:rgba(251,249,243,.96);--color-orb-1:#cdd8c5;--color-placeholder:#b3ab99;
+}
+
+/* Mode sombre. Par défaut on suit le système ; le choix manuel prend le dessus
+   via l'attribut data-theme posé sur <html>. Une app qu'on ouvre la nuit ne doit
+   pas envoyer 400 nits dans les yeux de quelqu'un qui ne va pas bien. */
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="clair"]){
+    --color-bg:#1a1815;--color-bg-deep:#121110;--color-ink:#ece7dc;--color-ink-soft:#a49c8d;
+    --color-sage:#6d8064;--color-sage-deep:#a9bda0;--color-gold:#c9a468;--color-card:#232019;
+    --color-line:#37322a;--color-alert:#e09b89;
+    --shadow:0 24px 60px -28px rgba(0,0,0,.75);
+    --color-halo-1:#221f1a;--color-halo-2:#1a1815;--color-halo-3:#121110;
+    --color-doux:#2e2920;--color-soft-hover:#2b2720;--color-gold-text:#c9a468;
+    --color-safe-bg:#2a1f1c;--color-safe-line:#4d3830;
+    --color-nav:rgba(26,24,21,.96);--color-orb-1:#8ba081;--color-placeholder:#6f685c;
+  }
+}
+:root[data-theme="sombre"]{
+  --color-bg:#1a1815;--color-bg-deep:#121110;--color-ink:#ece7dc;--color-ink-soft:#a49c8d;
+  --color-sage:#6d8064;--color-sage-deep:#a9bda0;--color-gold:#c9a468;--color-card:#232019;
+  --color-line:#37322a;--color-alert:#e09b89;
+  --shadow:0 24px 60px -28px rgba(0,0,0,.75);
+  --color-halo-1:#221f1a;--color-halo-2:#1a1815;--color-halo-3:#121110;
+  --color-doux:#2e2920;--color-soft-hover:#2b2720;--color-gold-text:#c9a468;
+  --color-safe-bg:#2a1f1c;--color-safe-line:#4d3830;
+  --color-nav:rgba(26,24,21,.96);--color-orb-1:#8ba081;--color-placeholder:#6f685c;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 html,body{height:100%;overflow-x:hidden}
 body{font-family:"Outfit",sans-serif;color:var(--color-ink);
-  background:radial-gradient(120% 80% at 50% -10%,#fbf8f0 0%,var(--color-bg) 55%,var(--color-bg-deep) 100%);
+  background:radial-gradient(120% 80% at 50% -10%,var(--color-halo-1) 0%,var(--color-halo-2) 55%,var(--color-halo-3) 100%);
   min-height:100vh;min-height:100dvh;-webkit-font-smoothing:antialiased;overflow-wrap:break-word}
 .app{max-width:480px;margin:0 auto;height:100vh;height:100dvh;display:flex;flex-direction:column;position:relative;overflow:hidden;
   padding-top:env(safe-area-inset-top);padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
@@ -86,13 +116,13 @@ body{font-family:"Outfit",sans-serif;color:var(--color-ink);
 .field{width:100%;min-height:120px;resize:none;background:var(--color-card);border:1px solid var(--color-line);
   border-radius:var(--radius);padding:18px 20px;font-family:inherit;font-size:16px;color:var(--color-ink);line-height:1.55;
   transition:border-color .3s,box-shadow .3s}
-.field::placeholder{color:#b3ab99;font-weight:300}
+.field::placeholder{color:var(--color-placeholder);font-weight:300}
 .field:focus{outline:none;border-color:var(--color-sage);box-shadow:0 0 0 4px rgba(95,112,89,.12)}
 .btn{width:100%;margin-top:16px;cursor:pointer;font-family:inherit;background:var(--color-sage);color:#f6f3ea;border:none;
   border-radius:100px;padding:16px;font-size:16px;font-weight:500;letter-spacing:.02em;transition:background .3s,transform .2s}
 .btn:hover{background:var(--color-sage-deep);transform:translateY(-1px)}.btn:active{transform:translateY(0)}
 .btn-soft{background:var(--color-card);color:var(--color-sage-deep);border:1px solid var(--color-line)}
-.btn-soft:hover{background:#f4efe4}
+.btn-soft:hover{background:var(--color-soft-hover)}
 .btn-ghost{background:none;border:none;cursor:pointer;font-family:inherit;color:var(--color-ink-soft);font-size:14px;
   margin-top:16px;width:100%;text-decoration:underline;text-underline-offset:3px}
 .btn-ghost:hover{color:var(--color-ink)}
@@ -106,17 +136,17 @@ body{font-family:"Outfit",sans-serif;color:var(--color-ink);
 .sacred-text{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:23px;line-height:1.4;color:var(--color-ink)}
 .sacred-arabic{font-family:"Amiri",serif;font-size:28px;line-height:1.95;direction:rtl;text-align:right;color:var(--color-ink);margin-bottom:14px;overflow-wrap:break-word;word-break:break-word}
 .sacred-translit{font-style:italic;font-size:15px;color:var(--color-ink-soft);margin-bottom:12px;line-height:1.5}
-.sacred-ref{margin-top:18px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-gold);font-weight:500}
+.sacred-ref{margin-top:18px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-gold-text);font-weight:500}
 .divider{height:1px;background:var(--color-line);margin:22px 0}
 .like-row{display:flex;align-items:center;gap:10px;margin-top:22px}
 .like-btn{background:var(--color-card);border:1px solid var(--color-line);border-radius:100px;padding:10px 18px;cursor:pointer;
   font-family:inherit;font-size:14px;color:var(--color-ink-soft);display:flex;align-items:center;gap:8px;transition:.25s}
 .like-btn:hover{border-color:var(--color-gold)}
-.like-btn.is-liked{background:#f6efe1;border-color:var(--color-gold);color:var(--color-sage-deep)}
+.like-btn.is-liked{background:var(--color-doux);border-color:var(--color-gold);color:var(--color-sage-deep)}
 .like-btn .heart{font-size:16px}
 
 /* sécurité */
-.safe-card{background:#fbf4f1;border:1px solid #e7cfc6;border-radius:var(--radius);padding:32px 28px;text-align:center}
+.safe-card{background:var(--color-safe-bg);border:1px solid var(--color-safe-line);border-radius:var(--radius);padding:32px 28px;text-align:center}
 .safe-title{font-family:"Cormorant Garamond",serif;font-size:24px;color:var(--color-alert);margin-bottom:14px;font-weight:500}
 .safe-text{color:var(--color-ink);font-weight:300;line-height:1.6;font-size:15px;margin-bottom:20px}
 .safe-number{display:block;font-family:"Cormorant Garamond",serif;font-size:44px;color:var(--color-alert);font-weight:600;
@@ -124,16 +154,28 @@ body{font-family:"Outfit",sans-serif;color:var(--color-ink);
 .safe-number:hover{text-decoration:underline;text-underline-offset:6px}
 .safe-text a{color:var(--color-alert)}
 .safe-sub{font-size:13px;color:var(--color-ink-soft);font-weight:300}
-.safe-word{margin-top:24px;padding-top:22px;border-top:1px solid #e7cfc6;font-family:"Cormorant Garamond",serif;
+.safe-word{margin-top:24px;padding-top:22px;border-top:1px solid var(--color-safe-line);font-family:"Cormorant Garamond",serif;
   font-style:italic;font-size:19px;line-height:1.45;color:var(--color-ink)}
-.safe-word-ref{margin-top:10px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-gold)}
+.safe-word-ref{margin-top:10px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-gold-text)}
 
 /* journal */
 .mood-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:8px 0 14px}
 .mood-pick{background:var(--color-card);border:1px solid var(--color-line);border-radius:16px;padding:14px 6px;cursor:pointer;
   font-family:inherit;font-size:13px;color:var(--color-ink-soft);transition:.25s;text-align:center}
 .mood-pick .emo{display:block;font-size:22px;margin-bottom:5px}
-.mood-pick.sel{border-color:var(--color-gold);background:#f6efe1;color:var(--color-sage-deep)}
+.mood-pick.sel{border-color:var(--color-gold);background:var(--color-doux);color:var(--color-sage-deep)}
+.chart{background:var(--color-card);border:1px solid var(--color-line);border-radius:16px;
+  padding:16px 16px 10px;margin-bottom:16px}
+.chart-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.chart-title{font-size:13px;color:var(--color-ink-soft);font-weight:400}
+.chart-avg{font-family:"Cormorant Garamond",serif;font-size:17px;color:var(--color-sage-deep)}
+.chart svg{display:block;width:100%;height:64px;overflow:visible}
+.chart-foot{display:flex;justify-content:space-between;font-size:11px;color:var(--color-ink-soft);margin-top:8px}
+.data-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.data-row button{flex:1;min-width:130px;background:var(--color-card);border:1px solid var(--color-line);
+  border-radius:100px;padding:12px 10px;font-family:inherit;font-size:13.5px;color:var(--color-ink-soft);cursor:pointer;transition:.2s}
+.data-row button:hover{border-color:var(--color-gold);color:var(--color-ink)}
+.data-row button.danger{color:var(--color-alert);border-color:var(--color-safe-line)}
 .entry{background:var(--color-card);border:1px solid var(--color-line);border-radius:16px;padding:16px 18px;margin-bottom:12px}
 .entry-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
 .entry-mood{font-weight:500;font-size:15px}.entry-date{font-size:12px;color:var(--color-ink-soft)}
@@ -142,7 +184,7 @@ body{font-family:"Outfit",sans-serif;color:var(--color-ink);
 
 /* respiration */
 .breathe-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px 0}
-.breathe-orb{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 50% 40%,#cdd8c5,var(--color-sage));
+.breathe-orb{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 50% 40%,var(--color-orb-1),var(--color-sage));
   display:flex;align-items:center;justify-content:center;color:#f6f3ea;font-size:17px;font-weight:400;
   box-shadow:0 18px 50px -18px rgba(95,112,89,.7);transform:scale(.85);transition:transform 4s var(--ease)}
 .ex-card{margin-bottom:12px}.ex-card .path-desc{margin-top:4px}
@@ -150,7 +192,7 @@ body{font-family:"Outfit",sans-serif;color:var(--color-ink);
 .breathe-cue{margin-top:26px;font-family:"Cormorant Garamond",serif;font-size:22px;color:var(--color-sage-deep);min-height:30px}
 
 /* encarts & liens discrets */
-.notice{background:#fbf4f1;border:1px solid #e7cfc6;border-radius:16px;padding:14px 16px;font-size:13px;
+.notice{background:var(--color-safe-bg);border:1px solid var(--color-safe-line);border-radius:16px;padding:14px 16px;font-size:13px;
   color:var(--color-alert);line-height:1.5;margin-bottom:18px}
 .link-btn{background:none;border:none;color:var(--color-ink-soft);font-size:12px;cursor:pointer;text-decoration:underline;margin-top:8px;align-self:flex-start;font-family:inherit}
 .link-btn:hover{color:var(--color-ink)}
@@ -168,7 +210,7 @@ body{font-family:"Outfit",sans-serif;color:var(--color-ink);
 
 /* bottom nav */
 .bottom-nav{flex:0 0 auto;
-  background:rgba(251,249,243,.96);border-top:1px solid var(--color-line);
+  background:var(--color-nav);border-top:1px solid var(--color-line);
   display:flex;justify-content:space-around;padding:9px 6px calc(9px + env(safe-area-inset-bottom));z-index:40}
 .bottom-nav.hidden{display:none}
 .nav-btn{background:none;border:none;cursor:pointer;font-family:inherit;color:var(--color-ink-soft);font-size:10.5px;
@@ -186,6 +228,21 @@ body{font-family:"Outfit",sans-serif;color:var(--color-ink);
 .start-foot button{background:none;border:none;font-family:inherit;font-size:12.5px;color:var(--color-ink-soft);
   cursor:pointer;text-decoration:underline;text-underline-offset:3px}
 .start-foot button:hover{color:var(--color-ink)}
+/* Accessibilité */
+:focus-visible{outline:2px solid var(--color-gold);outline-offset:3px;border-radius:6px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0}
+/* Respecte le réglage système « réduire les animations » : l'orbe de respiration
+   garde son mouvement, c'est l'exercice lui-même, mais tout le reste se fige. */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;scroll-behavior:auto !important}
+  .breathe-orb{transition-duration:inherit !important}
+}
+.theme-row{display:flex;gap:8px;margin-top:12px}
+.theme-row button{flex:1;background:var(--color-card);border:1px solid var(--color-line);border-radius:100px;
+  padding:11px 8px;font-family:inherit;font-size:13.5px;color:var(--color-ink-soft);cursor:pointer;transition:.2s}
+.theme-row button[aria-pressed="true"]{border-color:var(--color-gold);background:var(--color-doux);color:var(--color-sage-deep)}
 .section-title{font-family:"Cormorant Garamond",serif;font-size:24px;margin-bottom:4px}
 .section-sub{color:var(--color-ink-soft);font-weight:300;font-size:14px;margin-bottom:20px;line-height:1.5}
 </style>
@@ -221,7 +278,7 @@ body{font-family:"Outfit",sans-serif;color:var(--color-ink);
       <button class="btn" id="submit-mood">Recevoir un message</button>
       <p class="chips-label">ou choisis ce que tu ressens :</p>
       <div class="chips" id="mood-chips"></div>
-      <div id="result-host"></div>
+      <div id="result-host" role="region" aria-live="polite" aria-label="Parole reçue"></div>
     </div>
   </section>
 
@@ -235,6 +292,7 @@ body{font-family:"Outfit",sans-serif;color:var(--color-ink);
     <textarea id="journal-note" class="field" style="min-height:80px" placeholder="Un mot sur ta journée (optionnel)…"></textarea>
     <button class="btn" id="journal-save">Enregistrer</button>
     <div class="divider"></div>
+    <div id="journal-chart"></div>
     <div id="journal-list"></div>
   </section>
 
@@ -308,18 +366,42 @@ body{font-family:"Outfit",sans-serif;color:var(--color-ink);
       <h3>Tes données</h3>
       <p>Refuge n'a <strong>aucun serveur</strong>. Ce que tu écris, tes favoris et ton journal restent dans la mémoire de ton navigateur, sur ton appareil. Rien n'est envoyé, rien n'est analysé, il n'y a ni compte, ni mouchard, ni mesure d'audience. Effacer les données du site efface tout, définitivement.</p>
 
+      <div class="data-row">
+        <button id="export-btn">Exporter mes données</button>
+        <button id="wipe-btn" class="danger">Tout effacer</button>
+      </div>
+
       <h3>Les textes</h3>
+      <p>275 textes, choisis un par un et rangés selon l'état auquel ils répondent.</p>
       <ul>
-        <li><strong>Voie chrétienne</strong> — Bible, traductions Louis Segond 1910 et Darby, dans le domaine public.</li>
-        <li><strong>Voie musulmane</strong> — versets du Coran et hadiths, avec la référence de chaque passage (sourate et verset, recueil et numéro).</li>
-        <li><strong>Voie philosophe</strong> — auteurs du domaine public, cités avec leur source.</li>
+        <li><strong>Voie chrétienne</strong> — 105 passages, traduction Louis Segond 1910, dans le domaine public.</li>
+        <li><strong>Voie musulmane</strong> — 86 versets du Coran et hadiths, avec le texte arabe, sa translittération et la référence complète (sourate et verset, recueil et numéro).</li>
+        <li><strong>Voie philosophe</strong> — 84 citations d'auteurs du domaine public, avec leur source.</li>
       </ul>
       <p class="notice" style="margin-top:16px">Recueil constitué avec soin, mais <strong>pas encore relu par une autorité religieuse</strong>. Si tu relèves une erreur de référence ou de traduction, elle mérite d'être corrigée : signale-la.</p>
+
+      <h3>Apparence</h3>
+      <p>Le thème suit ton téléphone par défaut. Tu peux le forcer ici.</p>
+      <div class="theme-row" id="theme-row" role="group" aria-label="Choix du thème">
+        <button data-theme-set="auto">Automatique</button>
+        <button data-theme-set="clair">Clair</button>
+        <button data-theme-set="sombre">Sombre</button>
+      </div>
 
       <h3>Partager</h3>
       <p>Refuge est gratuit et le restera. Si l'app peut aider quelqu'un autour de toi, transmets-la.</p>
       <button class="btn" id="share-btn" style="margin-top:12px">Partager l'application</button>
       <button class="btn btn-soft" data-go="view-aide" style="margin-top:10px">Voir les numéros d'aide</button>
+
+      <h3>Mentions légales</h3>
+      <ul>
+        <li><strong>Éditeur</strong> — <span id="ml-editeur">à compléter</span></li>
+        <li><strong>Directeur de la publication</strong> — <span id="ml-directeur">à compléter</span></li>
+        <li><strong>Contact</strong> — <span id="ml-contact">à compléter</span></li>
+        <li><strong>Hébergeur</strong> — GitHub Inc., 88 Colin P. Kelly Jr Street, San Francisco, CA 94107, États-Unis.</li>
+      </ul>
+      <p style="margin-top:12px">Refuge ne dépose aucun cookie, n'utilise aucun traceur et ne réalise aucune mesure d'audience. Aucune donnée personnelle n'est collectée ni transmise : tout ce que tu écris demeure dans la mémoire de ton navigateur. Il n'existe donc aucun destinataire, aucun transfert hors Union européenne et aucune durée de conservation imposée — tu gardes et tu effaces ce que tu veux, quand tu veux, avec les boutons ci-dessus.</p>
+      <p style="margin-top:12px">Les textes religieux et philosophiques cités relèvent du domaine public ou du droit de citation, avec mention de la source à chaque parole.</p>
     </div>
   </section>
 
@@ -762,7 +844,7 @@ function renderResult(res){
   const e=res.e;const host=document.getElementById("result-host");
   const intro=res.m?e.note:"Je n'ai pas tout à fait saisi ton état — voici malgré tout une parole d'apaisement.";
   let body=voie==="musulman"
-    ?`<div class="sacred-arabic">${e.arabe}</div><p class="sacred-translit">${e.translit}</p><div class="divider"></div><p class="sacred-text">${e.texte}</p><p class="sacred-ref">${e.ref}</p>`
+    ?`<div class="sacred-arabic" lang="ar" dir="rtl">${e.arabe}</div><p class="sacred-translit">${e.translit}</p><div class="divider"></div><p class="sacred-text">${e.texte}</p><p class="sacred-ref">${e.ref}</p>`
     :`<p class="sacred-text">${e.texte}</p><p class="sacred-ref">${e.ref}</p>`;
   const liked=isFav(e);
   host.innerHTML=`<div class="result-card" style="margin-top:24px"><span class="badge">${badge(e)}</span>
@@ -802,7 +884,7 @@ function renderFav(){
   const host=document.getElementById("fav-list");
   if(!favoris.length){host.innerHTML='<div class="empty">Rien encore.<br>Touche « Garder » sous une parole pour la retrouver ici.</div>';return;}
   host.innerHTML=favoris.map((f,i)=>{
-    const body=f.arabe?`<div class="sacred-arabic" style="font-size:22px">${f.arabe}</div><p class="sacred-text" style="font-size:19px">${f.texte}</p>`:`<p class="sacred-text" style="font-size:19px">${f.texte}</p>`;
+    const body=f.arabe?`<div class="sacred-arabic" lang="ar" dir="rtl" style="font-size:22px">${f.arabe}</div><p class="sacred-text" style="font-size:19px">${f.texte}</p>`:`<p class="sacred-text" style="font-size:19px">${f.texte}</p>`;
     return `<div class="result-card" style="margin-bottom:14px;padding:24px 22px"><span class="badge">${f.badge}</span>${body}
       <p class="sacred-ref">${f.ref}</p>
       <button class="link-btn" style="margin-top:14px" onclick="removeFav(${i})">Retirer</button></div>`;
@@ -826,7 +908,36 @@ document.getElementById("journal-save").onclick=()=>{
   document.getElementById("journal-note").value="";document.querySelectorAll(".mood-pick").forEach(x=>x.classList.remove("sel"));moodSel=null;
   renderJournal();toast("Enregistré");
 };
+/* Courbe des 30 derniers relevés. Les humeurs vont de 0 (Bien) à 5 (Sous l'eau) ;
+   on inverse pour que « ça va mieux » monte, ce qui est ce que l'œil attend. */
+function renderChart(){
+  const host=document.getElementById("journal-chart");
+  const pts=journal.slice(0,30).reverse();
+  if(pts.length<2){host.innerHTML="";return;}
+  const L=560,H=64,pas=pts.length>1?L/(pts.length-1):0;
+  const y=v=>H-(5-v)/5*H;
+  const d=pts.map((j,i)=>(i?"L":"M")+(i*pas).toFixed(1)+" "+y(j.m).toFixed(1)).join(" ");
+  const aire=d+" L "+((pts.length-1)*pas).toFixed(1)+" "+H+" L 0 "+H+" Z";
+  const moy=pts.reduce((a,j)=>a+(5-j.m),0)/pts.length;
+  const cercles=pts.map((j,i)=>`<circle cx="${(i*pas).toFixed(1)}" cy="${y(j.m).toFixed(1)}" r="3"
+    fill="var(--color-card)" stroke="var(--color-sage)" stroke-width="2"><title>${MOODS[j.m][1]} — ${new Date(j.d).toLocaleDateString("fr-FR")}</title></circle>`).join("");
+  const d1=new Date(pts[0].d).toLocaleDateString("fr-FR",{day:"numeric",month:"short"});
+  const d2=new Date(pts[pts.length-1].d).toLocaleDateString("fr-FR",{day:"numeric",month:"short"});
+  host.innerHTML=`<div class="chart">
+    <div class="chart-head"><span class="chart-title">Ton moral sur ${pts.length} relevés</span>
+      <span class="chart-avg">${["Sous l'eau","Triste","Difficile","Mitigé","Ça va","Bien"][Math.round(moy)]}</span></div>
+    <svg viewBox="0 0 ${L} ${H}" preserveAspectRatio="none" role="img"
+      aria-label="Évolution de ton humeur sur les ${pts.length} derniers relevés. Moyenne : ${["Sous l'eau","Triste","Difficile","Mitigé","Ça va","Bien"][Math.round(moy)]}.">
+      <path d="${aire}" fill="var(--color-sage)" opacity=".13"/>
+      <path d="${d}" fill="none" stroke="var(--color-sage)" stroke-width="2"
+        stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+      ${cercles}
+    </svg>
+    <div class="chart-foot"><span>${d1}</span><span>${d2}</span></div>
+  </div>`;
+}
 function renderJournal(){
+  renderChart();
   const host=document.getElementById("journal-list");
   if(!journal.length){host.innerHTML='<div class="empty">Ton journal est vide pour le moment.</div>';return;}
   host.innerHTML=journal.map(j=>{const d=new Date(j.d);const ds=d.toLocaleDateString("fr-FR",{day:"numeric",month:"long"})+" · "+d.toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"});
@@ -896,6 +1007,43 @@ document.getElementById("about-start").onclick=()=>{
   document.getElementById("screen-start").classList.add("hidden");
   show("view-apropos");
 };
+
+/* ---- maîtrise des données : récupérer, effacer ---- */
+document.getElementById("export-btn").onclick=()=>{
+  const paquet={application:"Refuge",exporte_le:new Date().toISOString(),
+    voie,journal,favoris:favoris.map(f=>({texte:f.texte,ref:f.ref}))};
+  const url=URL.createObjectURL(new Blob([JSON.stringify(paquet,null,2)],{type:"application/json"}));
+  const a=document.createElement("a");
+  a.href=url;a.download="refuge-mes-donnees.json";document.body.appendChild(a);a.click();
+  a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  toast("Fichier téléchargé");
+};
+document.getElementById("wipe-btn").onclick=()=>{
+  if(!confirm("Effacer définitivement ton journal, tes paroles gardées et ta voie ?\n\nCette action est irréversible."))return;
+  ["refuge_journal","refuge_favoris","refuge_voie","refuge_theme"].forEach(k=>{
+    try{localStorage.removeItem(k);}catch(e){}
+  });
+  journal=[];favoris=[];
+  toast("Tout a été effacé");
+  setTimeout(()=>location.reload(),900);
+};
+
+/* ---- thème clair / sombre ---- */
+function appliqueTheme(t){
+  const r=document.documentElement;
+  if(t==="auto")r.removeAttribute("data-theme"); else r.setAttribute("data-theme",t);
+  document.querySelectorAll("[data-theme-set]").forEach(b=>
+    b.setAttribute("aria-pressed",String(b.dataset.themeSet===t)));
+  // la barre d'adresse du téléphone doit suivre, sinon la bande blanche reste
+  const sombre = t==="sombre" || (t==="auto" && matchMedia("(prefers-color-scheme:dark)").matches);
+  document.querySelector('meta[name="theme-color"]').setAttribute("content",sombre?"#1a1815":"#f4f0e7");
+}
+let theme=Store.get("refuge_theme")||"auto";
+document.querySelectorAll("[data-theme-set]").forEach(b=>b.onclick=()=>{
+  theme=b.dataset.themeSet;Store.set("refuge_theme",theme);appliqueTheme(theme);
+});
+appliqueTheme(theme);
+matchMedia("(prefers-color-scheme:dark)").addEventListener("change",()=>{if(theme==="auto")appliqueTheme("auto");});
 
 /* ---- partage ---- */
 document.getElementById("share-btn").onclick=async()=>{

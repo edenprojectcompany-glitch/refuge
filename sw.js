@@ -2,7 +2,7 @@
    But : l'app doit rester ouvrable sans réseau. Quelqu'un qui a besoin d'une
    parole à 3 h du matin dans le métro ne doit pas tomber sur un écran d'erreur. */
 
-const CACHE = "refuge-v1";
+const CACHE = "refuge-v2";
 const COQUILLE = [
   "./",
   "./index.html",

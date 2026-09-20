@@ -35,14 +35,20 @@ qu'elle n'a pas appris. C'est un filet, pas un diagnostic — et l'app le dit.
 
 ## Les textes
 
-275 textes tagués sur 15 émotions, **chacun avec sa propre note d'accompagnement**.
+257 textes tagués sur 15 émotions, **chacun avec son explication propre** — deux ou
+trois phrases qui disent ce que le texte porte et ce qu'il change pour qui le lit
+maintenant (202 caractères en moyenne, contre 40 auparavant).
 
 - **Chrétienne** (105) — Louis Segond 1910, domaine public. 7 par émotion, choisis un
   par un. Remplace 336 versets qui avaient été ramassés par mots-clés et partageaient
   14 notes : on y trouvait une prophétie de désolation rangée dans « fatigue ».
-- **Musulmane** (86) — Coran et hadiths, avec l'arabe, la translittération et la
+- **Musulmane** (73) — Coran et hadiths, avec l'arabe, la translittération et la
   référence complète.
-- **Philosophe** (84) — auteurs du domaine public, cités avec leur source.
+- **Philosophe** (79) — auteurs du domaine public, cités avec leur source.
+
+Chaque entrée porte un **identifiant stable** (`chr-001`, `mus-042`…). La référence ne
+peut pas servir de clé : « Sénèque · Lettres à Lucilius » désigne sept citations
+différentes, et garder l'une marquait les six autres comme gardées.
 
 Le moteur privilégie, à nombre de correspondances égal, le texte le plus ciblé — un
 texte tagué sur 3 émotions dont une seule correspond passe derrière un texte
@@ -57,6 +63,14 @@ entièrement sur le sujet.
 >    Solution propre : reprendre une traduction du domaine public (Kazimirski, 1840)
 >    ou faire établir des traductions originales. Segond et Darby ne posent aucun
 >    problème.
+
+## Parcours
+
+L'app **redemande la voie à chaque ouverture** : choisir sa source fait partie du
+moment où l'on ouvre Refuge, et l'état du jour n'appelle pas forcément la même voie
+qu'hier. La dernière voie utilisée est simplement signalée sur sa carte.
+
+Le titre **Refuge**, présent en haut de chaque écran, ramène à ce choix.
 
 ## Confort et accessibilité
 
